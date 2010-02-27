@@ -10,12 +10,12 @@
 
 	
 		echo $html->meta('icon');
-		echo $html->css(array('mc','mc-u','screen'));
+		echo $html->css(array('ez','ez-u','screen'));
 
 		//echo $html->css('print');
 		echo '<!--[if IE]>';
 		echo $html->css('ie');
-		echo $html->css('mc-ie');
+		echo $html->css('ez-ie');
 		echo '<![endif]-->';
 
 		echo $html->scriptBlock('var path = "'.Configure::read('path').'";' );
@@ -38,7 +38,7 @@
 				<div class="span-24 topInput" style="margin:20px 0;">
 						<div class="span-11 prepend-6">
 							<div style="float:left; margin-right:5px;">
-								<?php echo $html->link('moy<span style="text-shadow:2px 1px 1px #CCCCCC;">C</span>ontact.ru /', array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
+								<?php echo $html->link('englishcards.ru /', array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
 							</div>
 							<?php echo  $form->create('User'); ?>
 								<?php echo $form->input('username',array('label'=>false,'div'=>false,'id'=>'UserUsernameTop','error'=>false));?>
@@ -77,25 +77,7 @@
 							<?php echo $content_for_layout; ?>
 		        </div>
 		    </div>
-		    <div class="span-4 last">
-		        Right sidebar
-		        <hr />
-						
-						<div id="test1">test1</div>
-						<p class="margin:0;"> Data from app</p>
-						<div id="test2"></div>
-						<p style="margin:0"> real </p>
-						
-						<div id="test3">test3</div>
-						
-						<!--<div class="delCookie" style="cursor: pointer">delCookie</div>-->
-						<div class="delWorkSession">
-							<?php echo $html->link('Delete workSession',array('controller'=>'intervals','action'=>'delWorkSession'));?>
-						</div>
 
-
-
-		    </div>
 
 
 	
@@ -109,7 +91,7 @@
 					
 			    <div class="span-24">
 			    	<div class="footerNote">
-		      	 www.moycontact.ru &copy;<?php echo date('Y');?>
+		      	 www.englishcards.ru &copy;<?php echo date('Y');?>
 		      	</div>
 		   		</div>
 		   		
