@@ -3,7 +3,7 @@
 <head>
 	<?php echo $html->charset(); ?>
 	<title>
-		<?php __('MoyContact:'); ?>
+		<?php __('Ez.go:'); ?>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
@@ -35,18 +35,18 @@
 	<div class="pageheader">
 		<div style="border-bottom:3px solid #DDDDDD">
 			<div class="container">
-				<div class="span-24 topInput" style="margin:20px 0;">
-						<div class="span-11 prepend-6">
+				<div class="span-24">
+						<div class="span-11 prepend-1">
 							<div style="float:left; margin-right:5px;">
-								<?php echo $html->link('englishcards.ru /', array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
+								<?php echo $html->link($html->image('pic/ez-logo-50.png'), array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
 							</div>
-							<?php echo  $form->create('User'); ?>
-								<?php echo $form->input('username',array('label'=>false,'div'=>false,'id'=>'UserUsernameTop','error'=>false));?>
-							<?php echo $form->end();?>
+							<?php //echo  $form->create('User'); ?>
+								<?php //echo $form->input('username',array('label'=>false,'div'=>false,'id'=>'UserUsernameTop','error'=>false));?>
+							<?php //echo $form->end();?>
 						</div>
 						<div class="span-4" style="position:relative;" >
 							<div class="topSearch">
-								<div class="topSearchInner"><?php echo __('Search');?></div>
+								<div class="topSearchInner"><?php //echo __('Search');?></div>
 							</div>
 						</div>
 					</div>
