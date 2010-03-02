@@ -36,17 +36,14 @@
 		<div style="border-bottom:3px solid #DDDDDD">
 			<div class="container">
 				<div class="span-24">
-						<div class="span-11 prepend-1">
+						<div class="span-10 pull-1">
 							<div style="float:left; margin-right:5px;">
 								<?php echo $html->link($html->image('pic/ez-logo-50.png'), array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
 							</div>
-							<?php //echo  $form->create('User'); ?>
-								<?php //echo $form->input('username',array('label'=>false,'div'=>false,'id'=>'UserUsernameTop','error'=>false));?>
-							<?php //echo $form->end();?>
 						</div>
-						<div class="span-4" style="position:relative;" >
-							<div class="topSearch">
-								<div class="topSearchInner"><?php //echo __('Search');?></div>
+						<div class="span-14 last" style="position:relative;" >
+							<div class="topSearch" style="margin-top:30px;">
+							  <?php echo $html->image('pic/ez-header.png');?>
 							</div>
 						</div>
 					</div>

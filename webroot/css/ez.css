@@ -10,43 +10,6 @@
 
 }
 
-.topInput a{
-	color:darkOrange;
-	font-family:comic Sans MS;
-	font-size:2em;
-	text-shadow:-1px 1px 1px #FFFFFF;
-	text-decoration:none;
-}
-.topInput a:hover {
-	color: silver;
-	text-shadow:1px 1px 1px gray;	
-}
-.topInput a:hover span{
-	color:darkOrange;
-	font-weight:bold;
-}
-
-#UserUsernameTop {
-	margin: 10px 0 0 0 ;
-	width:205px;
-}
-.topSearch{
-	background:transparent url(../img/pic/buttonSearch-left.png) no-repeat scroll 0 0;
-	color:#999;
-	cursor:pointer;
-	font-weight:bold;
-	left:-25px;
-	padding:0 7px 0 6px;
-	position:absolute;
-	top:8px;
-	height: 23px;
-	text-shadow:-1px 1px 0 white;
-}
-.topSearchInner{
-		background:transparent url(../img/pic/buttonSearch-right.png) no-repeat scroll 100% 0;
-		padding:2px 11px 3px 7px;
-		height:23px;
-}
 .onlyTest{
 	background-color:blanchedAlmond;
 	border:1px solid blue;
