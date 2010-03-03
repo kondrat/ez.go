@@ -1,31 +1,41 @@
 /*header*/
 .pageheader{
-	border-bottom:1px solid #b0b0b0;
+	border-bottom:3px solid #ddd;
 	background:#FCFCFC url(../img/pic/header_bg.png) repeat-x scroll 0 100%;
 	min-width:75em;
-	/*
-
-	*/
 	position: relative;
 
 }
-
-.onlyTest{
-	background-color:blanchedAlmond;
-	border:1px solid blue;
-	color:goldenRod;
-	font-size:large;
-	font-weight:bold;
-	padding:6px;
-	text-align:center;
+.topSearch{
+	/*background:transparent url(../img/pic/ez-header.png) no-repeat scroll 0 0;*/
+	height: 55px;	
 }
+
 .pagefooter {
-	background:#BBCCD9 url(../img/pic/bg2.png) repeat-x scroll 0 0;
+	background:#BBCCD9 url(../img/pic/footer_bg.png) repeat-x scroll 0 0;
 	color:#CCCCCC;
 	height:808px;
 	min-width:75em;
 	overflow:hidden;
 }
+
+.card{
+	border:2px solid darkGray;
+	height:49.5mm;
+	margin:5px;
+	width:65mm;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	float:left;
+}
+
+
+
+
+
+
+
+
 .headerData {
 	float:left;
 	margin-right:1em;

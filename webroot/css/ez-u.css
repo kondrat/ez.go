@@ -1,25 +1,26 @@
 /*reg - get started*/
 .signUpNow {
-	background-color:#9AE4E8;
-	border:3px solid silver;
 	float:left;
-	margin:1em;
-	text-shadow:1px 1px 1px gray;
-	cursor:pointer;
-	border-style: dotted;
+	margin:1em 0 1em 2em;
+	text-shadow:1px 1px 1px #fff;
+	/*cursor:pointer;*/
+	
 }
 .signUpNow a {
-	color:#FFFFFF;
-	font-family:comic Sans MS;
+	color:darkGray;
+	/*font-family:comic Sans MS;*/
 	font-weight:bold;
-	font-size:larger;
+	font-size:large;
 	text-decoration:none;
-	padding:0.2em 1em;
+	padding:0;
 	display:block;
+	border-bottom:3px dotted;
 }
 .signUpNow a:hover {
-	color: gray;
-	text-shadow:1px 1px 1px white;
+	color: #db605d;
+	text-shadow:1px 1px 1px #fff;
+	/*text-decoration:underline;*/
+	
 }
 /* ---------------cur work----------------------*/
 
@@ -79,9 +80,15 @@ p.quickLoginForPas {
 /*form classes*/
 
 .inner_page {
-	padding: 20px 0;
-	position: relative;
+	border:4px solid #CCCCCC;
+	float:left;
 	height:1%;
+	margin:1em;
+	padding:10px;
+	position:relative;
+	background:transparent url(../img/pic/form_bg.png) repeat-x scroll 0 bottom;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
 }
 
 .error-message {
@@ -260,9 +267,10 @@ div.flok {
 	background-color:bisque;
 	position:absolute;
 	width:100%;
+	/*
 	-webkit-box-shadow: 0 2px 3px gray;
 	-moz-box-shadow: 0 2px 3px gray;
 	box-shadow: 0 2px 3px gray;
-	padding-top:3px;
+	padding-top:3px;*/
 }
 

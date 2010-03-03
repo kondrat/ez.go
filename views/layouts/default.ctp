@@ -30,31 +30,43 @@
 
 		echo $scripts_for_layout;
 	?>
+	
 </head>
 <body>
 	<div class="pageheader">
-		<div style="border-bottom:3px solid #DDDDDD">
+
 			<div class="container">
 				<div class="span-24">
-						<div class="span-10 pull-1">
+						<div class="span-16 ">
 							<div style="float:left; margin-right:5px;">
 								<?php echo $html->link($html->image('pic/ez-logo-50.png'), array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
 							</div>
 						</div>
-						<div class="span-14 last" style="position:relative;" >
+						<div class="span-8 last" style="position:relative;" >
 							<div class="topSearch" style="margin-top:30px;">
-							  <?php echo $html->image('pic/ez-header.png');?>
+									<div class="signUpNow">
+										<?php if(!$this->Session->read('Auth.User.id') ): ?>
+											<?php echo $html->link(__('SignUp now',true), array('controller'=>'users','action'=>'reg') );?>
+										<?php endif ?>
+									</div>
+									<div class="signUpNow">
+										<?php if(!$this->Session->read('Auth.User.id') ): ?>
+											<?php echo $html->link(__('LogIn now',true), array('controller'=>'users','action'=>'login') );?>
+										<?php else: ?>
+											<?php echo $html->link(__('LogOut now',true), array('controller'=>'users','action'=>'logout') );?>
+										<?php endif ?>
+									</div>	
 							</div>
 						</div>
 					</div>
 
-			</div>
+
 	
 		</div>					
 			
 	</div>
 	    <div style="position:relative;width:950px;margin:0 auto;">
-			  <div class="fl" style="border-bottom:1px solid gray;">
+			  <div class="fl" style="border-bottom:1px solid #ddd;">
 				  <?php echo $session->flash(); ?>
 			  </div>
 	    </div>
@@ -67,12 +79,16 @@
 		        <hr />
 		        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
 		    </div>
+
+
+
+
 		
 		    <div class="span-16">
 
-		        <div class="span-16 clear last myrr">
+		        
 							<?php echo $content_for_layout; ?>
-		        </div>
+		        
 		    </div>
 
 
@@ -88,7 +104,7 @@
 					
 			    <div class="span-24">
 			    	<div class="footerNote">
-		      	 www.englishcards.ru &copy;<?php echo date('Y');?>
+		      	 www.englishCARDS.ru &copy;<?php echo date('Y');?>
 		      	</div>
 		   		</div>
 		   		

@@ -2,16 +2,10 @@
 	only test
 </div>
 <div class="span-15">
-	<div class="signUpNow">
-		<?php if(!$this->Session->read('Auth.User.id') ): ?>
-			<?php echo $html->link(__('Sign Up now',true), array('controller'=>'users','action'=>'reg') );?>
-		<?php endif ?>
+	<div class="tableCards" style="width:210mm;height:150mm;background-color:LightYellow;">
+		<?php for ($i=0; $i<6; $i++): ?>
+			<div class="card" style="">
+			</div>
+		<?php endfor ?>
 	</div>
-	<div class="signUpNow">
-		<?php if(!$this->Session->read('Auth.User.id') ): ?>
-			<?php echo $html->link(__('LogIn now',true), array('controller'=>'users','action'=>'login') );?>
-		<?php else: ?>
-			<?php echo $html->link(__('LogOut now',true), array('controller'=>'users','action'=>'logout') );?>
-		<?php endif ?>
-	</div>	
 </div>
