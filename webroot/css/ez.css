@@ -20,13 +20,18 @@
 }
 
 .card{
-	border:2px solid darkGray;
-	height:49.5mm;
-	margin:5px;
-	width:65mm;
+  border-bottom:1px dotted gray;
+  border-left:1px dotted gray;
+  float:left;
+  height:49.5mm;
+  width:69.5mm;
+}
+.cardInner {
 	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
-	float:left;
+	-webkit-border-radius:10px; 
+  border:2px solid darkGray;
+  height:45.5mm;
+  margin:5px;	 
 }
 
 
