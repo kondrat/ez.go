@@ -19,24 +19,34 @@
 	overflow:hidden;
 }
 
-.card{
-  border-bottom:1px dotted gray;
-  border-left:1px dotted gray;
-  float:left;
-  height:49.5mm;
-  width:69.5mm;
+
+.tableCard{
+	border:1px dotted;
+	border-spacing: 7px 11px;
+	background-color: lightYellow;	
 }
-.cardInner {
+.tableCard td{
 	-moz-border-radius:10px;
-	-webkit-border-radius:10px; 
-  border:2px solid darkGray;
-  height:45.5mm;
-  margin:5px;	 
+	-webkit-border-radius:10px;
+	-moz-box-shadow:1px 2px 2px gray;	
+	/*background-color:ghostWhite;*/
+	font-size:26px;
+	height:170px;
+	width: 33.3%;
+	line-height:1em;
+	text-align:center;
+	border:1px solid;
+	background:ghostWhite url(../img/pic/ez-logo-gray.png) no-repeat scroll right bottom;
 }
+.tableCard td div {
 
-
-
-
+}
+.ab{
+}
+.man{
+}
+.bot {
+}
 
 
 

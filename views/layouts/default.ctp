@@ -30,7 +30,7 @@
 
 		echo $scripts_for_layout;
 	?>
-	
+
 </head>
 <body>
 	<div class="pageheader">
