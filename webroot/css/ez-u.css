@@ -1,9 +1,14 @@
 /*reg - get started*/
 .signUpNow {
 	float:left;
-	margin:1em 0 1em 2em;
-	text-shadow:1px 1px 1px #fff;
-	/*cursor:pointer;*/
+	margin:1em 0 1em 1.8em;
+	text-shadow:0px 1px 0px #fff;
+	padding: 3px 9px;
+	background-color: #ddd;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border:1px solid darkKhaki;
+	-moz-box-shadow:0 3px 3px darkGray;	
 	
 }
 .signUpNow a {
@@ -18,10 +23,9 @@
 }
 .signUpNow a:hover {
 	color: #db605d;
-	text-shadow:1px 1px 1px #fff;
-	/*text-decoration:underline;*/
-	
+	text-shadow:1px 1px 1px #fff;		
 }
+
 /* ---------------cur work----------------------*/
 
 .reg {
