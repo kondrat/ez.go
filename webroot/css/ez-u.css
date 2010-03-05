@@ -13,13 +13,10 @@
 }
 .signUpNow a {
 	color:darkGray;
-	/*font-family:comic Sans MS;*/
 	font-weight:bold;
 	font-size:large;
-	text-decoration:none;
 	padding:0;
 	display:block;
-	border-bottom:3px dotted;
 }
 .signUpNow a:hover {
 	color: #db605d;

@@ -19,13 +19,32 @@
 	overflow:hidden;
 }
 
-
+.innerTable{
+	margin:0;
+	padding:0;
+}
+.ctrlPanel{
+	display:none;
+	position:absolute;
+	right:0;
+	top:0;
+	font-size:12pt;
+	padding:4px 7px 2px;
+	background-color:lightGray;
+	line-height:1em;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	-moz-box-shadow:1px 2px 2px gray;	
+}
+.ctrlPanelWrapper{
+	position:relative;
+}
 .tableCard{
 	border:1px dotted;
 	border-spacing: 7px 11px;
 	background-color: lightYellow;	
 }
-.tableCard td{
+.tableCard td.td{
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	-moz-box-shadow:1px 2px 2px gray;	
@@ -41,7 +60,10 @@
 .tableCard td div {
 
 }
-.ab{
+.cardInner{
+	height:100%;
+	width:100%;
+	position:relative;
 }
 .man{
 }

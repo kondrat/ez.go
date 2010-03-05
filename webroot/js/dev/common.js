@@ -14,7 +14,12 @@ $(document).ready( function(){
 				});
 		}
 						
-
+		$(".td").hover( function(){
+			$(this).find(".ctrlPanel").show();
+		},function(){
+			$(this).find(".ctrlPanel").hide();
+		}
+		);
 					
 
 	
