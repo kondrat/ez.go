@@ -1,4 +1,4 @@
-
+var tt;
 
 $(document).ready( function(){
 		var $alert = $('#flashMessage');
@@ -21,7 +21,35 @@ $(document).ready( function(){
 		}
 		);
 					
+		$(".submitWord").click( function() {
+			var userWord;
+			userWord = $("#UserWord").attr('value');
+			$(".mainWord").text(userWord);
+			return false;
+		});
+		$(".submitTranslate").click( function() {
+			var userTran;
+			tt = userTran = $("#UserWord").attr('value');
+			
+			//$(".mainTran").text(userTran);
+			initialize(tt);
+			return false;
+		});
 
 	
 });
 
+			    function initialize(tt) {
+			     // var text = document.getElementById("UserWord").innerHTML;
+			      google.language.detect(tt, function(result) {
+			        if (!result.error && result.language) {
+			          google.language.translate(tt, result.language, "ru",
+			            function(result) {
+			            	var translated = document.getElementById("translation");
+			            	if (result.translation) {
+			              	translated.innerHTML = result.translation;
+			            	}
+			          });
+			        }
+			      });
+    		}
