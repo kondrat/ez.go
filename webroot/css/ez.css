@@ -70,8 +70,46 @@
 .bot {
 }
 
+#UserWord, #UserTranslate{;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+  margin-top:0;
+  padding:5px;
+  width:240px;
+}
+#UserExt{
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px; 
+	padding:3px;
+	width:450px; 
+}
+#contextTran{
+  font-size:small;
+  font-style:italic;
+  margin-left:1em;
+  text-align:left;
+  line-height:1em;
+}
+.addit{
+  border-bottom:1px dotted;
+  color:gray;
+  font-size:10pt;
+  line-height:1em;
+  margin-bottom:3px;
+  padding:0;
+  text-align:left;
+}
 
 
+
+
+
+
+
+
+
+
+/*old styles*/
 
 .headerData {
 	float:left;

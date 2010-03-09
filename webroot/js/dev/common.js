@@ -35,7 +35,14 @@ $(document).ready( function(){
 			initialize(tt);
 			return false;
 		});
-
+		
+		$(".submitMore").click( function() {
+			var userMore;
+			userMore = $("#UserExt").attr('value');
+			$(".contextTran").text(userMore);
+			$(".addit").show();
+			return false;
+		});
 	
 });
 
