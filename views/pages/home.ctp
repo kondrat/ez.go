@@ -5,47 +5,48 @@
 
 <div class="span-14 onlyTest" style="margin:1em;">
 
-<div class="span-7" style="margin-bottom:1em;">
-	<?php echo $form->create('User');?>
-		<?php echo $form->input('word',array('label'=>__('Word or short phrase',true) ) );?>
-		<?php echo $form->button('go',array('class'=>'submitWord') );?>
-	<?php echo $form->end();?>
-</div>
-<div class="span-7 last" style="margin-bottom:1em;">
-	<?php echo $form->create('User');?>
-		<?php echo $form->input('translate', array('label'=>__('Translation',true) ));?>
-		<?php echo $form->button('go',array('class'=>'submitTranslate') );?>
-	<?php echo $form->end();?>
-</div>
-<div class="span-14" style="">
-	<div class="prepend-4 span-2">
-		+ def
+
+
+<div class="span-14" style="text-align:center;">
+	<div class=" span-1" style="padding:0 .8em;">
+		front
+	</div>
+	<div class="append-1 span-1 last">
+		back
 	</div>
 	<div class="span-2">
-		+ ex
+		+ translation
 	</div>
 	<div class="span-2">
-		+ syn
+		+ definition
 	</div>
 	<div class="span-2">
+		+ example
+	</div>
+	<div class="span-2">
+		+ synonim
+	</div>
+	<div class="span-2 last">
 		+ context
 	</div>
 </div>
-<div class="span-12" style="margin-bottom:1em;">
-	<?php echo $form->create('User');?>
-		<?php echo $form->input('ext',array('label'=>false ) );?>
-		<?php echo $form->button('go',array('class'=>'submitMore') );?>
-	<?php echo $form->end();?>
+<div class="span-14" style="margin-bottom:1em;background-color:#C3D9FF; -moz-border-radius: 10px; -moz-box-shadow:2px 2px 2px gray;">
+	<div style="padding:1em; float:left;">
+		<?php echo $form->create('User');?>
+			<div style="float:left;border-bottom:1px dotted brown;color:brown;font-weight:bold;"><?php __('Enter word or short phrase');?></div>
+			<?php echo $form->input('ext',array('label'=>false ) );?>
+
+			<div style="float:right;">
+				<?php echo $form->button('go',array('class'=>'submitMore') );?>
+			</div>
+			<div style="float:right;">
+				<?php echo $form->button('reset',array('type'=>'reset','style'=>'margin-right:3px;') );?>
+			</div>
+		<?php echo $form->end();?>
+	</div>
 </div>
 <div class="span-14">
 	<table class="tableCard" style="">
-		<thead>
-			<tr>
-				<th>front side</th>
-				<th></th>
-				<th>back side</th>
-			</tr>
-		</thead>
 		<tbody>
 			<tr>
 				<td class="td" style="width:170px;">
