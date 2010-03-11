@@ -31,6 +31,7 @@
 		echo $scripts_for_layout;
 	?>
 
+
 </head>
 <body>
 	<div class="pageheader">
@@ -43,7 +44,7 @@
 							</div>
 						</div>
 						<div class="span-8 last" style="position:relative;" >
-							<div class="topSearch" style="margin-top:30px;">
+							<div class="topSearch" style="margin-top:-10px;">
 									<div class="signUpNow">
 										<?php if(!$this->Session->read('Auth.User.id') ): ?>
 											<?php echo $html->link(__('SignUp now',true), array('controller'=>'users','action'=>'reg') );?>
@@ -84,7 +85,7 @@
 
 
 		
-		    <div class="span-16">
+		    <div class="span-20 last">
 
 		        
 							<?php echo $content_for_layout; ?>
