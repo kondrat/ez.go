@@ -1,3 +1,5 @@
+		<noscript><div class="span-14">check JavaScript is on</div></noscript>
+
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">google.load("language", "1");</script>
     
@@ -9,10 +11,11 @@
 
 
 	<div class="span-14" style="text-align:center;">
-		<div class="frontSide span-2" style="">
+		
+		<div id="frontButton" class="frontBack activeSide span-2" style="">
 			front
 		</div>
-		<div class="backSide span-2 ">
+		<div id="backButton" class="frontBack  span-2 ">
 			back
 		</div>
 		<div class="plusMenu span-2">
@@ -30,15 +33,17 @@
 		<div class="plusMenu span-2 last">
 			+ context
 		</div>
+		
 	</div>
+	
 	<div class="span-14" style="margin-bottom:1em;background-color:#C3D9FF; -moz-border-radius: 10px; -moz-box-shadow:0px 0px 5px black;">
 		<div style="padding:1em; float:left;">
 			<?php echo $form->create('User');?>
-				<div style="float:left;border-bottom:1px dotted brown;color:brown;font-weight:bold;"><?php __('Enter word or short phrase');?></div>
+				<div class="userAction" style="float:left;border-bottom:1px dotted brown;color:brown;font-weight:bold;"><?php __('Enter word or short phrase');?></div>
 				<?php echo $form->input('ext',array('label'=>false ) );?>
 	
 				<div style="float:right;">
-					<?php echo $form->button('go',array('class'=>'submitMore') );?>
+					<?php echo $form->button('go',array('class'=>'submitWord') );?>
 				</div>
 				<div style="float:right;">
 					<?php echo $form->button('reset',array('type'=>'reset','style'=>'margin-right:3px;') );?>

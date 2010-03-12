@@ -100,32 +100,31 @@
   text-align:left;
 }
 
-.frontSide{
+.frontBack{
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px; 
 	-moz-box-shadow:0px 0px 3px black;
-	background-color:#C3D9FF;
-	color:white;
 	cursor:pointer;
 	font-family:Verdana;
 	font-weight:bold;
 	margin-bottom:0.8em;
 	text-align:center;
+	color:darkGray;
+	text-align:center;		
+}
+.activeSide{
+	background-color:#C3D9FF;
+	color:white;
 	text-shadow:0 0 1px gray;
 }
-.backSide{
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px; 
-	-moz-box-shadow:0px 0px 3px black;
-	/*background-color:#C3D9FF;*/
-	font-family:Verdana;
-	color:darkGray;
-	font-weight:bold;
-	margin-bottom:.8em;
-	text-align:center;
-	text-shadow:0px 0px 1px white;
-	cursor:pointer;
-}
+
+
+
+
+
+
+
+
 .plusMenu{
 	color:lightGray;
 	font-weight:bold;

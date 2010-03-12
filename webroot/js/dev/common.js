@@ -20,13 +20,28 @@ $(document).ready( function(){
 			$(this).find(".ctrlPanel").hide();
 		}
 		);
+
+		//front - back side switching
+		$("#backButton").click(function() {
+			$(this).addClass("activeSide");
+			$("#frontButton").removeClass("activeSide");
+		})
+		$("#frontButton").click(function() {
+			$(this).addClass("activeSide");
+			$("#backButton").removeClass("activeSide");
+		})
+		
+		
 					
 		$(".submitWord").click( function() {
 			var userWord;
-			userWord = $("#UserWord").attr('value');
+			userWord = $("#UserExt").attr('value');
 			$(".mainWord").text(userWord);
+			initialize(userWord)
 			return false;
 		});
+		
+		
 		$(".submitTranslate").click( function() {
 			var userTran;
 			tt = userTran = $("#UserWord").attr('value');
@@ -39,8 +54,13 @@ $(document).ready( function(){
 		$(".submitMore").click( function() {
 			var userMore;
 			userMore = $("#UserExt").attr('value');
+			
+			
 			$(".contextTran").text(userMore);
 			$(".addit").show();
+			
+			
+			
 			return false;
 		});
 	
