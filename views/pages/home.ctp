@@ -2,8 +2,6 @@
 
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">google.load("language", "1");</script>
-    
-
 
 
 <div class="span-14 onlyTest" style="margin:1em;">
@@ -38,7 +36,7 @@
 	
 	<div class="span-14" style="margin-bottom:1em;background-color:#C3D9FF; -moz-border-radius: 10px; -moz-box-shadow:0px 0px 5px black;">
 		<div style="padding:1em; float:left;">
-			<?php echo $form->create('User');?>
+			<?php echo $form->create('Card');?>
 				<div class="userAction" style="float:left;border-bottom:1px dotted brown;color:brown;font-weight:bold;"><?php __('Enter word or short phrase');?></div>
 				<?php echo $form->input('ext',array('label'=>false ) );?>
 	

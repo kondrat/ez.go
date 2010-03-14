@@ -35,11 +35,48 @@ $(document).ready( function(){
 					
 		$(".submitWord").click( function() {
 			var userWord;
-			userWord = $("#UserExt").attr('value');
+			userWord = $("#CardExt").attr('value');
 			$(".mainWord").text(userWord);
-			initialize(userWord)
+			
+			
+						$.post(
+							"/cards/getTransl",
+							{"data[Card][ext]": userWord },
+					    	function(data){
+									
+											if( data.dict ) {
+											  console.log('ok');
+											  /*
+												$('#usernameWrap').addClass("error");
+												$('#response').addClass('error-message');
+												$('#usernameWrap input').addClass('form-error');
+												*/
+												
+											} else {
+											  console.log('notOK');
+											  /*
+												$('#response').addClass('greenMessage');
+												$('#response').css({'color':'green','font-weight':'bold'});
+												//alert(data.typ+'2');
+												*/
+											}					
+									
+					      },
+					      "json"
+          	);
+			
+			
+			//official google
+			initialize(userWord);
 			return false;
 		});
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		$(".submitTranslate").click( function() {

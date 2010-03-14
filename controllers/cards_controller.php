@@ -8,19 +8,18 @@ class CardsController extends AppController {
 //--------------------------------------------------------------------
 //--------------------------------------------------------------------	
   function beforeFilter() {
+
   			//default title
-  			$this->set('title_for_layout', __('Users data',true) );
+  			$this->set('title_for_layout', __('Cards',true) );
   			//allowed actions
-        $this->Auth->allow( 'logout','login', 'reg','kcaptcha', 'reset', 'userNameCheck','index','view'
-        										//'acoset','aroset','permset','buildAcl'
-        										);
+        $this->Auth->allow('index','view','getTransl','add');
 
         parent::beforeFilter(); 
         $this->Auth->autoRedirect = false;
         
         // swiching off Security component for ajax call
         
-				if( $this->RequestHandler->isAjax() && $this->action == 'userNameCheck' ) { 
+				if( $this->RequestHandler->isAjax() && $this->action == 'getTransl' ) { 
 		   			$this->Security->validatePost = false;
 		   	}
 		   	
@@ -36,8 +35,7 @@ class CardsController extends AppController {
 	//ajax staff
 		//----------------------------------------------------------------
 
-	function getTransl(){
-		
+	function getTransl() {
 			Configure::write('debug', 0);
 			$this->autoLayout = false;
 			$this->autoRender = false;
@@ -45,14 +43,53 @@ class CardsController extends AppController {
 			if ( $this->RequestHandler->isAjax() ){
 
 				if (strpos(env('HTTP_REFERER'), trim(env('HTTP_HOST'), '/')) === false) {
-					$this->Security->blackHole($this, 'Invalid referrer detected for this request!');
+					$this->Security->blackHoleCallback = 'gotov';
 				}
 				//main staff
+				
+				
+						$str= urlencode($this->data['Card']['ext']);
+					 	$from='en';
+					 	$to='ru';
+				    $userAgent = "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20021204";
+         
+        //$fpEr = fopen(dirname(__FILE__).'/errorlog.txt', 'w'); 
+         
+				if (@function_exists("curl_init")) {
+				
+                // allways use curl if available for performance issues
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_VERBOSE, 0);
+                curl_setopt($ch, CURLOPT_URL, "http://translate.google.com/translate_a/t?");
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+                curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 4);
+                
+                curl_setopt($ch, CURLOPT_POST, 1);  
+                curl_setopt($ch, CURLOPT_POSTFIELDS, "client=t&sl=en&tl=ru&text=".$str );
+               
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                
+                //curl_setopt($ch, CURLOPT_STDERR, $fpEr); 
+                
+                if (!($contents = trim(@curl_exec($ch)))) {
+                  echo 'ploho';
+                  exit;
+                    //$this->debugRes("error","curl_exec failed");
+                }
+               
+
+                curl_close ($ch);
+
+                
+
+				} else {
+								
 					//http://mabp.kiev.ua/2008/08/28/google_translate/comment-page-2/#comments
-					//check also : http://snippets.pp.ru/article/127/
-						$str='girl';
-					 	$from='ru';
-					 	$to='en';
+
 					$fp = fsockopen("www.google.com", 80, $errno, $errstr, 30);
 					if (!$fp) {
 						trigger_error("$errstr ($errno) \n", E_USER_WARNING);
@@ -61,7 +98,7 @@ class CardsController extends AppController {
 						$text = "text=".urlencode($str);
 						$out = "POST /translate_a/t?client=t&sl=".$from."&tl=".$to." HTTP/1.1\r\n";
 						$out .= "Host: www.google.com\r\n";
-						$out .= "User-Agent: Mozilla/5.0\r\n";
+						$out .= "User-Agent: {$userAgent}\r\n";
 						$out .= "Accept-Encoding: deflate\r\n";
 						$out .= "Content-length: ".strlen($text)."\r\n";
 						$out .= "Connection: Close\r\n\r\n";
@@ -75,18 +112,20 @@ class CardsController extends AppController {
 						}
 						fclose($fp);
 					}
-				
-				
+				  				  
 					$res = explode("\r\n\r\n",$res);
-					$res = explode("\r\n",$res[1]);
-					
-					debug( json_decode($res[1]) );
+					$res = explode("\r\n",$res[1]);	
+			
+					$contents =  $res[0];
 
-				
-				
+				}				
+	
+					$this->header('Content-Type: application/json');				
+					return ($contents);
+					
+								
 			} else {				
-				$this->Security->blackHoleCallback = 'gotov';	
-				$this->Security->blackHole($this, 'You are not authorized to process this request!');			
+				$this->Security->blackHoleCallback = 'gotov';		
 			}
 			
 			
@@ -94,7 +133,7 @@ class CardsController extends AppController {
 	}
 				//blackhole redirection
 				//-----------------------------
-				function gotov() {
+				function gotov() {	
 					$this->redirect(null, 404, true);
 				}	
 //--------------------------------------------------------------------
