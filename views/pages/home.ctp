@@ -41,7 +41,7 @@
 				<?php echo $form->input('ext',array('label'=>false ) );?>
 	
 				<div style="float:right;">
-					<?php echo $form->button('go',array('class'=>'submitWord') );?>
+					<?php echo $form->button(__('Insert',true),array('class'=>'submitWord') );?>
 				</div>
 				<div style="float:right;">
 					<?php echo $form->button('reset',array('type'=>'reset','style'=>'margin-right:3px;') );?>
