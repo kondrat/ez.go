@@ -3,19 +3,20 @@
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     <script type="text/javascript">google.load("language", "1");</script>
 
-
+<div class="span-14 twoWays">
+	<div class="span-6 prepend-1">
+		<?php __('Type in word or short phrase');?>
+	</div>
+	<div class="span-6">
+		<?php echo $html->link( __('or Upload text and select',true), '#');?>
+	</div>
+</div>
 <div class="span-14 onlyTest" style="margin:1em;">
 
 
 
-	<div class="span-14" style="text-align:center;">
+	<div class="span-14" style="text-align:center;padding-bottom:.5em;">
 		
-		<div id="frontButton" class="frontBack activeSide span-2" style="">
-			front
-		</div>
-		<div id="backButton" class="frontBack  span-2 ">
-			back
-		</div>
 		<div class="plusMenu span-2">
 			+ transl
 		</div>
@@ -48,28 +49,52 @@
 				</div>
 			<?php echo $form->end();?>
 		</div>
+		
+		<div class="frontBackSwitcher">
+			<div id="frontButton" class="frontBack activeSide span-2 last" style="">
+				<?php __('front');?>
+			</div>
+			<div id="backButton" class="frontBack  span-2 last">
+				<?php __('back');?>
+			</div>
+		</div>		
+		
 	</div>
 
 
 
 	<div class="span-14">
-		<table class="tableCard" style="">
-			<tbody>
-				<tr>
-					<td class="td" style="width:170px;">
-						<div class="mainWord">
-						</div>
-					</td>
-					<td style="width:5px;"></td>
-					<td class="td" style="width:170px;">
-						<div class="mainTran" id="translation"></div>
-						<p class="addit hide" style="">add</p>
-						<div class="contextTran" id="contextTran"></div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div id="tableFront" class="span-7">
+				<table class="tableCard" style="">
+					<tbody>
+						<tr>
+							<td class="td activeTside" style="">
+								<div class="mainWord">
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
+		<div id="tableBack" class="span-7 last">
+				<table class="tableCard" style="">
+					<tbody>
+						<tr>
+							<td class="td" style="">
+								<div class="mainTran" id="translation"></div>
+								<p class="addit hide" style="">add</p>
+								<div class="contextTran" id="contextTran"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+		</div>
 	</div>
+
+	<div class="span-14" style="margin-bottom: 1em; background-color: rgb(195, 217, 255); -moz-border-radius: 10px; -moz-box-shadow: 0px 0px 5px black;text-align:center; padding:.5em 0;">
+		<?php echo $form->button(__('Save Card',true) );?>
+	</div>
+
 									
 </div>
 

@@ -25,10 +25,14 @@ $(document).ready( function(){
 		$("#backButton").click(function() {
 			$(this).addClass("activeSide");
 			$("#frontButton").removeClass("activeSide");
+			$("#tableBack .td").addClass("activeTside");
+			$("#tableFront .td").removeClass("activeTside");
 		})
 		$("#frontButton").click(function() {
 			$(this).addClass("activeSide");
 			$("#backButton").removeClass("activeSide");
+			$("#tableFront .td").addClass("activeTside");
+			$("#tableBack .td").removeClass("activeTside");
 		})
 		
 		

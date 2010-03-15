@@ -10,7 +10,15 @@
 	/*background:transparent url(../img/pic/ez-header.png) no-repeat scroll 0 0;*/
 	height: 55px;	
 }
-
+.twoWays{
+	text-align:center;
+	font-size: larger;
+	padding:1em 0 0 0;
+}
+.twoWays a{
+	text-decoration:none;
+	border-bottom:1px dotted;
+}
 .pagefooter {
 	background:#BBCCD9 url(../img/pic/footer_bg.png) repeat-x scroll 0 0;
 	color:#CCCCCC;
@@ -42,7 +50,8 @@
 .tableCard{
 	border:1px dotted;
 	border-spacing: 7px 11px;
-	background-color: lightYellow;	
+	background-color: lightYellow;
+	table-layout:fixed;	
 }
 .tableCard td.td{
 	-moz-border-radius:10px;
@@ -54,11 +63,21 @@
 	width: 33.3%;
 	line-height:1em;
 	text-align:center;
-	border:1px solid;
+	overflow:hidden;
+}
+.td{
+	border:1px solid #dcdcdc;	
 	background:ghostWhite url(../img/pic/ez-logo-gray.png) no-repeat scroll right bottom;
+}
+.activeTside{
+	border:1px solid GoldenRod;
+	background-color:#fff;
 }
 .tableCard td div {
 
+}
+.mainWord{
+	background-color:#eee;
 }
 .cardInner{
 	height:100%;
@@ -100,6 +119,19 @@
   text-align:left;
 }
 
+.frontBackSwitcher{
+	position:relative;
+}
+#frontButton{
+	position:absolute;
+	top:125px;
+	left:-7px;
+}
+#backButton{
+	position:absolute;
+	top:125px;
+	right:-7px;
+}
 .frontBack{
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px; 
@@ -110,7 +142,8 @@
 	margin-bottom:0.8em;
 	text-align:center;
 	color:darkGray;
-	text-align:center;		
+	text-align:center;	
+	background-color:#fff;	
 }
 .activeSide{
 	background-color:#C3D9FF;

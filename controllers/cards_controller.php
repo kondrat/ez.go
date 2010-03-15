@@ -50,7 +50,7 @@ class CardsController extends AppController {
 				
 						$str= urlencode($this->data['Card']['ext']);
 					 	$from='en';
-					 	$to='ru';
+					 	$to='en';
 				    $userAgent = "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20021204";
          
         //$fpEr = fopen(dirname(__FILE__).'/errorlog.txt', 'w'); 
@@ -69,7 +69,7 @@ class CardsController extends AppController {
                 curl_setopt($ch, CURLOPT_TIMEOUT, 4);
                 
                 curl_setopt($ch, CURLOPT_POST, 1);  
-                curl_setopt($ch, CURLOPT_POSTFIELDS, "client=t&sl=en&tl=ru&text=".$str );
+                curl_setopt($ch, CURLOPT_POSTFIELDS, "client=t&sl=".$from."&tl=".$to."&text=".$str );
                
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 
@@ -87,7 +87,7 @@ class CardsController extends AppController {
                 
 
 				} else {
-								
+					return('test');	
 					//http://mabp.kiev.ua/2008/08/28/google_translate/comment-page-2/#comments
 
 					$fp = fsockopen("www.google.com", 80, $errno, $errstr, 30);
