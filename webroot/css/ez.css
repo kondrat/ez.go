@@ -150,11 +150,16 @@
 
 
 
-
+.topT{
+  float:left;
+  margin:0 1em;
+}
 
 .plusMenu{
 	font-weight:bold;
 	color:lightGray;
+  float:left;
+  margin:0 1em;
 }
 .plusMenuFront{
 	color:lightGray;
@@ -169,8 +174,15 @@
 	background-color:#eee;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px; 
+	margin-top:2em;
 }
-
+.rightHead{
+  border-bottom:1px dotted;
+  color:Brown;
+  font-style:italic;
+  margin:1em;
+  text-align:center;
+}
 
 
 /*old styles*/

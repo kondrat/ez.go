@@ -3,13 +3,13 @@
 
 
 <div class="span-15 twoWays">
-	<div class="span-5">
+	<div class="topT">
 		<?php echo $html->link(__('Type in word or phrase',true),'#');?>
 	</div>
-	<div class="span-5">
+	<div class="topT">
 		<span style="font-style:italic;">or</span>&nbsp;&nbsp;<?php echo $html->link( __('Upload text and select',true), '#');?>
 	</div>
-	<div class="span-5 last">
+	<div class="topT">
 		<span style="font-style:italic;">or</span>&nbsp;&nbsp;<?php echo $html->link( __('Print out your set',true), '#');?>
 	</div>
 </div>
@@ -19,19 +19,19 @@
 
 	<div class="span-14" style="text-align:center;padding-bottom:.5em;">
 		
-		<div class="plusMenu span-2">
+		<div class="plusMenu">
 			+ transl
 		</div>
-		<div class="plusMenu span-2">
+		<div class="plusMenu">
 			+ definition
 		</div>
-		<div class="plusMenu span-2">
+		<div class="plusMenu">
 			+ example
 		</div>
-		<div class="plusMenu span-2">
+		<div class="plusMenu">
 			+ synonim
 		</div>
-		<div class="plusMenu span-2 last">
+		<div class="plusMenu">
 			+ context
 		</div>
 		
@@ -40,7 +40,13 @@
 	<div class="span-14" style="margin-bottom:1em;background-color:#C3D9FF; -moz-border-radius: 10px; -moz-box-shadow:0px 0px 5px black;">
 		<div style="padding:1em; float:left;">
 			<?php echo $form->create('Card');?>
+			
 				<div class="userAction" style="float:left;border-bottom:1px dotted brown;color:brown;font-weight:bold;"><?php __('Enter word or short phrase');?></div>
+				<div style="float:right;" class="quickMode">
+				  <?php __('Quick mode');?>
+				  <?php echo $form->checkbox('One',array('checked'=>true) );?>
+				</div>
+				
 				<?php echo $form->input('ext',array('label'=>false ) );?>
 	
 				<div style="float:right;">
@@ -100,6 +106,9 @@
 </div>
 
 <div class="span-6 last rightSug">
+  <div class="rightHead">
+    <?php __('Just click on what you need');?>
+   </div>
 	<div style="padding:15px;">
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. 
 	</div>

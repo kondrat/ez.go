@@ -39,7 +39,7 @@
 			<div class="container">
 				<div class="span-24">
 						<div class="span-16 ">
-							<div style="float:left; margin-right:5px;">
+							<div style="float:left; margin:1em 0;">
 								<?php echo $html->link($html->image('pic/ez-logo-50.png'), array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
 							</div>
 						</div>
