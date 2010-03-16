@@ -50,7 +50,7 @@ class CardsController extends AppController {
 				
 						$str= urlencode($this->data['Card']['ext']);
 					 	$from='en';
-					 	$to='en';
+					 	$to='ru';
 				    $userAgent = "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20021204";
          
         //$fpEr = fopen(dirname(__FILE__).'/errorlog.txt', 'w'); 

@@ -11,9 +11,10 @@
 	height: 55px;	
 }
 .twoWays{
+	font-size:larger;
+	margin-bottom:1em;
+	padding:1em 0 0;
 	text-align:center;
-	font-size: larger;
-	padding:1em 0 0 0;
 }
 .twoWays a{
 	text-decoration:none;
@@ -27,10 +28,7 @@
 	overflow:hidden;
 }
 
-.innerTable{
-	margin:0;
-	padding:0;
-}
+
 .ctrlPanel{
 	display:none;
 	position:absolute;
@@ -52,6 +50,7 @@
 	border-spacing: 7px 11px;
 	background-color: lightYellow;
 	table-layout:fixed;	
+	margin-bottom:1em;
 }
 .tableCard td.td{
 	-moz-border-radius:10px;
@@ -78,16 +77,9 @@
 }
 .mainWord{
 	background-color:#eee;
+	border:1px solid #DDDDDD;
 }
-.cardInner{
-	height:100%;
-	width:100%;
-	position:relative;
-}
-.man{
-}
-.bot {
-}
+
 
 #UserWord, #UserTranslate{;
 	-moz-border-radius:10px;
@@ -125,12 +117,12 @@
 #frontButton{
 	position:absolute;
 	top:125px;
-	left:-7px;
+	left:90px;
 }
 #backButton{
 	position:absolute;
 	top:125px;
-	right:-7px;
+	right:90px;
 }
 .frontBack{
 	-moz-border-radius:5px;
@@ -143,7 +135,9 @@
 	text-align:center;
 	color:darkGray;
 	text-align:center;	
-	background-color:#fff;	
+	background-color:#fff;
+	float:left;
+	padding:0 1em;	
 }
 .activeSide{
 	background-color:#C3D9FF;
@@ -159,14 +153,23 @@
 
 
 .plusMenu{
-	color:lightGray;
 	font-weight:bold;
+	color:lightGray;
+}
+.plusMenuFront{
+	color:lightGray;
+}
+.plusMenuBack{
+	color:lightSalmon;
 }
 
 
 
-
-
+.rightSug{
+	background-color:#eee;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px; 
+}
 
 
 

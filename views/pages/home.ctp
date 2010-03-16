@@ -1,19 +1,21 @@
-		<noscript><div class="span-14">check JavaScript is on</div></noscript>
+		<noscript><div class="span-14 error" style="background-color:#FBE3E4;border:2px solid  #FBC2C4; margin: 1em;text-align:center;color:#8A1F11;" >check JavaScript is on</div></noscript>
 
-    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript">google.load("language", "1");</script>
 
-<div class="span-14 twoWays">
-	<div class="span-6 prepend-1">
-		<?php __('Type in word or short phrase');?>
+
+<div class="span-15 twoWays">
+	<div class="span-5">
+		<?php echo $html->link(__('Type in word or phrase',true),'#');?>
 	</div>
-	<div class="span-6">
-		<?php echo $html->link( __('or Upload text and select',true), '#');?>
+	<div class="span-5">
+		<span style="font-style:italic;">or</span>&nbsp;&nbsp;<?php echo $html->link( __('Upload text and select',true), '#');?>
+	</div>
+	<div class="span-5 last">
+		<span style="font-style:italic;">or</span>&nbsp;&nbsp;<?php echo $html->link( __('Print out your set',true), '#');?>
 	</div>
 </div>
-<div class="span-14 onlyTest" style="margin:1em;">
 
 
+<div class="span-14 onlyTest" style="">
 
 	<div class="span-14" style="text-align:center;padding-bottom:.5em;">
 		
@@ -45,17 +47,17 @@
 					<?php echo $form->button(__('Insert',true),array('class'=>'submitWord') );?>
 				</div>
 				<div style="float:right;">
-					<?php echo $form->button('reset',array('type'=>'reset','style'=>'margin-right:3px;') );?>
+					<?php echo $form->button(__('Reset',true),array('type'=>'reset','style'=>'margin-right:3px;') );?>
 				</div>
 			<?php echo $form->end();?>
 		</div>
 		
 		<div class="frontBackSwitcher">
-			<div id="frontButton" class="frontBack activeSide span-2 last" style="">
-				<?php __('front');?>
+			<div id="frontButton" class="frontBack activeSide" style="">
+				<?php __('front side');?>
 			</div>
-			<div id="backButton" class="frontBack  span-2 last">
-				<?php __('back');?>
+			<div id="backButton" class="frontBack">
+				<?php __('back side');?>
 			</div>
 		</div>		
 		
@@ -94,14 +96,19 @@
 	<div class="span-14" style="margin-bottom: 1em; background-color: rgb(195, 217, 255); -moz-border-radius: 10px; -moz-box-shadow: 0px 0px 5px black;text-align:center; padding:.5em 0;">
 		<?php echo $form->button(__('Save Card',true) );?>
 	</div>
-
 									
 </div>
 
+<div class="span-6 last rightSug">
+	<div style="padding:15px;">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. 
+	</div>
+</div>
 
 <div class="span-20 last">
 	<table class="tableCard" style="">
 		<tbody>
+			
 			<tr>
 				<td class="td">
 					<div class="cardInner">
@@ -111,11 +118,11 @@
 					</div>
 				</td>
 				<td class="td">
-					<table class="innerTable">
+					<table>
 						<tr>
 							<td><div class="ctrlPanelWrapper"><div class="ctrlPanel"><?php echo $html->image('icons/edit.png');?>&nbsp;&nbsp;<?php echo $html->image('icons/delete.png');?></div></div></td>
 						</tr>
-						<tr style="height:160px;">
+						<tr>
 							<td>table first</td>
 						</tr>
 						<tr><td></td></tr>
@@ -123,11 +130,7 @@
 				</td>
 				<td class="td">table first</td>
 			</tr>
-			<tr>
-				<td>table first</td>
-				<td>table first</td>
-				<td>table first</td>
-			</tr>
+
 		</tbody>
 	</table>
 

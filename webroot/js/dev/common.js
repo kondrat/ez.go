@@ -27,12 +27,18 @@ $(document).ready( function(){
 			$("#frontButton").removeClass("activeSide");
 			$("#tableBack .td").addClass("activeTside");
 			$("#tableFront .td").removeClass("activeTside");
+			$(".plusMenu").each(function(){
+				$(this).removeClass("plusMenuFront").addClass("plusMenuBack");
+			});			
 		})
 		$("#frontButton").click(function() {
 			$(this).addClass("activeSide");
 			$("#backButton").removeClass("activeSide");
 			$("#tableFront .td").addClass("activeTside");
 			$("#tableBack .td").removeClass("activeTside");
+			$(".plusMenu").each(function(){
+				$(this).removeClass("plusMenuBack").addClass("plusMenuFront");
+			});
 		})
 		
 		
@@ -44,12 +50,25 @@ $(document).ready( function(){
 			
 			
 						$.post(
-							"/cards/getTransl",
+							path+"/cards/getTransl",
 							{"data[Card][ext]": userWord },
 					    	function(data){
 									
-											if( data.dict ) {
-											  console.log('ok');
+											if( data.sentences ) {
+											  console.log(data.sentences);
+											  var tem = data.sentences[0];
+											  
+											  $.each(tem, function(key, value) { 
+  													//alert(key + ': ' + value); 
+  													if( key === 'trans' ) {
+  														var translated = value;
+  														$("#translation").text(	translated );												
+  													}
+  													
+												});
+											  
+											  
+											  
 											  /*
 												$('#usernameWrap').addClass("error");
 												$('#response').addClass('error-message');
@@ -71,7 +90,7 @@ $(document).ready( function(){
 			
 			
 			//official google
-			initialize(userWord);
+			//initialize(userWord);
 			return false;
 		});
 		
@@ -106,6 +125,10 @@ $(document).ready( function(){
 		});
 	
 });
+
+
+
+
 
 			    function initialize(tt) {
 			     // var text = document.getElementById("UserWord").innerHTML;
