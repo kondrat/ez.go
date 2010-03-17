@@ -52,27 +52,19 @@
 				<div style="float:right;">
 					<?php echo $form->button(__('Insert',true),array('class'=>'submitWord') );?>
 				</div>
-				<div style="float:right;">
-					<?php echo $form->button(__('Reset',true),array('type'=>'reset','style'=>'margin-right:3px;') );?>
+				<div style="float:right;margin-right: 1em;">
+					<?php echo $html->link(__('Clean up',true),array() );?>
+					<?php //echo $form->button(__('Reset',true),array('type'=>'reset','style'=>'margin-right:3px;') );?>
 				</div>
 			<?php echo $form->end();?>
 		</div>
-		
-		<div class="frontBackSwitcher">
-			<div id="frontButton" class="frontBack activeSide" style="">
-				<?php __('front side');?>
-			</div>
-			<div id="backButton" class="frontBack">
-				<?php __('back side');?>
-			</div>
-		</div>		
 		
 	</div>
 
 
 
 	<div class="span-14">
-		<div id="tableFront" class="span-7">
+		<div id="tableFront" class="span-7" style="position:relative;">
 				<table class="tableCard" style="">
 					<tbody>
 						<tr>
@@ -83,8 +75,11 @@
 						</tr>
 					</tbody>
 				</table>
+				<div id="frontButton" class="frontBack activeSide" style="">
+					<?php echo $html->link(__('front side',true),array('opp'),array('class'=>'tessstt','onclick'=>'return false' ) );?></a>
+				</div>
 		</div>
-		<div id="tableBack" class="span-7 last">
+		<div id="tableBack" class="span-7 last" style="position:relative;">
 				<table class="tableCard" style="">
 					<tbody>
 						<tr>
@@ -96,10 +91,14 @@
 						</tr>
 					</tbody>
 				</table>
+				<div id="backButton" class="frontBack">
+					<?php echo $html->link(__('back side',true),array('#'),array('class'=>'tessstt','onclick'=>'return false' ) );?></a>
+				</div>
 		</div>
 	</div>
 
-	<div class="span-14" style="margin-bottom: 1em; background-color: rgb(195, 217, 255); -moz-border-radius: 10px; -moz-box-shadow: 0px 0px 5px black;text-align:center; padding:.5em 0;">
+	<div class="span-14" style="margin-bottom: 1em; background-color: rgb(195, 217, 255); -moz-border-radius: 10px; -moz-box-shadow: 0px 0px 5px black;text-align:center; padding:.5em 0;position:relative;">
+		<?php echo $html->image('icons/no_sound.png',array('style'=>'float:left;margin:0 1em;position:absolute;left:0') );?>
 		<?php echo $form->button(__('Save Card',true) );?>
 	</div>
 									

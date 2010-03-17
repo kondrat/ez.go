@@ -27,10 +27,13 @@ $(document).ready( function(){
 			$("#frontButton").removeClass("activeSide");
 			$("#tableBack .td").addClass("activeTside");
 			$("#tableFront .td").removeClass("activeTside");
+			
 			$(".plusMenu").each(function(){
 				$(this).removeClass("plusMenuFront").addClass("plusMenuBack");
 			});			
 		})
+
+			
 		$("#frontButton").click(function() {
 			$(this).addClass("activeSide");
 			$("#backButton").removeClass("activeSide");
@@ -55,7 +58,7 @@ $(document).ready( function(){
 					    	function(data){
 									
 											if( data.sentences ) {
-											  console.log(data.sentences);
+											  //console.log(data.sentences);
 											  var tem = data.sentences[0];
 											  
 											  $.each(tem, function(key, value) { 
@@ -76,7 +79,7 @@ $(document).ready( function(){
 												*/
 												
 											} else {
-											  console.log('notOK');
+											  //console.log('notOK');
 											  /*
 												$('#response').addClass('greenMessage');
 												$('#response').css({'color':'green','font-weight':'bold'});
