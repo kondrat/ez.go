@@ -65,6 +65,7 @@
 					<?php //echo $form->button(__('Reset',true),array('type'=>'reset','style'=>'margin-right:3px;') );?>
 				</div>
 			<?php echo $form->end();?>
+			<div style="float:left;margin:0 1em;font-weight:bold;">en<?php echo $html->image('icons/ajax-loader1-stat.png',array('style' => "vertical-align: middle; margin: 0pt 0.6em;") );?>ru</div>
 		</div>
 		
 	</div>
