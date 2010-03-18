@@ -25,12 +25,13 @@
 															//'jquery/ui.draggable',
 															'dev/common',
 															'dev/reg',
-															'localization/messages_ru'
+															'localization/messages_ru',
+															'sound/soundmanager2',
+															'sound/sound'
 															));
 
 		echo $scripts_for_layout;
 	?>
-
 
 </head>
 <body>

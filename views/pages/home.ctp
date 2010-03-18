@@ -1,4 +1,12 @@
 		<noscript><div class="span-14 error" style="background-color:#FBE3E4;border:2px solid  #FBC2C4; margin: 1em;text-align:center;color:#8A1F11;" >check JavaScript is on</div></noscript>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+  		google.load("language", "1");
+  		google.setOnLoadCallback(initialize);
+  		function initialize() {
+  			google.language.getBranding('branding');
+  		}
+		</script>
 
 
 
@@ -98,8 +106,9 @@
 	</div>
 
 	<div class="span-14" style="margin-bottom: 1em; background-color: rgb(195, 217, 255); -moz-border-radius: 10px; -moz-box-shadow: 0px 0px 5px black;text-align:center; padding:.5em 0;position:relative;">
-		<?php echo $html->image('icons/no_sound.png',array('style'=>'float:left;margin:0 1em;position:absolute;left:0') );?>
+		<?php echo $html->image('icons/no_sound.png',array('id'=>'playSound','style'=>'float:left;margin:0 1em;position:absolute;left:0;cursor:pointer;') );?>
 		<?php echo $form->button(__('Save Card',true) );?>
+		<div id='branding' style="position:absolute;top:10px; right:0;margin-right:1em;"> </div>
 	</div>
 									
 </div>
