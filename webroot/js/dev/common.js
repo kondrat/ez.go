@@ -1,4 +1,6 @@
 var tt;
+var from = 'en';
+var to = 'ru';
 
 $(document).ready( function(){
 		var $alert = $('#flashMessage');
@@ -44,17 +46,23 @@ $(document).ready( function(){
 			});
 		})
 		
-		
+
+		$(".langSwitch").click(function(){
+			to = $("#langFrom").text();
+			from = $("#langTo").text();
+			$("#langFrom").text(from);
+			$("#langTo").text(to);
+		});		
 					
 		$(".submitWord").click( function() {
 			var userWord;
 			userWord = $("#CardExt").attr('value');
 			$(".mainWord").text(userWord);
-			
+			songWord = userWord;
 			
 						$.post(
 							path+"/cards/getTransl",
-							{"data[Card][ext]": userWord },
+							{"data[Card][ext]": userWord, "data[Card][langFrom]" : from, "data[Card][langTo]" : to },
 					    	function(data){
 									
 											if( data.sentences ) {

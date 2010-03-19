@@ -49,10 +49,10 @@ class CardsController extends AppController {
 				
 				
 						$str= urlencode($this->data['Card']['ext']);
-					 	$from='en';
-					 	$to='ru';
+					 	$from=urlencode($this->data['Card']['langFrom']);
+					 	$to=urlencode($this->data['Card']['langTo']);
 				    $userAgent = "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.2.1) Gecko/20021204";
-         
+         		 
         //$fpEr = fopen(dirname(__FILE__).'/errorlog.txt', 'w'); 
          
 				if (@function_exists("curl_init")) {
@@ -81,13 +81,26 @@ class CardsController extends AppController {
                     //$this->debugRes("error","curl_exec failed");
                 }
                
-
+					/*
                 curl_close ($ch);
-
-                
-
+								
+								$ch1 = curl_init();
+								curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+								curl_setopt($ch1, CURLOPT_URL, "http://www.gstatic.com/dictionary/static/sounds/de/0/".$str);
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 4);
+								$file = curl_exec($ch1);
+								curl_close ($ch1);
+						 		if($file) {
+									$listen = 0;
+								} else {
+									$listen = 1;
+								}               
+					*/
 				} else {
-					return('test');	
 					//http://mabp.kiev.ua/2008/08/28/google_translate/comment-page-2/#comments
 
 					$fp = fsockopen("www.google.com", 80, $errno, $errstr, 30);

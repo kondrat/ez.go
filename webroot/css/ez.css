@@ -191,8 +191,15 @@ a {
 .plusMenuBack{
 	color:lightSalmon;
 }
-
-
+.langSwitch{
+	float:left;
+	margin: 0.1em 0.6em;
+	cursor:pointer;
+}
+#langFrom,#langTo{
+	width:15px;
+	float:left
+}
 
 .rightSug{
 	background-color:#eee;
