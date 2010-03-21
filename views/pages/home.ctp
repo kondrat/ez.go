@@ -58,7 +58,7 @@
 				<?php echo $form->input('ext',array('label'=>false ) );?>
 	
 				<div style="float:right;">
-					<?php echo $form->button(__('Insert',true),array('class'=>'submitWord') );?>
+					<?php echo $form->button(__('Insert',true),array('id'=>'submitWrodId','class'=>'submitWord') );?>
 				</div>
 				<div style="float:right;margin-right: 1em;">
 					<?php echo $html->link(__('Clean up',true),array() );?>
@@ -107,7 +107,7 @@
 	</div>
 
 	<div class="span-14" style="margin-bottom: 1em; background-color: rgb(195, 217, 255); -moz-border-radius: 10px; -moz-box-shadow: 0px 0px 5px black;text-align:center; padding:.5em 0;position:relative;">
-		<?php echo $html->image('icons/no_sound.png',array('id'=>'playSound','style'=>'float:left;margin:0 1em;position:absolute;left:0;cursor:pointer;') );?>
+	  <div id="playSound" class="sound"></div>
 		<?php echo $form->button(__('Save Card',true) );?>
 		<div id='branding' style="position:absolute;top:10px; right:0;margin-right:1em;"> </div>
 	</div>

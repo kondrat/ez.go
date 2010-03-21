@@ -201,6 +201,21 @@ a {
 	float:left
 }
 
+.sound{
+  width:24px;
+  height:24px;
+  float:left;
+  margin:0 1em;
+  position:absolute;
+  left:0;
+  background:transparent url(../img/icons/sounds.png) no-repeat scroll 0 0;	
+}
+.activeSound{
+  cursor:pointer;
+  background-position: 0 -32px;
+}
+
+
 .rightSug{
 	background-color:#eee;
 	-moz-border-radius:10px;
@@ -214,6 +229,11 @@ a {
   margin:1em;
   text-align:center;
 }
+
+
+
+
+
 
 
 /*old styles*/
