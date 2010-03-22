@@ -114,14 +114,24 @@
 									
 </div>
 
+
+
 <div class="span-6 last rightSug">
   <div class="rightHead">
     <?php __('Just click on what you need');?>
    </div>
-	<div style="padding:15px;">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. 
+	<div style="padding: 0 15px 15px 15px;">
+		<div class="dicSwitcher clearfix">
+			<div class="noun"><?php __('Noun');?></div>
+			<div class="verb"><?php __('Verb');?></div>
+			<div class="adjec"><?php __('Adjec');?></div>
+		</div>
+		<div class="dicTerms">
+		</div>
 	</div>
 </div>
+
+
 
 <div class="span-20 last">
 	<table class="tableCard" style="">

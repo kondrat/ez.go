@@ -58,6 +58,7 @@ $(document).ready( function(){
 			var userWord;
 			userWord = $("#CardExt").attr('value');
 			$(".mainWord").text(userWord);
+			$(".dicTerms").html('');
 			songWord = userWord;
 			
 						$.post(
@@ -70,7 +71,6 @@ $(document).ready( function(){
 											  var tem = data.sentences[0];
 											  
 											  $.each(tem, function(key, value) { 
-  													//alert(key + ': ' + value); 
   													if( key === 'trans' ) {
   														var translated = value;
   														$("#translation").text(	translated );												
@@ -78,7 +78,46 @@ $(document).ready( function(){
   													
 												});
 											  
+											 if( data.dict ) {
+			
+											  var dic = data.dict;
+											  var type = null;
+											  $.each(dic, function( keyD, valueD) {
+											  	
+											  	$.each(valueD, function(keyT, valueT) {
+											  		
+											  		
+											  		if(keyT === 'pos' && valueT === 'noun'){
+											  			//noun logic
+											  			type = 'noun';
+											  		} else if ( valueT === 'verb') {
+											  			//verb logic
+											  			type = 'verb';										  			
+											  		} 
+											  		
+											  		if( keyT === 'terms' && type === 'noun' ) {
+											  			
+											  				$.each( valueT, function(keyN, valueN) {											  					
+											  					$(".dicTerms").append('<div>'+ valueN+'</div>');
+											  				});	
+											  														  			
+											  		} else {
+											  			//alert('not');
+											  		}
+											  		
+											  		if ( type && type === 'noun') {
+
+											  		}
+											  		
+											  		
+											  		
+											  		
+											  	});
+											  	//alert('okk');
+											  });
 											  
+											}
+											  											  
 											  
 											  /*
 												$('#usernameWrap').addClass("error");

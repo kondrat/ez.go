@@ -214,7 +214,9 @@ a {
   cursor:pointer;
   background-position: 0 -32px;
 }
-
+.activeSoundPlay{
+	background-position: 0 -64px;
+}
 
 .rightSug{
 	background-color:#eee;
@@ -230,6 +232,30 @@ a {
   text-align:center;
 }
 
+.dicSwitcher{
+	margin-bottom:1em;
+}
+.noun{
+	float:left;
+	border-bottom:1px dashed;
+	margin-left: 1em;
+	line-height:1.4em;
+	cursor:pointer;
+}
+.verb{
+	float:left;
+	border-bottom:1px dashed;
+	margin-left: 1em;
+	line-height:1.4em;
+	cursor:pointer;
+}
+.adjec{
+	float:left;
+	border-bottom:1px dashed;
+	margin-left: 1em;
+	line-height:1.4em;
+	cursor:pointer;
+}
 
 
 

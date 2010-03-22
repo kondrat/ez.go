@@ -5,7 +5,7 @@ var songWord;
 $(document).ready( function(){
 
 
-				soundManager.debugMode = true;
+				soundManager.debugMode = false;
 				soundManager.waitForWindowLoad = false;
 				soundManager.url = "./js/sound/swf/";
 				soundManager.nullURL = './js/sound/swf/null.mp3';
@@ -24,16 +24,19 @@ $(document).ready( function(){
 					  autoPlay:false,
 					  multiShot:false,
 					  multiShotEvents:false,
+					  //volume: 0,
 					  onload: function() {
 					    //alert( 'The sound '+this.sID+' loaded!');	
 					    if( this.readyState !== 3 ) {
 					      this.destruct();
 					    } else {
-					      $("#playSound").addClass("activeSound");
+					      //$("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
 					    }					
 					  },
 					  onfinish:function() {	
+					  	$("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
 					  	this.destruct();
+					  	
 					  }
 
 					});		     
@@ -44,7 +47,7 @@ $(document).ready( function(){
 				
 				
 		$('#playSound').click(function() {
-				
+							$("#playSound").removeClass("activeSound").addClass("activeSoundPlay");
 							aSoundObject.play( 
 									{
 										onerror: function(){this.destruct();}
