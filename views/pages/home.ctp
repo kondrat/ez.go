@@ -127,7 +127,11 @@
 			<div class="adjec"><?php __('Adjec');?></div>
 		</div>
 		<div class="dicTerms">
+      <ul class="nounTerms"> </ul>	
+      <ul class="verbTerms hide"> </ul>
+      <ul class="adjecTerms hide"> </ul>			
 		</div>
+
 	</div>
 </div>
 

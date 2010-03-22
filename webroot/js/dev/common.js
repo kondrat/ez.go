@@ -58,7 +58,7 @@ $(document).ready( function(){
 			var userWord;
 			userWord = $("#CardExt").attr('value');
 			$(".mainWord").text(userWord);
-			$(".dicTerms").html('');
+			$("ul.nounTerms, ul.verb.Terms").html('');
 			songWord = userWord;
 			
 						$.post(
@@ -98,17 +98,14 @@ $(document).ready( function(){
 											  		if( keyT === 'terms' && type === 'noun' ) {
 											  			
 											  				$.each( valueT, function(keyN, valueN) {											  					
-											  					$(".dicTerms").append('<div>'+ valueN+'</div>');
+											  					$("ul.nounTerms").append('<li>'+ valueN+'</li>');
 											  				});	
 											  														  			
-											  		} else {
-											  			//alert('not');
+											  		} else if(keyT === 'terms' && type === 'verb' ) {
+											  				$.each( valueT, function(keyN, valueN) {											  					
+											  					$("ul.verbTerms").append('<li>'+ valueN+'</li>');
+											  				});	
 											  		}
-											  		
-											  		if ( type && type === 'noun') {
-
-											  		}
-											  		
 											  		
 											  		
 											  		

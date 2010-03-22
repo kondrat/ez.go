@@ -82,6 +82,8 @@ class CardsController extends AppController {
                 }
                
 					/*
+					      //http://www.google.com/dictionary/json?callback=dict_api.callbacks.id100&q=table&sl=en&tl=ru&restrict=pr%2Cde&client=te
+					      
                 curl_close ($ch);
 								
 								$ch1 = curl_init();
