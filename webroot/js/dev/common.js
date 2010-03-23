@@ -3,6 +3,8 @@ var from = 'en';
 var to = 'ru';
 
 $(document).ready( function(){
+	
+	
 		var $alert = $('#flashMessage');
 		if($alert.length) {
 				var alerttimer = window.setTimeout(function () {
@@ -15,20 +17,25 @@ $(document).ready( function(){
 					$alert.animate({height: '0'}, 400);
 				});
 		}
-						
+		
+		
+	//cards control panel ( edit del)				
 		$(".td").hover( function(){
-			$(this).find(".ctrlPanel").show();
-		},function(){
-			$(this).find(".ctrlPanel").hide();
-		}
+				$(this).find(".ctrlPanel").show();
+			},function(){
+				$(this).find(".ctrlPanel").hide();
+			}
 		);
+		
 
-		//front - back side switching
+
+
+
+	//front - back side switching
 		$("#backButton").click(function() {
-			$(this).addClass("activeSide");
-			$("#frontButton").removeClass("activeSide");
-			$("#tableBack .td").addClass("activeTside");
-			$("#tableFront .td").removeClass("activeTside");
+			
+			$("#tableFront").removeClass("activeCardSide");
+			$("#tableBack").addClass("activeCardSide");
 			
 			$(".plusMenu").each(function(){
 				$(this).removeClass("plusMenuFront").addClass("plusMenuBack");
@@ -37,28 +44,32 @@ $(document).ready( function(){
 
 			
 		$("#frontButton").click(function() {
-			$(this).addClass("activeSide");
-			$("#backButton").removeClass("activeSide");
-			$("#tableFront .td").addClass("activeTside");
-			$("#tableBack .td").removeClass("activeTside");
+			
+			$("#tableBack").removeClass("activeCardSide");
+			$("#tableFront").addClass("activeCardSide");			
+			
 			$(".plusMenu").each(function(){
 				$(this).removeClass("plusMenuBack").addClass("plusMenuFront");
 			});
 		})
 		
-
+	//lang switching
 		$(".langSwitch").click(function(){
 			to = $("#langFrom").text();
 			from = $("#langTo").text();
 			$("#langFrom").text(from);
 			$("#langTo").text(to);
 		});		
-					
+
+
+	//word submiting					
 		$(".submitWord").click( function() {
 			var userWord;
 			userWord = $("#CardExt").attr('value');
 			$(".mainWord").text(userWord);
-			$("ul.nounTerms, ul.verb.Terms").html('');
+			$("ul.nounTerms, ul.verbTerms, ul.adjecTerms").empty().addClass("hide").removeClass("ter");
+			$("li.noun,li.verb,li.adjec").removeClass("dicSwitcherM dicActive");
+			
 			songWord = userWord;
 			
 						$.post(
@@ -82,37 +93,48 @@ $(document).ready( function(){
 			
 											  var dic = data.dict;
 											  var type = null;
+											  $(".rightSug").slideDown('fast');
+											  
 											  $.each(dic, function( keyD, valueD) {
 											  	
 											  	$.each(valueD, function(keyT, valueT) {
 											  		
 											  		
 											  		if(keyT === 'pos' && valueT === 'noun'){
-											  			//noun logic
 											  			type = 'noun';
-											  		} else if ( valueT === 'verb') {
-											  			//verb logic
+											  			
+											  		} else if (keyT === 'pos' && valueT === 'verb') {
 											  			type = 'verb';										  			
+											  		} else if (keyT === 'pos' && valueT === 'adjective') {
+											  			type = 'adjec';										  			
 											  		} 
 											  		
-											  		if( keyT === 'terms' && type === 'noun' ) {
-											  			
+											  		if( keyT === 'terms' && type === 'noun' ) {	
+											  			alert("Kosayak");									  			
 											  				$.each( valueT, function(keyN, valueN) {											  					
-											  					$("ul.nounTerms").append('<li>'+ valueN+'</li>');
-											  				});	
-											  														  			
+											  					$("ul.nounTerms").append('<li>'+ valueN+'</li>').addClass("ter");
+											  				});
+											  				$("li.noun").addClass("dicSwitcherM");											  														  			
 											  		} else if(keyT === 'terms' && type === 'verb' ) {
 											  				$.each( valueT, function(keyN, valueN) {											  					
-											  					$("ul.verbTerms").append('<li>'+ valueN+'</li>');
+											  					$("ul.verbTerms").append('<li>'+ valueN+'</li>').addClass("ter");
+											  				});
+											  				$("li.verb").addClass("dicSwitcherM");	
+											  		} else if(keyT === 'terms' && type === 'adjec' ) {
+											  				$.each( valueT, function(keyN, valueN) {											  					
+											  					$("ul.adjecTerms").append('<li>'+ valueN+'</li>').addClass("ter");
 											  				});	
+											  				$("li.adjec").addClass("dicSwitcherM");
 											  		}
-											  		
-											  		
-											  		
+											  												  		
 											  	});
-											  	//alert('okk');
+											  	
 											  });
 											  
+											  $(".dicSwitcherM:first").addClass("dicActive");
+											  $(".ter:first").removeClass("hide");
+											} else {
+												$(".rightSug").hide();
 											}
 											  											  
 											  
@@ -123,12 +145,7 @@ $(document).ready( function(){
 												*/
 												
 											} else {
-											  //console.log('notOK');
-											  /*
-												$('#response').addClass('greenMessage');
-												$('#response').css({'color':'green','font-weight':'bold'});
-												//alert(data.typ+'2');
-												*/
+											  
 											}					
 									
 					      },
@@ -142,10 +159,43 @@ $(document).ready( function(){
 		});
 		
 		
-		
-		
-		
-		
+
+		$(".dicSwitcherM").live('mouseover mouseout',function(event){		
+			  if (event.type == 'mouseover') {
+			    $(this).addClass("dicHover");
+			  } else {
+			    $(this).removeClass("dicHover");
+			  }
+		});
+
+		$(".dicSwitcherM").live('click',function(){
+			$(".dicSwitcherM").removeClass("dicActive");
+			$(this).addClass("dicActive");
+			var i = $(this).index();
+			$(".dicTerms ul").addClass("hide");
+			$(".dicTerms ul:eq("+i+")").removeClass("hide");
+		});	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		
 		
 		

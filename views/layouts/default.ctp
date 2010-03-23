@@ -21,7 +21,9 @@
 		echo $html->scriptBlock('var path = "'.Configure::read('path').'";' );
 		echo $html->script(array(	'jquery/jquery-1.4.2.min',
 															//'jquery/jquery.form',
-															//'jquery/ui.core',
+															//'jquery/jquery.ui.core.min',
+															//'jquery/jquery.ui.widget.min',
+															//'jquery/jquery.ui.tabs.min',
 															//'jquery/ui.draggable',
 															'dev/common',
 															'dev/reg',
@@ -41,7 +43,7 @@
 				<div class="span-24">
 						<div class="span-16 ">
 							<div style="float:left; margin:1em 0;">
-								<?php echo $html->link($html->image('pic/ez-logo-50.png'), array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
+								<?php echo $html->link($html->image('pic/ez-logo-50-w.png'), array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
 							</div>
 						</div>
 						<div class="span-8 last" style="position:relative;" >

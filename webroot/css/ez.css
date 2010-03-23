@@ -45,10 +45,18 @@
 .ctrlPanelWrapper{
 	position:relative;
 }
+
+.activeCardSide{
+	color:Crimson;	
+}
+.activeCardSide .tableCard{
+	background-color: lightYellow;
+}
+
 .tableCard{
 	border:1px dashed;
 	border-spacing: 7px 11px;
-	background-color: lightYellow;
+	background-color: #eee;
 	table-layout:fixed;	
 	margin-bottom:1em;
 }
@@ -68,49 +76,11 @@
 	border:1px solid #dcdcdc;	
 	background:ghostWhite url(../img/pic/ez-logo-gray.png) no-repeat scroll right bottom;
 }
-.activeTside{
-	border:1px solid GoldenRod;
+
+.activeCardSide table.tableCard td.td {
+	border:1px solid brown;
 	background-color:#fff;
 }
-.tableCard td div {
-
-}
-.mainWord{
-	background-color:#eee;
-	border:1px solid #DDDDDD;
-}
-
-
-#UserWord, #UserTranslate{;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
-  margin-top:0;
-  padding:5px;
-  width:240px;
-}
-#CardExt{
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px; 
-	padding:3px;
-	width:510px; 
-}
-#contextTran{
-  font-size:small;
-  font-style:italic;
-  margin-left:1em;
-  text-align:left;
-  line-height:1em;
-}
-.addit{
-  border-bottom:1px dotted;
-  color:gray;
-  font-size:10pt;
-  line-height:1em;
-  margin-bottom:3px;
-  padding:0;
-  text-align:left;
-}
-
 
 #frontButton{
 	position:absolute;
@@ -157,19 +127,56 @@
 	padding:0 1em;	
 	border:1px solid DimGray;
 }
-.activeSide{
-	background-color:#C3D9FF;
-	color:white;
-}
-.backIcon{
-	background:transparent url(../img/icons/sideSwitch.png) no-repeat scroll -24px -24px;	
-}
-.activeSide div.backIcon{
-	background-position: -24px 0;
-}
+
 a {
   outline: none;
 }
+
+.activeCardSide .frontBack{
+	background-color:#C3D9FF;
+	color:white;
+}
+
+
+
+.mainWord{
+	background-color:#eee;
+	border:1px solid #DDDDDD;
+}
+
+
+#UserWord, #UserTranslate{;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+  margin-top:0;
+  padding:5px;
+  width:240px;
+}
+#CardExt{
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px; 
+	padding:3px;
+	width:510px; 
+}
+#contextTran{
+  font-size:small;
+  font-style:italic;
+  margin-left:1em;
+  text-align:left;
+  line-height:1em;
+}
+.addit{
+  border-bottom:1px dotted;
+  color:gray;
+  font-size:10pt;
+  line-height:1em;
+  margin-bottom:3px;
+  padding:0;
+  text-align:left;
+}
+
+
+
 
 
 
@@ -223,6 +230,7 @@ a {
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px; 
 	margin-top:2em;
+	padding-bottom:1.5em;
 }
 .rightHead{
   border-bottom:1px dotted;
@@ -232,31 +240,37 @@ a {
   text-align:center;
 }
 
-.dicSwitcher{
-	margin-bottom:1em;
+
+#rightSugTabs{
+	padding: 0 15px 15px 15px;
+	height:280px;
+	overflow:auto;
 }
-.noun{
-	float:left;
-	border-bottom:1px dashed;
-	margin-left: 1em;
-	line-height:1.4em;
+#rightSugTabs ul.rSugTabs li.dicSwitcherM {
+	color:black;
+	text-decoration:none;
 	cursor:pointer;
 }
-.verb{
+li.dicSwBase{
 	float:left;
-	border-bottom:1px dashed;
+	list-style:none outside none;
 	margin-left: 1em;
 	line-height:1.4em;
-	cursor:pointer;
-}
-.adjec{
-	float:left;
-	border-bottom:1px dashed;
-	margin-left: 1em;
-	line-height:1.4em;
-	cursor:pointer;
+	border-bottom:1px dashed;	
+	text-decoration:line-through;
+	color:gray;
 }
 
+.noun{
+}
+.verb{
+}
+.adjec{
+}
+
+#rightSugTabs ul.rSugTabs li.dicActive,#rightSugTabs ul.rSugTabs li.dicHover {
+	color:brown;
+}
 
 
 

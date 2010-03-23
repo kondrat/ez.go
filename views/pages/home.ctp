@@ -84,8 +84,8 @@
 						</tr>
 					</tbody>
 				</table>
-				<div id="frontButton" class="frontBack activeSide" style="">
-					<?php echo $html->link(__('front side',true),array('opp'),array('class'=>'tessstt','onclick'=>'return false' ) );?></a>
+				<div id="frontButton" class="frontBack" style="">
+					<?php echo $html->link(__('front side',true),array('#'),array('onclick'=>'return false' ) );?></a>
 				</div>
 		</div>
 		<div id="tableBack" class="span-7 last" style="position:relative;">
@@ -101,7 +101,7 @@
 					</tbody>
 				</table>
 				<div id="backButton" class="frontBack">
-					<?php echo $html->link(__('back side',true),array('#'),array('class'=>'tessstt','onclick'=>'return false' ) );?></a>
+					<?php echo $html->link(__('back side',true),array('#'),array('onclick'=>'return false' ) );?></a>
 				</div>
 		</div>
 	</div>
@@ -116,16 +116,16 @@
 
 
 
-<div class="span-6 last rightSug">
+<div class="span-6 last rightSug hide">
   <div class="rightHead">
     <?php __('Just click on what you need');?>
    </div>
-	<div style="padding: 0 15px 15px 15px;">
-		<div class="dicSwitcher clearfix">
-			<div class="noun"><?php __('Noun');?></div>
-			<div class="verb"><?php __('Verb');?></div>
-			<div class="adjec"><?php __('Adjec');?></div>
-		</div>
+	<div id="rightSugTabs" style="">
+		<ul class="rSugTabs">		
+			<li class="noun dicSwBase"><?php __('Noun');?></li>
+			<li class="verb dicSwBase"><?php __('Verb');?></li>
+			<li class="adjec dicSwBase"><?php __('Adjec');?></li>		
+		</ul>
 		<div class="dicTerms">
       <ul class="nounTerms"> </ul>	
       <ul class="verbTerms hide"> </ul>
@@ -138,6 +138,7 @@
 
 
 <div class="span-20 last">
+	<!--
 	<table class="tableCard" style="">
 		<tbody>
 			
@@ -165,5 +166,6 @@
 
 		</tbody>
 	</table>
+	-->
 
 </div>
