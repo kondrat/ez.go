@@ -13,7 +13,7 @@
 	
 					<div class="formWrap span-16">
 						
-							<div id="yourUrl" class="span-12 push-4"><?php __('Your URL http://moycontact.ru/');?><span>username</span></div>
+							
 							<?php echo $form->input('username', array('div'=>array("id"=>"usernameWrap"),
 					
 												'label'=>__('Username',true) ,

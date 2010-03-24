@@ -25,16 +25,7 @@ jQuery(document).ready( function(){
 		)
 		
 		
-	//username ability check
-	$('#UserUsername').focus( function() {
-		var ttm1 = $('#UserUsername').attr("value");
-		if(ttm1.length === 0){
-			$('#nameFormTip').css({"color":"brown"});
-			$('#yourUrl span').html( 'username' ).css("color","gray");
-		}else{
-			$('#yourUrl span').html( ttm1 ).css("color","green");
-		}
-	});	
+
 	
 	
 	$('#UserUsername').keypress( function(e) {
@@ -56,17 +47,7 @@ jQuery(document).ready( function(){
 		$('#usernameWrap').removeClass("error");
 		*/
 		
-		var ttm;
 
-		ttm = $(this).attr('value');
-		if ( e.which !== 8 ) {
-			ttm = ttm+chr;
-		}
-		if( ttm.length !== 0 ) {
-			$('#yourUrl span').html( ttm ).css("color","green");
-		}else{
-			$('#yourUrl span').html( 'username' ).css("color","gray");
-		}
 		
 		
 						/*

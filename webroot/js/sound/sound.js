@@ -28,10 +28,12 @@ $(document).ready( function(){
 					  onload: function() {
 					    //alert( 'The sound '+this.sID+' loaded!');	
 					    if( this.readyState !== 3 ) {
+					    	noSound = 0;
 					      this.destruct();
 					    } else {
 					    	//alert('sound');
 					      $("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
+					      noSound = 1;
 					    }					
 					  },
 					  onfinish:function() {	
@@ -47,7 +49,7 @@ $(document).ready( function(){
 				
 				
 		$('#playSound').click(function() {
-						//$("#playSound").removeClass("activeSound").addClass("activeSoundPlay");
+					if(noSound === 1) {
 						var aSoundObject2 = soundManager.createSound({			
 					  	id: 'mySound',
 					  	url: song,
@@ -56,11 +58,16 @@ $(document).ready( function(){
 						    if( this.readyState !== 3 ) {
 						      this.destruct();
 						    } else {
-						    	alert('sound2');
+						    	//alert('sound2');
 						      //$("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
 						    }					
 						  },
+						  whileloading:function(){
+						  	//alert('test');
+						  	$("#playSound").removeClass("activeSound activeSoundHover").addClass("activeSoundPlay");
+						  },
 						  onfinish:function() {	
+						  	$("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
 						  	this.destruct();					  	
 						  }					  	
 					  	
@@ -69,6 +76,16 @@ $(document).ready( function(){
 					  });
 					  
 						aSoundObject2.play();
-
+					}
 		});
+		
+		$(".activeSound").live('mouseover mouseout',function(event){
+			  if (event.type == 'mouseover') {
+			    $(this).addClass("activeSoundHover");
+			  } else {
+			    $(this).removeClass("activeSoundHover");
+			  }			
+		});
+		
+		
 });

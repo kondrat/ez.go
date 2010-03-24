@@ -2,6 +2,7 @@ var tt;
 var from = 'en';
 var to = 'ru';
 var song;
+var noSound;
 
 $(document).ready( function(){
 	
@@ -11,9 +12,7 @@ $(document).ready( function(){
 				var alerttimer = window.setTimeout(function () {
 					$alert.trigger('click');
 				}, 4500);
-				$alert.animate({height: [$alert.css("line-height") || '52', 'swing']}, 400)
-				//$alert.hide().slideDown('slow')
-				.click(function () {
+				$alert.animate({height: [$alert.css("line-height") || '52', 'swing']}, 400).click(function () {
 					window.clearTimeout(alerttimer);
 					$alert.animate({height: '0'}, 400);
 				});
@@ -71,7 +70,7 @@ $(document).ready( function(){
 			$(".dicTerms ul").empty().addClass("hide").removeClass("ter");
 			$("ul.rSugTabs li").removeClass("dicSwitcherM dicActive");
 			
-			
+	//trimm and check uesr word;		
 			songWord = userWord;
 			song = "http://www.gstatic.com/dictionary/static/sounds/de/0/"+songWord+".mp3";
 			

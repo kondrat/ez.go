@@ -24,7 +24,7 @@
 	background:#BBCCD9 url(../img/pic/footer_bg.png) repeat-x scroll 0 0;
 	color:#CCCCCC;
 	height:808px;
-	min-width:75em;
+	/*min-width:75em;*/
 	overflow:hidden;
 }
 
@@ -133,7 +133,7 @@ a {
 }
 
 .activeCardSide .frontBack{
-	background-color:#C3D9FF;
+	background-color:Beige;
 	color:white;
 }
 
@@ -224,7 +224,9 @@ a {
 .activeSoundPlay{
 	background-position: 0 -64px;
 }
-
+.activeSoundHover{
+		background-position: 0 -96px;
+}
 .rightSug{
 	background-color:#eee;
 	-moz-border-radius:10px;

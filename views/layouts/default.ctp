@@ -28,7 +28,8 @@
 															'dev/common',
 															'dev/reg',
 															'localization/messages_ru',
-															'sound/soundmanager2',
+															//'sound/soundmanager2',
+															'sound/soundmanager2-nodebug-jsmin',
 															'sound/sound'
 															));
 
@@ -69,15 +70,15 @@
 		</div>					
 			
 	</div>
-	    <div style="position:relative;width:950px;margin:0 auto;">
-			  <div class="fl" style="border-bottom:1px solid #ddd;">
-				  <?php echo $session->flash(); ?>
-			  </div>
-	    </div>
+
 
 		
-	<div class="container showgrid.">
-
+	<div class="container showgrid.">    
+			  <div class="fl" style="border-bottom:1px solid #ddd;">
+				  <?php echo $session->flash();?>
+			  </div>
+	    
+	    
 		    <div class="span-4">
 		        Left sidebar
 		        <hr />
@@ -88,7 +89,7 @@
 
 
 		
-		    <div class="span-20 last">
+		    <div class="span-20 last" style="padding-bottom:1em;">
 
 		        
 							<?php echo $content_for_layout; ?>
