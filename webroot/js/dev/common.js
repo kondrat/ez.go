@@ -1,6 +1,7 @@
 var tt;
 var from = 'en';
 var to = 'ru';
+var song;
 
 $(document).ready( function(){
 	
@@ -67,10 +68,12 @@ $(document).ready( function(){
 			var userWord;
 			userWord = $("#CardExt").attr('value');
 			$(".mainWord").text(userWord);
-			$("ul.nounTerms, ul.verbTerms, ul.adjecTerms").empty().addClass("hide").removeClass("ter");
-			$("li.noun,li.verb,li.adjec").removeClass("dicSwitcherM dicActive");
+			$(".dicTerms ul").empty().addClass("hide").removeClass("ter");
+			$("ul.rSugTabs li").removeClass("dicSwitcherM dicActive");
+			
 			
 			songWord = userWord;
+			song = "http://www.gstatic.com/dictionary/static/sounds/de/0/"+songWord+".mp3";
 			
 						$.post(
 							path+"/cards/getTransl",
@@ -89,60 +92,65 @@ $(document).ready( function(){
   													
 												});
 											  
-											 if( data.dict ) {
-			
-											  var dic = data.dict;
-											  var type = null;
-											  $(".rightSug").slideDown('fast');
-											  
-											  $.each(dic, function( keyD, valueD) {
-											  	
-											  	$.each(valueD, function(keyT, valueT) {
-											  		
-											  		
-											  		if(keyT === 'pos' && valueT === 'noun'){
-											  			type = 'noun';
-											  			
-											  		} else if (keyT === 'pos' && valueT === 'verb') {
-											  			type = 'verb';										  			
-											  		} else if (keyT === 'pos' && valueT === 'adjective') {
-											  			type = 'adjec';										  			
-											  		} 
-											  		
-											  		if( keyT === 'terms' && type === 'noun' ) {	
-											  			alert("Kosayak");									  			
-											  				$.each( valueT, function(keyN, valueN) {											  					
-											  					$("ul.nounTerms").append('<li>'+ valueN+'</li>').addClass("ter");
-											  				});
-											  				$("li.noun").addClass("dicSwitcherM");											  														  			
-											  		} else if(keyT === 'terms' && type === 'verb' ) {
-											  				$.each( valueT, function(keyN, valueN) {											  					
-											  					$("ul.verbTerms").append('<li>'+ valueN+'</li>').addClass("ter");
-											  				});
-											  				$("li.verb").addClass("dicSwitcherM");	
-											  		} else if(keyT === 'terms' && type === 'adjec' ) {
-											  				$.each( valueT, function(keyN, valueN) {											  					
-											  					$("ul.adjecTerms").append('<li>'+ valueN+'</li>').addClass("ter");
-											  				});	
-											  				$("li.adjec").addClass("dicSwitcherM");
-											  		}
-											  												  		
-											  	});
-											  	
-											  });
-											  
-											  $(".dicSwitcherM:first").addClass("dicActive");
-											  $(".ter:first").removeClass("hide");
-											} else {
-												$(".rightSug").hide();
-											}
-											  											  
-											  
-											  /*
-												$('#usernameWrap').addClass("error");
-												$('#response').addClass('error-message');
-												$('#usernameWrap input').addClass('form-error');
-												*/
+												 if( data.dict ) {
+				
+												  var dic = data.dict;
+												  var typeW = null;
+												  $(".rightSug").slideDown('fast');
+												  
+												  $.each(dic, function( keyD, valueD) {												  	
+												  	$.each(valueD, function(keyT, valueT) {												  		
+												  		if(keyT === 'pos') {
+												  			switch(valueT){
+													  			case('noun'):
+													  				typeW = 'noun';	
+													  				break;										  			
+													  			case('verb'):
+													  				typeW = 'verb';
+													  				break;										  			
+													  			case('adjective'):
+													  				typeW = 'adjective';
+													  				break;											  				
+													  			case('adverb'):
+													  				typeW = 'adverb';
+													  				break;
+													  			case('pronoun'):
+													  				typeW = 'pronoun';
+													  				break;
+													  			case('conjunction'):
+													  				typeW = 'conjunction';
+													  				break;
+													  			case('preposition'):
+													  				typeW = 'preposition';
+													  				break;
+													  			case('article'):
+													  				typeW = 'article';
+													  				break;
+													  			case('numeral'):
+													  				typeW = 'numeral';
+													  				break;
+													  			default:
+													  				break;											  				
+												  			}										  			
+												  		} 
+												  	
+												  		if( keyT === 'terms') {	
+												  				$.each( valueT, function(keyN, valueN) {											  					
+													  					$("ul."+typeW+"Terms").append('<li>'+ valueN+'</li>').addClass("ter");
+													  			});
+													  			$("li."+typeW ).addClass("dicSwitcherM");											  			
+												  				typeW=null;
+												  		}											  											  		
+												  	});
+												  	
+												  });
+												  
+												  $(".dicSwitcherM:first").addClass("dicActive");
+												  $(".ter:first").removeClass("hide");
+												} else {
+													$(".rightSug").hide();
+												}
+
 												
 											} else {
 											  

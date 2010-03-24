@@ -6,37 +6,37 @@ $(document).ready( function(){
 
 
 				soundManager.debugMode = false;
-				soundManager.waitForWindowLoad = false;
+				soundManager.waitForWindowLoad = true;
 				soundManager.url = "./js/sound/swf/";
 				soundManager.nullURL = './js/sound/swf/null.mp3';
 				
-        var aSoundObject;
+        
+        
         
     $('#submitWrodId').click(function() {
          $("#playSound").removeClass("activeSound");
- 				var song = "http://www.gstatic.com/dictionary/static/sounds/de/0/"+songWord+".mp3";
-            
-					 aSoundObject = soundManager.createSound({
-			
+ 				
+           //alert(song);
+					 var aSoundObject = soundManager.createSound({			
 					  id: 'mySound',
 					  url: song,
 					  autoLoad: false,
-					  autoPlay:false,
+					  autoPlay:true,
 					  multiShot:false,
 					  multiShotEvents:false,
-					  //volume: 0,
+					  volume: 0,
 					  onload: function() {
 					    //alert( 'The sound '+this.sID+' loaded!');	
 					    if( this.readyState !== 3 ) {
 					      this.destruct();
 					    } else {
-					      //$("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
+					    	//alert('sound');
+					      $("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
 					    }					
 					  },
 					  onfinish:function() {	
-					  	$("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
-					  	this.destruct();
-					  	
+					  	//$("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
+					  	this.destruct();					  	
 					  }
 
 					});		     
@@ -47,12 +47,28 @@ $(document).ready( function(){
 				
 				
 		$('#playSound').click(function() {
-							$("#playSound").removeClass("activeSound").addClass("activeSoundPlay");
-							aSoundObject.play( 
-									{
-										onerror: function(){this.destruct();}
-									} 
-							);
+						//$("#playSound").removeClass("activeSound").addClass("activeSoundPlay");
+						var aSoundObject2 = soundManager.createSound({			
+					  	id: 'mySound',
+					  	url: song,
+						  onload: function() {
+						    //alert( 'The sound '+this.sID+' loaded!');	
+						    if( this.readyState !== 3 ) {
+						      this.destruct();
+						    } else {
+						    	alert('sound2');
+						      //$("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
+						    }					
+						  },
+						  onfinish:function() {	
+						  	this.destruct();					  	
+						  }					  	
+					  	
+					  	
+					  	
+					  });
+					  
+						aSoundObject2.play();
 
 		});
 });

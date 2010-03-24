@@ -250,15 +250,17 @@ a {
 	color:black;
 	text-decoration:none;
 	cursor:pointer;
+	display:block;
 }
 li.dicSwBase{
 	float:left;
 	list-style:none outside none;
-	margin-left: 1em;
+	margin-right: .5em;
 	line-height:1.4em;
 	border-bottom:1px dashed;	
 	text-decoration:line-through;
 	color:gray;
+	display:none;
 }
 
 .noun{
@@ -268,7 +270,7 @@ li.dicSwBase{
 .adjec{
 }
 
-#rightSugTabs ul.rSugTabs li.dicActive,#rightSugTabs ul.rSugTabs li.dicHover {
+#rightSugTabs ul.rSugTabs li.dicActive, #rightSugTabs ul.rSugTabs li.dicHover {
 	color:brown;
 }
 

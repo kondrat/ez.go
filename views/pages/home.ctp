@@ -124,12 +124,27 @@
 		<ul class="rSugTabs">		
 			<li class="noun dicSwBase"><?php __('Noun');?></li>
 			<li class="verb dicSwBase"><?php __('Verb');?></li>
-			<li class="adjec dicSwBase"><?php __('Adjec');?></li>		
+			<li class="adjective dicSwBase"><?php __('Adjec');?></li>
+			
+			<li class="adverb dicSwBase"><?php __('Adverb');?></li>	
+			<li class="pronoun dicSwBase"><?php __('Pronoun');?></li>
+			<li class="conjunction dicSwBase"><?php __('Conjunction');?></li>
+			<li class="preposition dicSwBase"><?php __('Preposition');?></li>
+			<li class="article dicSwBase"><?php __('Article');?></li>
+			<li class="numeral dicSwBase"><?php __('Numeral');?></li>	
 		</ul>
+		<br />
 		<div class="dicTerms">
       <ul class="nounTerms"> </ul>	
       <ul class="verbTerms hide"> </ul>
-      <ul class="adjecTerms hide"> </ul>			
+      <ul class="adjectiveTerms hide"> </ul>
+      
+      <ul class="adverbTerms hide"> </ul>
+      <ul class="pronounTerms hide"> </ul>
+      <ul class="conjunctionTerms hide"> </ul>
+      <ul class="prepositionTerms hide"> </ul>
+      <ul class="articleTerms hide"> </ul>
+      <ul class="numeralTerms hide"> </ul>			
 		</div>
 
 	</div>
