@@ -28,30 +28,41 @@ $(document).ready( function(){
 		);
 		
 
-
+	
 
 
 	//front - back side switching
-		$("#backButton").click(function() {
-			
-			$("#tableFront").removeClass("activeCardSide");
-			$("#tableBack").addClass("activeCardSide");
-			
-			$(".plusMenu").each(function(){
-				$(this).removeClass("plusMenuFront").addClass("plusMenuBack");
-			});			
-		})
 
-			
 		$("#frontButton").click(function() {
 			
 			$("#tableBack").removeClass("activeCardSide");
-			$("#tableFront").addClass("activeCardSide");			
+			$("#tableFront").addClass("activeCardSide");
+			$(".plusMenuWord").addClass("plusMenuActive");
+			$(".sideToEdit:last").hide();
+			$(".sideToEdit:first").show();			
 			
 			$(".plusMenu").each(function(){
 				$(this).removeClass("plusMenuBack").addClass("plusMenuFront");
 			});
-		})
+		});
+
+
+		$("#frontButton").trigger('click');
+		
+		
+		$("#backButton").click(function() {
+			
+			$("#tableFront").removeClass("activeCardSide");
+			$("#tableBack").addClass("activeCardSide");
+			$(".sideToEdit:first").hide();
+			$(".sideToEdit:last").show();	
+						
+			$(".plusMenu").each(function(){
+				$(this).removeClass("plusMenuFront").addClass("plusMenuBack");
+			});			
+		});
+
+			
 		
 	//lang switching
 		$(".langSwitch").click(function(){
@@ -150,6 +161,11 @@ $(document).ready( function(){
 													$(".rightSug").hide();
 												}
 
+												//ok, go to side B 
+											
+												$("#backButton").trigger('click');
+												
+												
 												
 											} else {
 											  

@@ -49,10 +49,12 @@ $(document).ready( function(){
 				
 				
 		$('#playSound').click(function() {
+			
 					if(noSound === 1) {
 						var aSoundObject2 = soundManager.createSound({			
 					  	id: 'mySound',
 					  	url: song,
+					  	//url : "http://translate.google.com/translate_tts?q=girl%20and%20boy%20plays%20football%20and%20make%20money&tl=en",
 						  onload: function() {
 						    //alert( 'The sound '+this.sID+' loaded!');	
 						    if( this.readyState !== 3 ) {

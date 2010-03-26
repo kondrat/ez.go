@@ -23,24 +23,24 @@
 </div>
 
 
+
 <div class="span-14 onlyTest" style="">
 
 	<div class="span-14" style="text-align:center;padding-bottom:.5em;">
-		
-		<div class="plusMenu">
-			+ transl
+		<div class="plusMenu plusMenuWord">
+			+ <?php __('word');?>
+		</div>		
+		<div class="plusMenu plusMenuTransl">
+			+ <?php __('transl');?>
 		</div>
-		<div class="plusMenu">
-			+ definition
+		<div class="plusMenu plusMenuDefin">
+			+ <?php __('definition');?>
 		</div>
-		<div class="plusMenu">
-			+ example
+		<div class="plusMenu plusMenuExample">
+			+ <?php __('example');?>
 		</div>
-		<div class="plusMenu">
-			+ synonim
-		</div>
-		<div class="plusMenu">
-			+ context
+		<div class="plusMenu plusMenuSynonim">
+			+ <?php __('synonim');?>
 		</div>
 		
 	</div>
@@ -48,8 +48,11 @@
 	<div class="span-14" style="margin-bottom:1em;background-color:#C3D9FF; -moz-border-radius: 10px; -moz-box-shadow:0px 0px 5px black;">
 		<div style="padding:1em; float:left;">
 			<?php echo $form->create('Card');?>
-			
-				<div class="userAction" style="float:left;border-bottom:1px dotted brown;color:brown;font-weight:bold;"><?php __('Enter word or short phrase');?></div>
+				<div class="userActionWrapper" style="float:left;">
+					<span class="sideToEdit hide" style=""><?php __('Side A');?>:</span>
+					<span class="sideToEdit hide" style=""><?php __('Side B');?>:</span>
+					<span class="userAction" style="border-bottom:1px dotted brown;color:brown;font-weight:bold;"><?php __('Enter word or short phrase');?></span>
+				</div>
 				<div style="float:right;" class="quickMode">
 				  <?php __('Quick mode');?>
 				  <?php echo $form->checkbox('One',array('checked'=>true) );?>
@@ -89,13 +92,16 @@
 				</div>
 		</div>
 		<div id="tableBack" class="span-7 last" style="position:relative;">
+				
 				<table class="tableCard" style="">
 					<tbody>
 						<tr>
 							<td class="td" style="">
-								<div class="mainTran" id="translation"></div>
-								<p class="addit hide" style="">add</p>
-								<div class="contextTran" id="contextTran"></div>
+								<div class="backSideWrapper">
+									<div class="mainTran" id="translation"></div>
+									<p class="addit hide" style="">add</p>
+									<div class="contextTran" id="contextTran">testik testik testik testik testik testik testik testik testik testik testik testik</div>
+								</div>
 							</td>
 						</tr>
 					</tbody>
