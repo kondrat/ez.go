@@ -24,53 +24,54 @@
 
 
 
-<div class="span-14 onlyTest" style="">
+<div class="span-14 plusMenuWrapper" style="">
 
 	<div class="span-14" style="text-align:center;padding-bottom:.5em;">
-		<div class="plusMenu plusMenuWord">
+		<div class="plusMenuFront plusMenuWord">
 			+ <?php __('word');?>
 		</div>		
-		<div class="plusMenu plusMenuTransl">
+		<div class="plusMenuBack plusMenuTransl">
 			+ <?php __('transl');?>
 		</div>
-		<div class="plusMenu plusMenuDefin">
+		<div class="plusMenuBack plusMenuDefin">
 			+ <?php __('definition');?>
 		</div>
-		<div class="plusMenu plusMenuExample">
+		<div class="plusMenuBack plusMenuExample">
 			+ <?php __('example');?>
 		</div>
-		<div class="plusMenu plusMenuSynonim">
+		<div class="plusMenuBack plusMenuSynonim">
 			+ <?php __('synonim');?>
 		</div>
 		
 	</div>
 	
-	<div class="span-14" style="margin-bottom:1em;background-color:#C3D9FF; -moz-border-radius: 10px; -moz-box-shadow:0px 0px 5px black;">
-		<div style="padding:1em; float:left;">
-			<?php echo $form->create('Card');?>
-				<div class="userActionWrapper" style="float:left;">
-					<span class="sideToEdit hide" style=""><?php __('Side A');?>:</span>
-					<span class="sideToEdit hide" style=""><?php __('Side B');?>:</span>
-					<span class="userAction" style="border-bottom:1px dotted brown;color:brown;font-weight:bold;"><?php __('Enter word or short phrase');?></span>
-				</div>
-				<div style="float:right;" class="quickMode">
-				  <?php __('Quick mode');?>
-				  <?php echo $form->checkbox('One',array('checked'=>true) );?>
-				</div>
+	<div class="span-14 panelTopWrapper" style="">
+	    <div class="panelTop" style="">
+		    
+			    <?php echo $form->create('Card');?>
+				    <div class="userActionWrapper" style="float:left;">
+					    <span class="sideToEdit hide" style=""><?php __('Side A');?>:</span>
+					    <span class="sideToEdit hide" style=""><?php __('Side B');?>:</span>
+					    <span class="userAction" style="border-bottom:1px dotted brown;color:brown;font-weight:bold;"><?php __('Enter word or short phrase');?></span>
+				    </div>
+				    <div style="float:right;" class="quickMode">
+				      <?php __('Quick mode');?>
+				      <?php echo $form->checkbox('One',array('checked'=>true) );?>
+				    </div>
 				
-				<?php echo $form->input('ext',array('label'=>false ) );?>
+				    <?php echo $form->input('ext',array('label'=>false ) );?>
 	
-				<div style="float:right;">
-					<?php echo $form->button(__('Insert',true),array('id'=>'submitWrodId','class'=>'submitWord') );?>
-				</div>
-				<div style="float:right;margin-right: 1em;">
-					<?php echo $html->link(__('Clean up',true),array() );?>
-					<?php //echo $form->button(__('Reset',true),array('type'=>'reset','style'=>'margin-right:3px;') );?>
-				</div>
-			<?php echo $form->end();?>
-			<div style="float:left;margin:0 1em;font-weight:bold;"><span id="langFrom">en</span><?php echo $html->image('icons/ajax-loader1-stat.png',array('class'=>'langSwitch','style' => "") );?><span id="langTo">ru</span></div>
-		</div>
-		
+				    <div style="float:right;">
+					    <?php echo $form->button(__('Insert',true),array('id'=>'submitWrodId','class'=>'submitWord') );?>
+				    </div>
+				    <div style="float:right;margin-right: 1em;">
+					    <?php echo $html->link(__('Clean up',true),array() );?>
+					    <?php //echo $form->button(__('Reset',true),array('type'=>'reset','style'=>'margin-right:3px;') );?>
+				    </div>
+			    <?php echo $form->end();?>
+			    <div style="float:left;margin:0 1em;font-weight:bold;"><span id="langFrom">en</span><?php echo $html->image('icons/ajax-loader1-stat.png',array('class'=>'langSwitch','style' => "") );?><span id="langTo">ru</span></div>
+		    
+		  </div>
 	</div>
 
 
@@ -100,7 +101,7 @@
 								<div class="backSideWrapper">
 									<div class="mainTran" id="translation"></div>
 									<p class="addit hide" style="">add</p>
-									<div class="contextTran" id="contextTran">testik testik testik testik testik testik testik testik testik testik testik testik</div>
+									<div class="contextTran" id="contextTran"></div>
 								</div>
 							</td>
 						</tr>
@@ -112,10 +113,12 @@
 		</div>
 	</div>
 
-	<div class="span-14" style="margin-bottom: 1em; background-color: rgb(195, 217, 255); -moz-border-radius: 10px; -moz-box-shadow: 0px 0px 5px black;text-align:center; padding:.5em 0;position:relative;">
-	  <div id="playSound" class="sound"></div>
-		<?php echo $form->button(__('Save Card',true) );?>
-		<div id='branding' style="position:absolute;top:10px; right:0;margin-right:1em;"> </div>
+	<div class="span-14 panelBottomWrapper" style="">
+	    <div class="panelBottom" style="">
+	      <div id="playSound" class="sound"></div>
+		    <?php echo $form->button(__('Save Card',true) );?>
+		    <div id='branding' style="position:absolute;top:13px; right:0;margin-right:1em;"> </div>
+		  </div>
 	</div>
 									
 </div>

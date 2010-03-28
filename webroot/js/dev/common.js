@@ -6,7 +6,9 @@ var noSound;
 
 $(document).ready( function(){
 	
-	
+	  $("#CardExt").val('');
+	  
+	  
 		var $alert = $('#flashMessage');
 		if($alert.length) {
 				var alerttimer = window.setTimeout(function () {
@@ -32,12 +34,16 @@ $(document).ready( function(){
 
 
 	//front - back side switching
-
+    //front
 		$("#frontButton").click(function() {
 			
 			$("#tableBack").removeClass("activeCardSide");
 			$("#tableFront").addClass("activeCardSide");
 			$(".plusMenuWord").addClass("plusMenuActive");
+			
+			$(".plusMenuFront").show();
+			$(".plusMenuBack").hide();
+			
 			$(".sideToEdit:last").hide();
 			$(".sideToEdit:first").show();			
 			
@@ -49,17 +55,31 @@ $(document).ready( function(){
 
 		$("#frontButton").trigger('click');
 		
-		
+		//back
 		$("#backButton").click(function() {
 			
 			$("#tableFront").removeClass("activeCardSide");
 			$("#tableBack").addClass("activeCardSide");
+			
+			$(".plusMenuFront").hide();
+			$(".plusMenuBack").show();
+			
+			
+			
+			
 			$(".sideToEdit:first").hide();
 			$(".sideToEdit:last").show();	
 						
 			$(".plusMenu").each(function(){
 				$(this).removeClass("plusMenuFront").addClass("plusMenuBack");
-			});			
+			});	
+			
+			
+			console.log( $("#CardExt").val() );
+			$("#CardExt").val($("#translation").text());
+			
+			
+					
 		});
 
 			

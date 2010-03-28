@@ -46,6 +46,41 @@
 	position:relative;
 }
 
+.panelTopWrapper{
+  margin-bottom:1em;
+  background-color:#C3D9FF;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	-moz-box-shadow:0 0 6px gray;
+}
+.panelTop{
+  border:1px solid white;
+  margin:3px;
+  float:left;
+  padding:1em;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+}
+.panelBottomWrapper{
+  margin-bottom: 1em;
+  background-color: rgb(195, 217, 255);
+  text-align:center;
+  position:relative;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	-moz-box-shadow:0 0 6px gray;
+}
+.panelBottom{
+  border:1px solid white;
+  margin:3px;
+  padding:5px;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+}
+
+
+
+
 .activeCardSide{
 	color:Crimson;	
 }
@@ -68,7 +103,7 @@
 	font-size:26px;
 	height:170px;
 	width: 33.3%;
-	line-height:1em;
+	line-height:1.1em;
 	text-align:center;
 	overflow:hidden;
 }
@@ -210,11 +245,18 @@ a {
   float:left;
   margin:0 1em;
 }
+
 .plusMenuFront{
-	color:lightGray;
+	color:lightSalmon;
+	font-weight:bold;
+  float:left;
+  margin:0 1em;
 }
 .plusMenuBack{
 	color:lightSalmon;
+	font-weight:bold;
+  float:left;
+  margin:0 1em;
 }
 .plusMenuActive{
 	color:black;
