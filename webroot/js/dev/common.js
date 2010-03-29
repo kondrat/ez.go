@@ -5,7 +5,8 @@ var song;
 var noSound;
 
 $(document).ready( function(){
-	
+		
+		//cleaning after reload
 	  $("#CardExt").val('');
 	  
 	  
@@ -46,10 +47,13 @@ $(document).ready( function(){
 			
 			$(".sideToEdit:last").hide();
 			$(".sideToEdit:first").show();			
+
+
+			$(".inputSring").removeClass("inputSring");
+			$("#mainWord").addClass("inputSring");	
+			$("#CardExt").val($(".inputSring").text());		
+
 			
-			$(".plusMenu").each(function(){
-				$(this).removeClass("plusMenuBack").addClass("plusMenuFront");
-			});
 		});
 
 
@@ -69,18 +73,70 @@ $(document).ready( function(){
 			
 			$(".sideToEdit:first").hide();
 			$(".sideToEdit:last").show();	
-						
-			$(".plusMenu").each(function(){
-				$(this).removeClass("plusMenuFront").addClass("plusMenuBack");
-			});	
 			
+			//$(".plusMenuBack:first").addClass("plusMenuActive");
+			$(".plusMenuTransl").trigger('click');
 			
-			console.log( $("#CardExt").val() );
+			$(".inputSring").removeClass("inputSring");
+			$("#translation").addClass("inputSring");
 			$("#CardExt").val($("#translation").text());
-			
-			
+	
 					
 		});
+
+	
+
+
+	var letOk = false;
+	$('#CardExt').keypress( function(e) {
+		console.log(e.which);
+		
+	  var chr = (String.fromCharCode(e.which));
+	  rexp = /([^a-zA-Z0-9\s\.\?,'-])/; 
+	  if( rexp.test(chr) && e.which !== 8 && e.which !== 0 ) {
+	  	console.log('falseChr');
+	  	letOk = false;
+	    return false;
+	  } else {
+	  	letOk = true;
+	  }
+ 
+	});	
+	$('#CardExt').keyup( function(e) {
+		if ( letOk = true) {
+	  	var textIn = $("#CardExt").val();
+	  	$("#CardExt").val(textIn);
+	  	$(".inputSring").text(textIn);		
+	  }
+	});
+
+
+	$(".plusMenuBack").click(function(){
+			$(".plusMenuActive").removeClass("plusMenuActive");
+			$(this).addClass("plusMenuActive");
+			
+	})
+
+	$(".plusMenuTransl").click(function(){
+			$(".inputSring").removeClass("inputSring");
+			$("#translation").addClass("inputSring");	
+			$("#CardExt").val($("#translation").text());	
+	});
+	$(".plusMenuDefin").click(function(){
+			$(".inputSring").removeClass("inputSring");
+			$("#contextTran").addClass("inputSring");
+			$("#CardExt").val($("#contextTran").text());		
+	});
+	$(".plusMenuExample").click(function(){
+			$(".inputSring").removeClass("inputSring");
+			$("#definTran").addClass("inputSring");
+			$("#CardExt").val($("#definTran").text());		
+	});
+	$(".plusMenuSynonim").click(function(){
+			$(".inputSring").removeClass("inputSring");
+			$("#synonimTran").addClass("inputSring");
+			$("#CardExt").val($("#synonimTran").text());		
+	});
 
 			
 		
@@ -98,6 +154,7 @@ $(document).ready( function(){
 			var userWord;
 			userWord = $("#CardExt").attr('value');
 			$(".mainWord").text(userWord);
+			//dictionary preparation
 			$(".dicTerms ul").empty().addClass("hide").removeClass("ter");
 			$("ul.rSugTabs li").removeClass("dicSwitcherM dicActive");
 			

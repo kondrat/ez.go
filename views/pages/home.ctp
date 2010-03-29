@@ -77,12 +77,14 @@
 
 
 	<div class="span-14">
+		
 		<div id="tableFront" class="span-7" style="position:relative;">
 				<table class="tableCard" style="">
 					<tbody>
 						<tr>
 							<td class="td activeTside" style="">
-								<div class="mainWord">
+								<div class="frontSideWrapper">
+									<div id="mainWord" class="inputSring"></div>
 								</div>
 							</td>
 						</tr>
@@ -92,8 +94,8 @@
 					<?php echo $html->link(__('front side',true),array('#'),array('onclick'=>'return false' ) );?></a>
 				</div>
 		</div>
-		<div id="tableBack" class="span-7 last" style="position:relative;">
-				
+		
+		<div id="tableBack" class="span-7 last" style="position:relative;">				
 				<table class="tableCard" style="">
 					<tbody>
 						<tr>
@@ -102,6 +104,8 @@
 									<div class="mainTran" id="translation"></div>
 									<p class="addit hide" style="">add</p>
 									<div class="contextTran" id="contextTran"></div>
+									<div class="definTran" id="definTran"></div>
+									<div class="synonimTran" id="synonimTran"></div>
 								</div>
 							</td>
 						</tr>

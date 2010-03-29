@@ -81,8 +81,8 @@
 
 
 
-.activeCardSide{
-	color:Crimson;	
+.activeCardSide .tableCard{
+	color:black;	
 }
 .activeCardSide .tableCard{
 	background-color: #C3D9FF;
@@ -94,6 +94,7 @@
 	background-color: #eee;
 	table-layout:fixed;	
 	margin-bottom:1em;
+	color:gray;
 }
 .tableCard td.td{
 	-moz-border-radius:10px;
@@ -113,7 +114,7 @@
 }
 
 .activeCardSide table.tableCard td.td {
-	border:1px solid brown;
+	border:1px solid black;
 	background-color:#fff;
 }
 
@@ -133,7 +134,7 @@
 }
 
 
-.backSideWrapper{
+.frontSideWrapper, .backSideWrapper{
 	max-height:160px;
 	overflow:hidden;
 }
@@ -186,16 +187,22 @@ a {
 .activeCardSide .frontBack{
 	background-color:Beige;
 	color:white;
+	border-color:black
 }
 
 
+
+.inputSring{
+	background-color:#eee;
+}
 
 .mainWord{
-	background-color:#eee;
-	border:1px solid #DDDDDD;
-	max-height:160px;
-	overflow:hidden;
+	
 }
+
+
+
+
 
 
 #UserWord, #UserTranslate{;
@@ -211,13 +218,18 @@ a {
 	padding:3px;
 	width:510px; 
 }
-#contextTran{
+.contextTran, .definTran, .synonimTran {
   font-size:small;
   font-style:italic;
   margin-left:1em;
   text-align:left;
-  line-height:1em;
+  line-height:1.3em;
 }
+.mainTran{
+	margin-bottom:1em;
+}
+
+
 .addit{
   border-bottom:1px dotted;
   color:gray;
@@ -251,12 +263,14 @@ a {
 	font-weight:bold;
   float:left;
   margin:0 1em;
+  cursor:pointer;
 }
 .plusMenuBack{
 	color:lightSalmon;
 	font-weight:bold;
   float:left;
   margin:0 1em;
+  cursor:pointer;
 }
 .plusMenuActive{
 	color:black;
