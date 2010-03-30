@@ -105,7 +105,13 @@ $(document).ready( function(){
 	$('#CardExt').keyup( function(e) {
 		if ( letOk = true) {
 	  	var textIn = $("#CardExt").val();
-	  	$("#CardExt").val(textIn);
+	  	//$("#CardExt").val(textIn);
+	  	if(textIn.length > 0) {
+	  		$("span.inputSring").prev().show();
+	  	} else {
+	  		$("span.inputSring").prev().hide();
+	  	}
+	  	
 	  	$(".inputSring").text(textIn);		
 	  }
 	});
@@ -124,18 +130,18 @@ $(document).ready( function(){
 	});
 	$(".plusMenuDefin").click(function(){
 			$(".inputSring").removeClass("inputSring");
-			$("#contextTran").addClass("inputSring");
-			$("#CardExt").val($("#contextTran").text());		
+			$("#contextTran span:last").addClass("inputSring");
+			$("#CardExt").val($("#contextTran span:last").text());		
 	});
 	$(".plusMenuExample").click(function(){
 			$(".inputSring").removeClass("inputSring");
-			$("#definTran").addClass("inputSring");
-			$("#CardExt").val($("#definTran").text());		
+			$("#definTran span:last").addClass("inputSring");
+			$("#CardExt").val($("#definTran span:last").text());		
 	});
 	$(".plusMenuSynonim").click(function(){
 			$(".inputSring").removeClass("inputSring");
-			$("#synonimTran").addClass("inputSring");
-			$("#CardExt").val($("#synonimTran").text());		
+			$("#synonimTran span:last").addClass("inputSring");
+			$("#CardExt").val($("#synonimTran span:last").text());		
 	});
 
 			
@@ -150,16 +156,19 @@ $(document).ready( function(){
 
 
 	//word submiting					
-		$(".submitWord").click( function() {
+		$("#submitTranslId").click( function() {
 			var userWord;
-			userWord = $("#CardExt").attr('value');
+			userWord = $.trim($("#CardExt").attr('value'));
+
 			$(".mainWord").text(userWord);
 			//dictionary preparation
+			$(".additionalRes").hide();
 			$(".dicTerms ul").empty().addClass("hide").removeClass("ter");
 			$("ul.rSugTabs li").removeClass("dicSwitcherM dicActive");
 			
 	//trimm and check uesr word;		
 			songWord = userWord;
+			
 			song = "http://www.gstatic.com/dictionary/static/sounds/de/0/"+songWord+".mp3";
 			
 						$.post(
@@ -169,21 +178,13 @@ $(document).ready( function(){
 									
 											if( data.sentences ) {
 											  //console.log(data.sentences);
-											  var tem = data.sentences[0];
-											  
-											  $.each(tem, function(key, value) { 
-  													if( key === 'trans' ) {
-  														var translated = value;
-  														$("#translation").text(	translated );												
-  													}
-  													
-												});
+
 											  
 												 if( data.dict ) {
 				
 												  var dic = data.dict;
 												  var typeW = null;
-												  $(".rightSug").slideDown('fast');
+												  
 												  
 												  $.each(dic, function( keyD, valueD) {												  	
 												  	$.each(valueD, function(keyT, valueT) {												  		
@@ -234,15 +235,38 @@ $(document).ready( function(){
 												  
 												  $(".dicSwitcherM:first").addClass("dicActive");
 												  $(".ter:first").removeClass("hide");
+												  $(".additionalRes").show();
 												} else {
-													$(".rightSug").hide();
+													
 												}
 
 												//ok, go to side B 
-											
-												$("#backButton").trigger('click');
 												
+											  var sen = data.sentences;
+											  var translatedWord = '';
+											  $.each(sen, function(key, value) { 
+														$.each(value, function(keyIn, valIn){
+															if( keyIn === 'trans' ) {
+																translatedWord += valIn; 																										
+															} 	
+  													});											
+												});												
 												
+												if ($("#CardOne").attr("checked") === true) {
+													//alert("true: "+$("#CardOne").attr("checked"));
+													$("#translation").text(	translatedWord );
+													$("#backButton").trigger('click');
+													$(".topSug li").text(translatedWord);
+												} else {
+													//alert("false: "+$("#CardOne").attr("checked"));
+													
+												}
+												
+												if(userWord != translatedWord) {
+													$(".rightSug").slideDown('fast');
+												} else {
+													$(".rightSug").hide();
+												}
 												
 											} else {
 											  
@@ -277,7 +301,17 @@ $(document).ready( function(){
 		});	
 
 
-
+		$(".dicTerms li,.topSug li").live('click',function(){
+			var toIns = $(this).text();
+			$("#CardExt").val(toIns);
+			$(".inputSring").text(toIns);
+			
+	  	if(toIns.length > 0) {
+	  		$("span.inputSring").prev().show();
+	  	} else {
+	  		$("span.inputSring").prev().hide();
+	  	}			
+		});
 
 
 
@@ -314,7 +348,6 @@ $(document).ready( function(){
 			
 			
 			$(".contextTran").text(userMore);
-			$(".addit").show();
 			
 			
 			

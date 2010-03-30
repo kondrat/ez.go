@@ -52,24 +52,28 @@
 				    <div class="userActionWrapper" style="float:left;">
 					    <span class="sideToEdit hide" style=""><?php __('Side A');?>:</span>
 					    <span class="sideToEdit hide" style=""><?php __('Side B');?>:</span>
-					    <span class="userAction" style="border-bottom:1px dotted brown;color:brown;font-weight:bold;"><?php __('Enter word or short phrase');?></span>
+					    <span class="userAction" style="border-bottom:1px dotted brown;color:brown;font-weight:bold;font-size:larger;"><?php __('Enter word or short phrase');?></span>
 				    </div>
 				    <div style="float:right;" class="quickMode">
 				      <?php __('Quick mode');?>
 				      <?php echo $form->checkbox('One',array('checked'=>true) );?>
 				    </div>
 				
-				    <?php echo $form->input('ext',array('label'=>false ) );?>
+				    <?php echo $form->input('ext',array('label'=>false , "tabindex"=>"1") );?>
 	
 				    <div style="float:right;">
-					    <?php echo $form->button(__('Insert',true),array('id'=>'submitWrodId','class'=>'submitWord') );?>
+					    <?php echo $form->button(__('Insert',true),array('id'=>'submitWrodId','class'=>'submitWord',"tabindex"=>"3","onclick"=>"return false;") );?>
 				    </div>
 				    <div style="float:right;margin-right: 1em;">
-					    <?php echo $html->link(__('Clean up',true),array() );?>
-					    <?php //echo $form->button(__('Reset',true),array('type'=>'reset','style'=>'margin-right:3px;') );?>
+					    <?php //echo $html->link(__('Clean up',true),array() );?>
+					    <?php echo $form->button(__('Translate',true),array('id'=>'submitTranslId','style'=>'margin-right:3px;',"tabindex"=>"2","onclick"=>"return false;") );?>
 				    </div>
 			    <?php echo $form->end();?>
-			    <div style="float:left;margin:0 1em;font-weight:bold;"><span id="langFrom">en</span><?php echo $html->image('icons/ajax-loader1-stat.png',array('class'=>'langSwitch','style' => "") );?><span id="langTo">ru</span></div>
+			    <div style="float:left;margin:0 1em;font-weight:bold;">
+			    	<span id="langFrom">en</span>
+			    	<?php echo $html->image('icons/ajax-loader1-stat.png',array('class'=>'langSwitch','style' => "") );?>
+			    	<span id="langTo">ru</span>
+			    </div>
 		    
 		  </div>
 	</div>
@@ -84,7 +88,7 @@
 						<tr>
 							<td class="td activeTside" style="">
 								<div class="frontSideWrapper">
-									<div id="mainWord" class="inputSring"></div>
+									<div id="mainWord" class="mainWord inputSring"></div>
 								</div>
 							</td>
 						</tr>
@@ -102,10 +106,9 @@
 							<td class="td" style="">
 								<div class="backSideWrapper">
 									<div class="mainTran" id="translation"></div>
-									<p class="addit hide" style="">add</p>
-									<div class="contextTran" id="contextTran"></div>
-									<div class="definTran" id="definTran"></div>
-									<div class="synonimTran" id="synonimTran"></div>
+									<div class="contextTran" id="contextTran"><span class="perfix">[con]:&nbsp;</span><span></span></div>
+									<div class="definTran" id="definTran"><span class="perfix">[def]:&nbsp;</span><span></span></div>
+									<div class="synonimTran" id="synonimTran"><span class="perfix">[syn]:&nbsp;</span><span></span></div>
 								</div>
 							</td>
 						</tr>
@@ -132,13 +135,17 @@
 <div class="span-6 last rightSug hide">
   <div class="rightHead">
     <?php __('Just click on what you need');?>
-   </div>
+  </div>
+  <div class="topSugWrapper">
+  	<div><?php __('Translation');?>:</div>
+  	<ul class="topSug"><li></li></ul>
+  </div>
 	<div id="rightSugTabs" style="">
+		<div class="additionalRes hide"><?php __('Additional');?>:</div>
 		<ul class="rSugTabs">		
 			<li class="noun dicSwBase"><?php __('Noun');?></li>
 			<li class="verb dicSwBase"><?php __('Verb');?></li>
-			<li class="adjective dicSwBase"><?php __('Adjec');?></li>
-			
+			<li class="adjective dicSwBase"><?php __('Adjec');?></li>			
 			<li class="adverb dicSwBase"><?php __('Adverb');?></li>	
 			<li class="pronoun dicSwBase"><?php __('Pronoun');?></li>
 			<li class="conjunction dicSwBase"><?php __('Conjunction');?></li>
@@ -146,12 +153,11 @@
 			<li class="article dicSwBase"><?php __('Article');?></li>
 			<li class="numeral dicSwBase"><?php __('Numeral');?></li>	
 		</ul>
-		<br />
-		<div class="dicTerms">
+
+		<div class="dicTerms" style="float:left;">
       <ul class="nounTerms"> </ul>	
       <ul class="verbTerms hide"> </ul>
-      <ul class="adjectiveTerms hide"> </ul>
-      
+      <ul class="adjectiveTerms hide"> </ul>     
       <ul class="adverbTerms hide"> </ul>
       <ul class="pronounTerms hide"> </ul>
       <ul class="conjunctionTerms hide"> </ul>

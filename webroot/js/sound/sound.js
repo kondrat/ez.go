@@ -13,7 +13,7 @@ $(document).ready( function(){
         
         
         
-    $('#submitWrodId').click(function() {
+    $('#submitTranslId').click(function() {
          $("#playSound").removeClass("activeSound");
  				
            //alert(song);

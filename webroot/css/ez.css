@@ -125,8 +125,9 @@
 }
 #frontButton a{
 	color: DimGray;
-	background:transparent url(../img/icons/sideSwitch_l.png) no-repeat scroll left 0;
+	background:transparent url(../img/icons/sideSwitch_l.png) no-repeat scroll left -24px;
 	padding: 0 0 0 20px;
+	text-decoration:none;
 }
 #frontButton a:hover{
 	color: #e86f2d;
@@ -140,7 +141,7 @@
 }
 /* add it for ie6
 * html div#division { 
-   width: expression( document.body.clientWidth > 776 ? "777px" : "auto" ); /* sets max-width for IE */
+   width: expression( document.body.clientWidth > 776 ? "777px" : "auto" ); *//* sets max-width for IE */
 /*}*/
 
 * html .backSideWrapper { 
@@ -156,8 +157,9 @@
 }
 #backButton a{
 	color: DimGray;
-	background:transparent url(../img/icons/sideSwitch_r.png) no-repeat scroll right 0;
+	background:transparent url(../img/icons/sideSwitch_r.png) no-repeat scroll right -24px;
 	padding: 0 20px 0 0;
+	text-decoration:none;
 }
 #backButton a:hover{
 	color: #e86f2d;
@@ -169,7 +171,6 @@
 	-moz-box-shadow:0px 0px 3px gray;
 	cursor:pointer;
 	font-family:Verdana;
-	font-weight:bold;
 	margin-bottom:0.8em;
 	text-align:center;
 	color:darkGray;
@@ -189,7 +190,18 @@ a {
 	color:white;
 	border-color:black
 }
-
+div.activeCardSide #frontButton a {
+	background-position:left -48px;
+}
+div.activeCardSide #frontButton a:hover {
+	background-position:left -48px;
+}
+div.activeCardSide #backButton a {
+	background-position:right -48px;
+}
+div.activeCardSide #backButton a:hover {
+	background-position:right -48px;
+}
 
 
 .inputSring{
@@ -197,7 +209,7 @@ a {
 }
 
 .mainWord{
-	
+	line-height:1.2em;	
 }
 
 
@@ -224,21 +236,22 @@ a {
   margin-left:1em;
   text-align:left;
   line-height:1.3em;
+  text-indent:-1em;
 }
 .mainTran{
-	margin-bottom:1em;
+	/*border-bottom:1px dashed;*/
+	font-size:smaller;
+	line-height:1.1em;
+	margin-bottom:0.1em;
+	padding-bottom:0.3em;
+}
+.perfix{
+	font-size:smaller;
+	color:gray;
+	display:none;
 }
 
 
-.addit{
-  border-bottom:1px dotted;
-  color:gray;
-  font-size:10pt;
-  line-height:1em;
-  margin-bottom:3px;
-  padding:0;
-  text-align:left;
-}
 
 
 
@@ -327,12 +340,29 @@ a {
   margin:1em;
   text-align:center;
 }
-
+.topSugWrapper{
+	margin: 1em;
+	color:blue;
+}
+.topSugWrapper div, .additionalRes{
+	color:gray;
+}
+.topSug{
+	margin:0 1em;
+	color:green;
+	font-size:larger;
+	line-height:1.1em;
+}
 
 #rightSugTabs{
 	padding: 0 15px 15px 15px;
 	height:280px;
 	overflow:auto;
+}
+.rSugTabs{
+	width:165px;
+	float:left;
+	margin: 0 0 .5em 0;
 }
 #rightSugTabs ul.rSugTabs li.dicSwitcherM {
 	color:black;
@@ -350,6 +380,11 @@ li.dicSwBase{
 	color:gray;
 	display:none;
 }
+
+.dicTerms li ,.topSug li {
+	cursor:pointer;
+}
+
 
 .noun{
 }
