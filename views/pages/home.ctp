@@ -27,19 +27,24 @@
 <div class="span-14 plusMenuWrapper" style="">
 
 	<div class="span-14" style="text-align:center;padding-bottom:.5em;">
-		<div class="plusMenuFront plusMenuWord">
+		<div class="plusMenuFront plusMenuWord" title="<?php __('Enter word or short phrase');?>">
 			+ <?php __('word');?>
+		</div>	
+		
+		<div class="plusMenuFront plusMenuTest" title="<?php __('Enter test phrase');?>">
+			+ <?php __('test');?>
 		</div>		
-		<div class="plusMenuBack plusMenuTransl">
+	
+		<div class="plusMenuBack plusMenuTransl" title="<?php __('Enter translation of word');?>">
 			+ <?php __('transl');?>
 		</div>
-		<div class="plusMenuBack plusMenuDefin">
+		<div class="plusMenuBack plusMenuDefin" title="<?php __('Enter definition of word');?>">
 			+ <?php __('definition');?>
 		</div>
-		<div class="plusMenuBack plusMenuExample">
+		<div class="plusMenuBack plusMenuExample" title="<?php __('Enter an example usage  of word');?>">
 			+ <?php __('example');?>
 		</div>
-		<div class="plusMenuBack plusMenuSynonim">
+		<div class="plusMenuBack plusMenuSynonim" title="<?php __('Enter an synonims of word');?>">
 			+ <?php __('synonim');?>
 		</div>
 		
@@ -52,7 +57,7 @@
 				    <div class="userActionWrapper" style="float:left;">
 					    <span class="sideToEdit hide" style=""><?php __('Side A');?>:</span>
 					    <span class="sideToEdit hide" style=""><?php __('Side B');?>:</span>
-					    <span class="userAction" style="border-bottom:1px dotted brown;color:brown;font-weight:bold;font-size:larger;"><?php __('Enter word or short phrase');?></span>
+					    <span class="userActions userAction" style=""></span>
 				    </div>
 				    <div style="float:right;" class="quickMode">
 				      <?php __('Quick mode');?>
@@ -138,7 +143,9 @@
   </div>
   <div class="topSugWrapper">
   	<div><?php __('Translation');?>:</div>
-  	<ul class="topSug"><li></li></ul>
+  	<ul class="topSug">
+  		<li></li>
+  	</ul>
   </div>
 	<div id="rightSugTabs" style="">
 		<div class="additionalRes hide"><?php __('Additional');?>:</div>

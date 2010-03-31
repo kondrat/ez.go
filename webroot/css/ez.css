@@ -243,7 +243,6 @@ div.activeCardSide #backButton a:hover {
 	font-size:smaller;
 	line-height:1.1em;
 	margin-bottom:0.1em;
-	padding-bottom:0.3em;
 }
 .perfix{
 	font-size:smaller;
@@ -290,13 +289,25 @@ div.activeCardSide #backButton a:hover {
 	cursor:pointer;
 }
 
+
+
+
+
 .sideToEdit {
 	color:black;
 	font-size:larger;
 	font-weight:bold;
 	margin-right:1em;
 }
-
+.userAction{
+	border-bottom:1px dotted brown;
+	color:brown;
+	font-weight:bold;
+	font-size:larger;
+}
+.userActionTip {
+	color:red;
+}
 .langSwitch{
 	float:left;
 	margin: 0.1em 0.6em;

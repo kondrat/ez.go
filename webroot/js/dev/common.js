@@ -31,11 +31,15 @@ $(document).ready( function(){
 		);
 		
 
-	
+		var prev_tooltip;// = $(".userActions").text();
+		useraction_tooltip(".plusMenuBack,.plusMenuFront");	
 
 
 	//front - back side switching
     //front
+    
+    
+    
 		$("#frontButton").click(function() {
 			
 			$("#tableBack").removeClass("activeCardSide");
@@ -48,6 +52,7 @@ $(document).ready( function(){
 			$(".sideToEdit:last").hide();
 			$(".sideToEdit:first").show();			
 
+			$(".plusMenuWord").trigger('click');
 
 			$(".inputSring").removeClass("inputSring");
 			$("#mainWord").addClass("inputSring");	
@@ -56,8 +61,8 @@ $(document).ready( function(){
 			
 		});
 
-
 		$("#frontButton").trigger('click');
+		
 		
 		//back
 		$("#backButton").click(function() {
@@ -117,10 +122,9 @@ $(document).ready( function(){
 	});
 
 
-	$(".plusMenuBack").click(function(){
+	$(".plusMenuFront,.plusMenuBack").click(function(){
 			$(".plusMenuActive").removeClass("plusMenuActive");
-			$(this).addClass("plusMenuActive");
-			
+			$(this).addClass("plusMenuActive");			
 	})
 
 	$(".plusMenuTransl").click(function(){
@@ -251,12 +255,14 @@ $(document).ready( function(){
 															} 	
   													});											
 												});												
+												$(".topSug li").text(translatedWord);
 												
 												if ($("#CardOne").attr("checked") === true) {
 													//alert("true: "+$("#CardOne").attr("checked"));
 													$("#translation").text(	translatedWord );
 													$("#backButton").trigger('click');
-													$(".topSug li").text(translatedWord);
+//glupost!!!!!!!!!!!!!
+													
 												} else {
 													//alert("false: "+$("#CardOne").attr("checked"));
 													
@@ -353,11 +359,13 @@ $(document).ready( function(){
 			
 			return false;
 		});
+
+	
 	
 });
 
 
-
+			
 
 
 			    function initialize(tt) {
@@ -374,3 +382,18 @@ $(document).ready( function(){
 			        }
 			      });
     		}
+
+				function useraction_tooltip(target_items){
+					$(target_items).each(function(i){
+						var my_tooltip = $(this).attr('title');					
+						$(this).removeAttr("title").mouseover(function(){
+							$(".userActions").text(my_tooltip).addClass("userActionTip");												
+						}).mouseout(function(){
+							$(".userActions").text(prev_tooltip).removeClass("userActionTip");
+						}).click(function(){							
+							$(".userActions").text(my_tooltip);
+							prev_tooltip = my_tooltip;
+						});
+					});
+				}
+
