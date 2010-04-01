@@ -8,7 +8,7 @@
   		}
 		</script>
 
-<!--<div class="span-15 tempTest" style="text-align:center;margin-top:1em;">test</div>-->
+<div class="span-15 tempTest" style="text-align:center;margin-top:1em;font-size:larger;color:green;">test</div>
 
 <div class="span-15 twoWays">
 	<div class="topT">
@@ -55,13 +55,13 @@
 		    
 			    <?php echo $form->create('Card');?>
 				    <div class="userActionWrapper" style="float:left;">
-					    <span class="sideToEdit hide" style=""><?php __('Side A');?>:</span>
-					    <span class="sideToEdit hide" style=""><?php __('Side B');?>:</span>
+					    <a href="#" class="sideToEdit hide" style="" onclick="return false"><?php __('Side A');?>:</a>
+					    <a href="#" class="sideToEdit hide" style="" onclick="return false"><?php __('Side B');?>:</a>
 					    <span class="userActions userAction" style=""></span>
 				    </div>
 				    <div style="float:right;" class="quickMode">
 				      <?php __('Quick mode');?>
-				      <?php echo $form->checkbox('One',array('checked'=>true) );?>
+				      <?php echo $form->checkbox('One',array() );?>
 				    </div>
 				
 				    <?php echo $form->input('ext',array('label'=>false , "tabindex"=>"1") );?>

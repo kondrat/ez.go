@@ -233,9 +233,12 @@ div.activeCardSide #backButton a:hover {
 .contextTran, .definTran, .synonimTran {
   font-size:small;
   font-style:italic;
-  margin-left:1em;
   text-align:left;
   line-height:1.3em;
+  
+}
+.contextTran .inputSring , .definTran .inputSring, .synonimTran .inputSring {
+	
 }
 .mainTran{
 	/*border-bottom:1px dashed;*/
@@ -247,6 +250,7 @@ div.activeCardSide #backButton a:hover {
 	font-size:smaller;
 	color:gray;
 	display:none;
+  margin-left:1em;
 }
 
 
@@ -292,11 +296,15 @@ div.activeCardSide #backButton a:hover {
 
 
 
-.sideToEdit {
+a.sideToEdit {
 	color:black;
 	font-size:larger;
 	font-weight:bold;
 	margin-right:1em;
+	text-decoration:none;
+}
+a.sideToEdit:hover {
+	text-decoration:underline;
 }
 .userAction{
 	border-bottom:1px dotted brown;
