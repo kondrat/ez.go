@@ -8,7 +8,7 @@
   		}
 		</script>
 
-
+<!--<div class="span-15 tempTest" style="text-align:center;margin-top:1em;">test</div>-->
 
 <div class="span-15 twoWays">
 	<div class="topT">
@@ -100,7 +100,7 @@
 					</tbody>
 				</table>
 				<div id="frontButton" class="frontBack" style="">
-					<?php echo $html->link(__('front side',true),array('#'),array('onclick'=>'return false' ) );?></a>
+					<?php echo $html->link(__('Side A',true),array('#'),array('onclick'=>'return false' ) );?></a>
 				</div>
 		</div>
 		
@@ -120,7 +120,7 @@
 					</tbody>
 				</table>
 				<div id="backButton" class="frontBack">
-					<?php echo $html->link(__('back side',true),array('#'),array('onclick'=>'return false' ) );?></a>
+					<?php echo $html->link(__('Side B',true),array('#'),array('onclick'=>'return false' ) );?></a>
 				</div>
 		</div>
 	</div>

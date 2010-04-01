@@ -360,6 +360,36 @@ $(document).ready( function(){
 			return false;
 		});
 
+
+
+
+		//more controls
+	
+		$("#submitWrodId").click(function(){
+			var valCardExt = $("#CardExt").val();
+			$(".inputSring").text(valCardExt);
+		});
+		
+		$(".sideToEdit").toggle(
+			function(){
+				
+				if ($("#tableFront").hasClass("activeCardSide")) {
+					$("#backButton").trigger('click');
+				} else {
+					$("#frontButton").trigger('click');
+				}
+				
+			},
+			function(){
+				console.log('two');
+				if ($("#tableFront").hasClass("activeCardSide")) {
+					$("#backButton").trigger('click');
+				} else {
+					$("#frontButton").trigger('click');
+				}
+			}
+		);
+	
 	
 	
 });
