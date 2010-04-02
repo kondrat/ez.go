@@ -8,7 +8,14 @@
   		}
 		</script>
 
-<div class="span-15 tempTest" style="text-align:center;margin-top:1em;font-size:larger;color:green;">test</div>
+<div class="span-15 tempTest" style="text-align:center;margin-top:1em;font-size:larger;color:green;">test
+	
+   <input type="text" name="search" id="search"> <input type="button" value="Search" id="searchBtn">
+    <div id="result1"></div>
+	
+	
+	
+	</div>
 
 <div class="span-15 twoWays">
 	<div class="topT">

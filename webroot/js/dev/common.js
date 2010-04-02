@@ -127,22 +127,22 @@ $(document).ready( function(){
 	$(".plusMenuTransl").click(function(){
 			$(".inputSring").removeClass("inputSring");
 			$("#translation").addClass("inputSring");	
-			$("#CardExt").val($("#translation").text());	
+			$("#CardExt").val($("#translation").text()).focus();	
 	});
 	$(".plusMenuDefin").click(function(){
 			$(".inputSring").removeClass("inputSring");
 			$("#contextTran span:last").addClass("inputSring");
-			$("#CardExt").val($("#contextTran span:last").text());		
+			$("#CardExt").val($("#contextTran span:last").text()).focus();		
 	});
 	$(".plusMenuExample").click(function(){
 			$(".inputSring").removeClass("inputSring");
 			$("#definTran span:last").addClass("inputSring");
-			$("#CardExt").val($("#definTran span:last").text());		
+			$("#CardExt").val($("#definTran span:last").text()).focus();		
 	});
 	$(".plusMenuSynonim").click(function(){
 			$(".inputSring").removeClass("inputSring");
 			$("#synonimTran span:last").addClass("inputSring");
-			$("#CardExt").val($("#synonimTran span:last").text());		
+			$("#CardExt").val($("#synonimTran span:last").text()).focus();		
 	});
 
 			
@@ -333,8 +333,6 @@ $(document).ready( function(){
 		$(".submitTranslate").click( function() {
 			var userTran;
 			tt = userTran = $("#UserWord").attr('value');
-			
-			//$(".mainTran").text(userTran);
 			initialize(tt);
 			return false;
 		});
@@ -434,3 +432,39 @@ $(document).ready( function(){
 			        }
 			      });
     			}
+    			
+    			
+    			
+//experiment
+
+//var baseurl = 'http://search.yahooapis.com/ImageSearchService/V1/imageSearch?appid=YahooDemo&output=json&query=';
+var baseurl = 'http://translate.google.com/translate_a/t?client=t&hl=ru&sl=en&tl=ru&otf=1&pc=0&text=';
+//var baseurl = 'http://www.google.com/dictionary/json?callback=dict_api.callbacks.id100&sl=en&tl=ru&restrict=pr%2Cde&client=te&q=';
+function callback(data){};
+ function search() {
+     var search = $("#search").val();
+     console.log(search);
+     var surl = baseurl + escape(search) + '&callback=?'
+     $.getJSON(surl, function(data) {
+     	//data = '(' + data + ')';
+
+     	var res = '<h1>Search for '+search+'</h1>';
+     	$("#result1").html(res);
+     	console.log('('+data+')');
+     	console.log(data.query);
+     	/*
+          var res = '<h1>Search for '+search+'</h1>'
+          res += '<p>There were '+data.ResultSet.totalResultsAvailable+' results.</p>'
+          for(var i=0; i<data.ResultSet.Result.length; i++) {
+               var result = data.ResultSet.Result[i]
+               var resultStr = '<img src="'+result['Thumbnail']['Url']+'" align="left">';
+               resultStr += '<a href="'+result['ClickUrl']+'">'+result['Title']+'</a><br clear="left"/>'
+               res+=resultStr
+           }
+          $("#result").html(res)
+          */
+      })
+ }
+ $(document).ready(function() {
+     $("#searchBtn").click(search)
+ });
