@@ -97,9 +97,9 @@ $(document).ready( function(){
 		console.log(e.which);
 		
 	  var chr = (String.fromCharCode(e.which));
-	  rexp = /([^a-zA-Z0-9\s\.\?,'-])/; 
+	  rexp = /([^\w0-9\s\.\?,'-])/; 
 	  if( rexp.test(chr) && e.which !== 8 && e.which !== 0 ) {
-	  	console.log('falseChr');
+	  	//console.log('falseChr');
 	  	letOk = false;
 	    return false;
 	  } else {
@@ -131,12 +131,12 @@ $(document).ready( function(){
 	});
 	$(".plusMenuDefin").click(function(){
 			$(".inputSring").removeClass("inputSring");
-			$("#contextTran span:last").addClass("inputSring");
-			$("#CardExt").val($("#contextTran span:last").text()).focus();		
+			$("#definTran span:last").addClass("inputSring");
+			$("#CardExt").val($("#definTran span:last").text()).focus();		
 	});
 	$(".plusMenuExample").click(function(){
 			$(".inputSring").removeClass("inputSring");
-			$("#definTran span:last").addClass("inputSring");
+			$("#contextTran span:last").addClass("inputSring");
 			$("#CardExt").val($("#definTran span:last").text()).focus();		
 	});
 	$(".plusMenuSynonim").click(function(){
@@ -154,6 +154,17 @@ $(document).ready( function(){
 			$("#langFrom").text(from);
 			$("#langTo").text(to);
 		});		
+    $("#langTo").toggle(function(){
+      
+       $(".langTable").show('normal');
+      },
+      function(){
+         $(".langTable").fadeOut();
+      }
+    );
+    $("#langFrom,.closeLangTable").click(function() {
+      $("#langTo").trigger('click');
+    });
 
 
 	//word submiting					
@@ -433,10 +444,24 @@ $(document).ready( function(){
 			      });
     			}
     			
-    			
+
+
+    //adding cursor pointer to all clicables elements;
+    (function($){
+      $.event.special.click = {
+        setup: function() {
+          $(this).css('cursor','pointer');
+          return false;
+        },
+        teardown: function() {
+          $(this).css('cursor','');
+          return false;
+        }
+      }
+    })(jQuery);    			
     			
 //experiment
-
+/*
 //var baseurl = 'http://search.yahooapis.com/ImageSearchService/V1/imageSearch?appid=YahooDemo&output=json&query=';
 var baseurl = 'http://translate.google.com/translate_a/t?client=t&hl=ru&sl=en&tl=ru&otf=1&pc=0&text=';
 //var baseurl = 'http://www.google.com/dictionary/json?callback=dict_api.callbacks.id100&sl=en&tl=ru&restrict=pr%2Cde&client=te&q=';
@@ -452,7 +477,7 @@ function callback(data){};
      	$("#result1").html(res);
      	console.log('('+data+')');
      	console.log(data.query);
-     	/*
+     	
           var res = '<h1>Search for '+search+'</h1>'
           res += '<p>There were '+data.ResultSet.totalResultsAvailable+' results.</p>'
           for(var i=0; i<data.ResultSet.Result.length; i++) {
@@ -462,9 +487,11 @@ function callback(data){};
                res+=resultStr
            }
           $("#result").html(res)
-          */
+         
       })
  }
+
  $(document).ready(function() {
      $("#searchBtn").click(search)
  });
+ */

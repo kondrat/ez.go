@@ -44,7 +44,7 @@
 				<div class="span-24">
 						<div class="span-16 ">
 							<div style="float:left; margin:1em 0;">
-								<?php echo $html->link($html->image('pic/ez-logo-50-w.png'), array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
+								<?php echo $html->link($html->image('pic/ez-logo-50-3.png'), array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
 							</div>
 						</div>
 						<div class="span-8 last" style="position:relative;" >

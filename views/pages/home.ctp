@@ -8,13 +8,11 @@
   		}
 		</script>
 
-<div class="span-15 tempTest" style="text-align:center;margin-top:1em;font-size:larger;color:green;">test
-	
-   <input type="text" name="search" id="search"> <input type="button" value="Search" id="searchBtn">
-    <div id="result1"></div>
-	
-	
-	
+  <div class="span-15 tempTest" style="text-align:center;margin-top:1em;font-size:larger;color:green;">test
+	  <!--
+     <input type="text" name="search" id="search"> <input type="button" value="Search" id="searchBtn">
+      <div id="result1"></div>
+	  -->	
 	</div>
 
 <div class="span-15 twoWays">
@@ -45,11 +43,11 @@
 		<div class="plusMenuBack plusMenuTransl" title="<?php __('Enter translation of word');?>">
 			+ <?php __('transl');?>
 		</div>
-		<div class="plusMenuBack plusMenuDefin" title="<?php __('Enter definition of word');?>">
-			+ <?php __('definition');?>
-		</div>
 		<div class="plusMenuBack plusMenuExample" title="<?php __('Enter an example usage  of word');?>">
 			+ <?php __('example');?>
+		</div>
+		<div class="plusMenuBack plusMenuDefin" title="<?php __('Enter definition of word');?>">
+			+ <?php __('definition');?>
 		</div>
 		<div class="plusMenuBack plusMenuSynonim" title="<?php __('Enter an synonims of word');?>">
 			+ <?php __('synonim');?>
@@ -81,10 +79,26 @@
 					    <?php echo $form->button(__('Translate',true),array('id'=>'submitTranslId','style'=>'margin-right:3px;',"tabindex"=>"2","onclick"=>"return false;") );?>
 				    </div>
 			    <?php echo $form->end();?>
-			    <div style="float:left;margin:0 1em;font-weight:bold;">
-			    	<span id="langFrom">en</span>
-			    	<?php echo $html->image('icons/ajax-loader1-stat.png',array('class'=>'langSwitch','style' => "") );?>
-			    	<span id="langTo">ru</span>
+			    <div style="float:left;margin:0 1em;font-weight:bold;position:relative;">
+			    
+			        <div class="langToFrom">
+			          <span>side A</span>
+			      	  <span id="langFrom">en</span>
+			      	</div>
+			      	<div class="langSwitch"></div>
+			      	<div class="langToFrom">
+			      	  <span>side B</span>
+			      	  <span id="langTo">ru</span>
+			      	</div>
+			      	
+			      	  <div class="langTable hide" style="">			    	  
+			      	    <div class="span-3">lang</div><div class="span-1 last closeLangTable"></div>
+			        	  <div class="span-4">
+			        	    <div class="span-2">langs</div>
+			        	    <div class="span-2 last">langs</div>			    	  
+			        	  </div>			    	  		    	  
+			      	  </div>
+		    	  
 			    </div>
 		    
 		  </div>

@@ -169,7 +169,6 @@
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px; 
 	-moz-box-shadow:0px 0px 3px gray;
-	cursor:pointer;
 	font-family:Verdana;
 	margin-bottom:0.8em;
 	text-align:center;
@@ -278,18 +277,15 @@ div.activeCardSide #backButton a:hover {
 	font-weight:bold;
   float:left;
   margin:0 1em;
-  cursor:pointer;
 }
 .plusMenuBack{
 	color:lightSalmon;
 	font-weight:bold;
   float:left;
   margin:0 1em;
-  cursor:pointer;
 }
 .plusMenuActive{
 	color:black;
-	cursor:pointer;
 }
 
 
@@ -316,15 +312,45 @@ a.sideToEdit:hover {
 	color:red;
 }
 .langSwitch{
-	float:left;
-	margin: 0.1em 0.6em;
-	cursor:pointer;
+  margin:0 0.5em;
+  background:transparent url(../img/icons/right_arrow.png) no-repeat scroll 0 0;
+  width:16px;
+  height:16px;
+  float:left;
+  vertical-align:middle;
 }
 #langFrom,#langTo{
-	width:15px;
-	float:left
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px; 
+  background-color:#EEEEEE;
+  border:1px solid #CCCCCC;
+  color:CadetBlue;
+  font-size:9pt;
+  line-height:0.1em;
+  margin:0;
+  padding:0 0.4em;
 }
-
+.langToFrom{
+  color:gray;
+  font-weight:normal;
+  float:left;
+}
+.langTable{
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px; 
+	-moz-box-shadow:0 0 3px;
+  background-color:Cornsilk;
+  border:1px solid;
+  padding:5px;
+  position:absolute;
+  text-align:center;
+  z-index:1000;
+  top:25px;
+}
+.closeLangTable{
+	background:transparent url(../img/icons/error.png) no-repeat scroll right 0;
+	height:16px;
+}
 .sound{
   width:24px;
   height:24px;
@@ -335,7 +361,6 @@ a.sideToEdit:hover {
   background:transparent url(../img/icons/sounds.png) no-repeat scroll 0 0;	
 }
 .activeSound{
-  cursor:pointer;
   background-position: 0 -32px;
 }
 .activeSoundPlay{
@@ -348,6 +373,8 @@ a.sideToEdit:hover {
 	background-color:#eee;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px; 
+	-moz-box-shadow: 0 0 3px;
+	-webkit-box-shdow: 0 0 3px;
 	margin-top:2em;
 	padding-bottom:1.5em;
 }
@@ -385,7 +412,6 @@ a.sideToEdit:hover {
 #rightSugTabs ul.rSugTabs li.dicSwitcherM {
 	color:black;
 	text-decoration:none;
-	cursor:pointer;
 	display:block;
 }
 li.dicSwBase{
@@ -398,10 +424,10 @@ li.dicSwBase{
 	color:gray;
 	display:none;
 }
+.dicTerms li,.topSug li,.rSugTabs li {
+  cursor:pointer;
+  }
 
-.dicTerms li ,.topSug li {
-	cursor:pointer;
-}
 
 
 .noun{
@@ -421,89 +447,7 @@ li.dicSwBase{
 
 /*old styles*/
 
-.headerData {
-	float:left;
-	margin-right:1em;
-	color:gray;
-	font-size: 80%;
-}
-.headerWeek {
-	float:left;
-	font-size:80%;
-	color:gray;
-}
-.userbox img {
-	border:1px solid #FFFFFF;
-	margin-right:3px;
-	margin-top:-3px;
-	vertical-align:middle;
-}
-.footerNote {
-	color:gray;
-	margin:1em;
-}
-.userbox {
-	background:transparent url(../img/pic/bar-left.png) no-repeat scroll 0 0;
-	float:right;
-	font-size:12px;
-	height:39px;
-	padding-left:6px;
-}
-.userbox .inner {
-	background:transparent url(../img/pic/bar-right.png) no-repeat scroll 100% 0;
-	height:29px;
-	padding:10px 12px 0 6px;
-}
-ul.usernav li {
-	background:transparent url(../img/pic/bar_separator.gif) no-repeat scroll 5px 0;
-	display:inline;
-	list-style-type:none;
-	margin:0;
-	padding:0 0 0 15px;
-}
 
-.clock {
-	font-weight: bold;
-	font-size: 20pt;
-	border: 5px solid #ccc;
-	text-align: center;
-	cursor: pointer;
-	margin-bottom: 2px;
-	position:relative;
-	height: 1%;
-	z-index:-1;
-	
-}
-
-.clockBackground{
-	position:absolute;
-	width:100%;
-	height:100%;
-	cursor:pointer;
-	opacity: 0.17;
-	filter: alpha(opacity = 17);
-	top:0;
-	left:0
-}
-
-.clock1 {
-	color: green;
-}
-.clock1Current {
-	position:absolute;
-	font-size: small;
-	top:0px;
-	right:10px;
-}
-.clock2 {
-	color: red;
-}
-.clock2Current {
-	position:absolute;
-	font-size: small;
-	top:0;
-	left:10px;
-}
 
 
 /*paginator classes*/
@@ -556,7 +500,6 @@ ul.usernav li {
 	position: relative;
 }
 .rest span {
-	cursor: pointer;
 	font-size: 100%;
 	border-bottom: 3px solid #ccc;
 }
