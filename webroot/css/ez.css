@@ -10,15 +10,31 @@
 	/*background:transparent url(../img/pic/ez-header.png) no-repeat scroll 0 0;*/
 	height: 55px;	
 }
-.twoWays{
+.contentWrapper{
+	padding-bottom:1em;
+	position:relative;
+	min-height:550px;
+}
+.threeWays{
 	font-size:larger;
 	margin-bottom:1em;
 	padding:1em 0 0;
 	text-align:center;
 }
-.twoWays a{
+.threeWays a{
 	text-decoration:none;
 	border-bottom:1px dashed;
+}
+.cardEditor{
+	-moz-border-radius:10px 10px 10px 10px;
+	-webkit-border-radius:10px;
+	-moz-box-shadow:0 0 15px;
+	background-color:white;/*HoneyDew;*/
+	left:12em;
+	padding:1em;
+	position:absolute;
+	top:7em;	
+	border:1px solid gray;
 }
 .pagefooter {
 	background:#BBCCD9 url(../img/pic/footer_bg.png) repeat-x scroll 0 0;
@@ -312,8 +328,8 @@ a.sideToEdit:hover {
 	color:red;
 }
 .langSwitch{
-  margin:0 0.5em;
-  background:transparent url(../img/icons/right_arrow.png) no-repeat scroll 0 0;
+  margin:0 0.3em 0 0.5em;
+  background:transparent url(../img/icons/langSwitch.png) no-repeat scroll 0 -24px;
   width:16px;
   height:16px;
   float:left;
@@ -346,10 +362,15 @@ a.sideToEdit:hover {
   text-align:center;
   z-index:1000;
   top:25px;
+  left:0;
 }
 .closeLangTable{
 	background:transparent url(../img/icons/error.png) no-repeat scroll right 0;
 	height:16px;
+	width:16px;
+	position:absolute;
+	right:0;
+	top:0;
 }
 .sound{
   width:24px;
@@ -368,6 +389,14 @@ a.sideToEdit:hover {
 }
 .activeSoundHover{
 		background-position: 0 -96px;
+}
+.wordToSound{
+	left:44px;
+	overflow:hidden;
+	position:absolute;
+	top:10px;
+	width:180px;
+	text-align:left;
 }
 .rightSug{
 	background-color:#eee;

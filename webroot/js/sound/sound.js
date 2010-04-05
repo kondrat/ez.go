@@ -29,11 +29,13 @@ $(document).ready( function(){
 					    //alert( 'The sound '+this.sID+' loaded!');	
 					    if( this.readyState !== 3 ) {
 					    	noSound = 0;
+					    	$(".wordToSound").text("No sound");
 					      this.destruct();
 					    } else {
 					    	//alert('sound');
 					      $("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
 					      noSound = 1;
+					      $(".wordToSound").text(songWord);
 					    }					
 					  },
 					  onfinish:function() {	

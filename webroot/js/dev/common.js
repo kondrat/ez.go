@@ -1,3 +1,5 @@
+var card = {"a":{},"b":{}};
+//console.log(card);
 var tt;
 var from = 'en';
 var to = 'ru';
@@ -172,7 +174,7 @@ $(document).ready( function(){
 			var userWord;
 			userWord = $.trim($("#CardExt").attr('value'));
 
-			$(".mainWord").text(userWord);
+			$(".inputSring").text(userWord);
 			//dictionary preparation
 			$(".additionalRes").hide();
 			$(".dicTerms ul").empty().addClass("hide").removeClass("ter");
@@ -276,10 +278,26 @@ $(document).ready( function(){
 													
 												}
 												
+
+												
+												
 												if(userWord != translatedWord) {
-													$(".rightSug").slideDown('fast');
+													$("div.cardEditor").animate({
+															width: '790px'
+														},
+														'normal',
+														'linear',
+														function(){
+															$(".rightSug").slideDown();
+															//$(".rightSug").fadeIn('fast');
+														}
+													);
 												} else {
 													$(".rightSug").hide();
+													$("div.cardEditor").animate({
+															width: '550px'
+														}
+													)
 												}
 												
 											} else {

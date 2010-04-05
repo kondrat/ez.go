@@ -44,7 +44,7 @@
 				<div class="span-24">
 						<div class="span-16 ">
 							<div style="float:left; margin:1em 0;">
-								<?php echo $html->link($html->image('pic/ez-logo-50-3.png'), array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
+								<?php echo $html->link($html->image('pic/ez-logo-50-w.png'), array('controller'=>'pages','action'=>'home'),array('escape'=>false) );?> 
 							</div>
 						</div>
 						<div class="span-8 last" style="position:relative;" >
@@ -77,31 +77,11 @@
 			  <div class="fl" style="border-bottom:1px solid #ddd;">
 				  <?php echo $session->flash();?>
 			  </div>
-	    
-	    
-		    <div class="span-4">
-		        Left sidebar
-		        <hr />
-		        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-		    </div>
-
-
-
-
 		
-		    <div class="span-20 last" style="padding-bottom:1em;">
-
-		        
-							<?php echo $content_for_layout; ?>
-		        
+		    <div class="span-24 contentWrapper" style="">	        
+							<?php echo $content_for_layout; ?>		        
 		    </div>
-
-
-
 	
-
-
-		
 	</div>
 	<div class="pagefooter" style="">
 			<div class="container">
