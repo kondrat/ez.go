@@ -52,23 +52,22 @@
 						    <?php echo $form->button(__('Translate',true),array('id'=>'submitTranslId','style'=>'margin-right:3px;',"tabindex"=>"2","onclick"=>"return false;") );?>
 					    </div>
 				    <?php echo $form->end();?>
-				    <div style="float:left;margin:0 1em;font-weight:bold;position:relative;">
 				    
-				        <div class="langToFrom">
-				          <span>side A</span>
+				    <div class="langToFromWrapper" style="">
+				    
+				        <div class="langToFrom">			          
 				      	  <span id="langFrom">en</span>
 				      	</div>
 				      	<div class="langSwitch"></div>
-				      	<div class="langToFrom">
-				      	  <span>side B</span>
+				      	<div class="langToFrom">				      	  
 				      	  <span id="langTo">ru</span>
 				      	</div>
 				      	
 				      	  <div class="langTable hide" style="">	
 				      	  	<?php echo $this->element("langSwitcher/lang_switcher");?>		    	  	    	  
-				      	  </div>
-			    	  
+				      	  </div>			    	  
 				    </div>
+
 			    
 			  </div>
 		</div>
@@ -122,4 +121,19 @@
 		</div>
 	</div>
 		<?php echo $this->element('rightSug/right_sug');?>
+		
+		<div class="test">
+			<div class="fancy_bg fancy_bg_n"></div>
+			<div class="fancy_bg fancy_bg_ne"></div>
+			<div class="fancy_bg fancy_bg_e"></div>
+			<div class="fancy_bg fancy_bg_se"></div>
+			<div class="fancy_bg fancy_bg_s"></div>
+			<div class="fancy_bg fancy_bg_sw"></div>
+			<div class="fancy_bg fancy_bg_w"></div>
+			<div class="fancy_bg fancy_bg_nw"></div>
+		</div>			
+		<div class="closeCardTable" style=""></div>
+		<div class="hideArrow" style=""></div>
+		<div class="moveCardTable" style=""></div>
+		
 </div>									

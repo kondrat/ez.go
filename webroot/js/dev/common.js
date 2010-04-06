@@ -3,6 +3,7 @@ var card = {"a":{},"b":{}};
 var tt;
 var from = 'en';
 var to = 'ru';
+var backDirect = false;
 var song;
 var noSound;
 
@@ -150,12 +151,54 @@ $(document).ready( function(){
 			
 		
 	//lang switching
+	
+		var bgPos;
+		$(".langSwitch").hover(function(){
+			
+			bgPos = $(this).css('background-position');
+			
+			if( !backDirect ) {
+				
+			} else {
+				
+			} 
+				
+				if(bgPos === "0 -24px"){
+					alert('0 0 ss');
+				}
+				$(this).css({'background-position':'0 10px'});
+				
+			},function(){
+				$(this).css({'background-position':bgPos});
+			}
+		); 
+
+
+
+		
 		$(".langSwitch").click(function(){
-			to = $("#langFrom").text();
-			from = $("#langTo").text();
-			$("#langFrom").text(from);
-			$("#langTo").text(to);
-		});		
+			if( !backDirect ) {
+				to = $("#langFrom").text();
+				from = $("#langTo").text();
+				//$(".langSwitch").css({'background-position':'0 0'});
+				$("#langFrom").css({'border-color':'brown'});
+				$("#langTo").css({'border-color':'#ccc'});
+				$(".langToFromWrapper").addClass("backDir");
+				backDirect = true;
+			} else {
+				to = $("#langTo").text();
+				from = $("#langFrom").text();
+				//$(".langSwitch").css({'background-position':'0 -24px'});
+				$("#langTo").css({'border-color':'brown'});
+				$("#langFrom").css({'border-color':'#ccc'});
+				$(".langToFromWrapper").removeClass("backDir");
+				backDirect = false;
+			}			
+		});
+
+		
+		
+				
     $("#langTo").toggle(function(){
       
        $(".langTable").show('normal');
@@ -282,6 +325,9 @@ $(document).ready( function(){
 												
 												
 												if(userWord != translatedWord) {
+
+									//add if width != 790px;
+
 													$("div.cardEditor").animate({
 															width: '790px'
 														},
@@ -292,12 +338,15 @@ $(document).ready( function(){
 															//$(".rightSug").fadeIn('fast');
 														}
 													);
+													$(".hideArrow").css({'background-position':'0 0'});
+												
 												} else {
 													$(".rightSug").hide();
-													$("div.cardEditor").animate({
-															width: '550px'
-														}
-													)
+														$("div.cardEditor").animate(
+															{
+																width: '550px'
+															}
+														)
 												}
 												
 											} else {
@@ -382,6 +431,10 @@ $(document).ready( function(){
 
 
 		//more controls
+		
+
+	
+	
 	
 		$("#submitWrodId").click(function(){		
 			var valCardExt = $("#CardExt").val();		
@@ -400,6 +453,35 @@ $(document).ready( function(){
 			}			
 		});		
 		
+
+		$(".closeCardTable").click(function(){
+			$(".cardEditor").fadeOut();
+		});		
+		
+		$(".threeWaysOne").click(function(){
+			$(".cardEditor").fadeIn();
+		});
+		
+		$(".hideArrow").click(function(){
+			$(".rightSug").fadeOut( function() {
+				$("div.cardEditor").animate(
+					{
+						width: '550px'
+					}
+				);
+				$(".hideArrow").css({'background-position':'0 -24px'});
+														
+  		}); 
+
+												
+		});
+		
+		$(".moveCardTable").hover( function(){
+			$(this).css({'background-position':'0 -32px'});
+			},function(){
+				$(this).css({'background-position':'0 0'});
+			}
+		);		
 		
 		
 		$(".sideToEdit").click(
@@ -462,13 +544,20 @@ $(document).ready( function(){
 			      });
     			}
     			
-
+		$(function() {
+			$(".cardEditor").draggable( { handle:"div.moveCardTable",zIndex: 2700,addClasses: false } );
+			//$("div,.moveCardTable").disableSelection();
+		});
 
     //adding cursor pointer to all clicables elements;
+    
     (function($){
       $.event.special.click = {
         setup: function() {
-          $(this).css('cursor','pointer');
+        	
+        	if( !$(this).hasClass("cardEditor") ) {
+          	$(this).css('cursor','pointer');
+          }
           return false;
         },
         teardown: function() {
@@ -477,6 +566,10 @@ $(document).ready( function(){
         }
       }
     })(jQuery);    			
+		
+
+
+
     			
 //experiment
 /*

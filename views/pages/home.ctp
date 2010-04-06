@@ -14,7 +14,7 @@
 		    
 <div class="span-15 threeWays">
 	<div class="topT">
-		<?php echo $html->link(__('Type in word or phrase',true),'#');?>
+		<?php echo $html->link(__('Type in word or phrase',true),'#',array('class'=>'threeWaysOne') );?>
 	</div>
 	<div class="topT">
 		<span style="font-style:italic;">or</span>&nbsp;&nbsp;<?php echo $html->link( __('Upload text and select',true), '#');?>
