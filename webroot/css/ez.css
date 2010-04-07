@@ -348,6 +348,9 @@ a.sideToEdit:hover {
   margin:0;
   padding:0 0.4em;
 }
+#langTo{
+	  border:1px solid #ddd;
+}
 .langToFromWrapper{
 	float:right;
 	margin:0.5em 1em 0 0;
@@ -356,6 +359,18 @@ a.sideToEdit:hover {
 }
 .backDir div.langSwitch {
 	background-position: 0 0;
+}
+.backDir div.ttTest{
+		background-position: 0 -72px;
+}
+div.ttTest{
+		background-position: 0 -48px;
+}
+.backDir #langFrom{
+		border:1px solid #ddd;
+}
+.backDir #langTo{
+		border:1px solid #ccc;
 }
 .langToFrom{
   color:gray;
@@ -403,6 +418,12 @@ a.sideToEdit:hover {
 	position:absolute;
 	right:1px;
 	top:210px;
+}
+.hideArrowL {
+	background-position: 0 0;
+}
+.hideArrowR {
+	background-position: 0 -24px;
 }
 .sound{
   width:24px;
@@ -582,3 +603,8 @@ div.fancy_bg_nw {
 	background: transparent url('../img/fancybox/fancy_shadow_nw.png') no-repeat;
 }
 
+
+.textUpload{
+	width:500px;
+	height:150px;
+}

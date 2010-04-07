@@ -9,6 +9,8 @@ var noSound;
 
 $(document).ready( function(){
 		
+		var cardTable = $("div.cardEditor");
+		var hideArrow = $(".hideArrow");
 		//cleaning after reload
 	  $("#CardExt").val('');
 	  
@@ -154,43 +156,22 @@ $(document).ready( function(){
 	
 		var bgPos;
 		$(".langSwitch").hover(function(){
-			
-			bgPos = $(this).css('background-position');
-			
-			if( !backDirect ) {
-				
-			} else {
-				
-			} 
-				
-				if(bgPos === "0 -24px"){
-					alert('0 0 ss');
-				}
-				$(this).css({'background-position':'0 10px'});
-				
+			$(this).addClass("ttTest");
 			},function(){
-				$(this).css({'background-position':bgPos});
+				$(this).removeClass("ttTest");
 			}
 		); 
-
-
-
-		
+	
 		$(".langSwitch").click(function(){
+			$(this).removeClass("ttTest");
 			if( !backDirect ) {
 				to = $("#langFrom").text();
 				from = $("#langTo").text();
-				//$(".langSwitch").css({'background-position':'0 0'});
-				$("#langFrom").css({'border-color':'brown'});
-				$("#langTo").css({'border-color':'#ccc'});
 				$(".langToFromWrapper").addClass("backDir");
 				backDirect = true;
 			} else {
 				to = $("#langTo").text();
 				from = $("#langFrom").text();
-				//$(".langSwitch").css({'background-position':'0 -24px'});
-				$("#langTo").css({'border-color':'brown'});
-				$("#langFrom").css({'border-color':'#ccc'});
 				$(".langToFromWrapper").removeClass("backDir");
 				backDirect = false;
 			}			
@@ -324,29 +305,31 @@ $(document).ready( function(){
 
 												
 												
-												if(userWord != translatedWord) {
-
-									//add if width != 790px;
-
-													$("div.cardEditor").animate({
-															width: '790px'
-														},
-														'normal',
-														'linear',
-														function(){
-															$(".rightSug").slideDown();
-															//$(".rightSug").fadeIn('fast');
-														}
-													);
-													$(".hideArrow").css({'background-position':'0 0'});
 												
+												if(userWord != translatedWord) {
+		
+													if( cardTable.css('width') !== "790px" ) {
+														cardTable.animate({
+																width: '790px'
+															},
+															'linear',
+															function(){
+																$(".rightSug").fadeIn('fast');
+															}
+														);
+														hideArrow.show().removeClass("hideArrowR").addClass("hideArrowL");
+													}
 												} else {
 													$(".rightSug").hide();
-														$("div.cardEditor").animate(
-															{
-																width: '550px'
-															}
-														)
+														if( cardTable.css('width') === "790px" ) {
+															
+															cardTable.animate(
+																{
+																	width: '550px'
+																}
+															);														
+														}
+														hideArrow.hide().removeClass("hideArrowL hideArrowR");
 												}
 												
 											} else {
@@ -457,25 +440,42 @@ $(document).ready( function(){
 		$(".closeCardTable").click(function(){
 			$(".cardEditor").fadeOut();
 		});		
-		
+//to del
+		/*
 		$(".threeWaysOne").click(function(){
 			$(".cardEditor").fadeIn();
 		});
-		
-		$(".hideArrow").click(function(){
-			$(".rightSug").fadeOut( function() {
-				$("div.cardEditor").animate(
-					{
-						width: '550px'
-					}
-				);
-				$(".hideArrow").css({'background-position':'0 -24px'});
-														
-  		}); 
+		*/
 
-												
+		//arrow class 
+		$(".hideArrow").click(function(){	
+				var thisArrow = $(this);
+				if ( thisArrow.hasClass("hideArrowL") ) {
+						
+					$(".rightSug").fadeOut( function() {
+						cardTable.animate(
+							{
+								width: '550px'
+							},
+							function(){
+								thisArrow.removeClass("hideArrowL").addClass("hideArrowR");	
+							}
+						);																							
+  				});
+  															
+				}	else {				
+					cardTable.animate(
+						{
+							width: '790px'
+						},
+						function(){
+							$(".rightSug").fadeIn();
+							thisArrow.removeClass("hideArrowR").addClass("hideArrowL");
+						}
+					);																
+				}											  		 											
 		});
-		
+				
 		$(".moveCardTable").hover( function(){
 			$(this).css({'background-position':'0 -32px'});
 			},function(){
@@ -495,13 +495,8 @@ $(document).ready( function(){
 		);
 		
 
-		
-		
-		/*
-		$(".sideToEdit").hover(function(){
-			$(this).css({"text-decoration
-		},	
-		*/
+// http://vremenno.net/examples/x-button-on-text-input2/
+// http://www.simplecoding.org/javascript-poleznye-sobytiya.html
 	
 });
 
@@ -567,6 +562,7 @@ $(document).ready( function(){
       }
     })(jQuery);    			
 		
+
 
 
 

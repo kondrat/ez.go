@@ -80,7 +80,8 @@
 				  <?php echo $session->flash();?>
 			  </div>
 		
-		    <div class="span-24 contentWrapper" style="">	        
+		    <div class="span-24 contentWrapper" style="">
+		    			<?php echo $this->element('noscript/noscript');?>	        
 							<?php echo $content_for_layout; ?>		        
 		    </div>
 	

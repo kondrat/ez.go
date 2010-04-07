@@ -15,9 +15,22 @@
 
 <div class="span-14">Theme: No theme.<?php echo $html->link(__('Create new',true),array("#"));?></div>
 
-<?php echo $this->element('card/card');?>
+<div class="span-14" style="font-weight:bold;font-size:larger;font-style:italic;">
+	<?php __('Copy and paste text you are working on');?>
+</div>
 
-<?php //echo $this->element('rightSug/right_sug');?>
+<div class="span-14">
+	<?php echo $form->textarea('text',array('class'=>'textUpload'));?>
+</div>
+<div class="span-14" style="font-weight:bold;font-size:larger;font-style:italic;">
+	<?php __('Or upload file');?>
+</div>
+<div class="span-14">
+	<?php echo $form->input('file',array('type'=>'file','class'=>'fileTextUpload'));?>
+</div>
+
+
+<?php echo $this->element('card/card',array('visible'=>false) );?>
 
 
 
@@ -51,5 +64,4 @@
 		</tbody>
 	</table>
 	-->
-
 </div>

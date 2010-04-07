@@ -1,4 +1,11 @@
-<div class="span-14 cardEditor" style="">
+<?php 
+	$classHide = null;
+	if( isset($visible) && $visible == false ) {
+		$classHide = 'hide';
+	} 
+?>
+
+<div class="span-14 cardEditor <?php echo $classHide;?>" style="">
 	<div class="span-14">
 		<div class="span-14 plusMenuWrapper" style="">
 		
@@ -131,9 +138,10 @@
 			<div class="fancy_bg fancy_bg_sw"></div>
 			<div class="fancy_bg fancy_bg_w"></div>
 			<div class="fancy_bg fancy_bg_nw"></div>
-		</div>			
+		</div>
+					
 		<div class="closeCardTable" style=""></div>
-		<div class="hideArrow" style=""></div>
+		<div class="hideArrow hide" style=""></div>
 		<div class="moveCardTable" style=""></div>
 		
 </div>									
