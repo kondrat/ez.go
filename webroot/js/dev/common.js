@@ -495,6 +495,44 @@ $(document).ready( function(){
 		);
 		
 
+
+		//page upload text
+		
+		$(".enlarge").click(function(){
+			
+			$(".textUpload").animate(
+				{
+					height: "+=150px"
+				},
+				function(){
+					$(".decrease").fadeIn();
+				}
+			);
+		});
+		
+		$(".decrease").click(function(){
+			if( $(".textUpload").height() >= 300 ){
+				$(".textUpload").animate(
+					{
+						height: "-=150px"
+					},
+					function(){
+						if($(this).height() <=150 ) {
+							$(".decrease").fadeOut();	
+						}
+					}
+				);
+			} 
+		});
+
+		var fileTextUploadWrapper =  $(".fileTextUploadWrapper");
+		$(".fileTextUploadMenu").toggle(function(){
+				fileTextUploadWrapper.slideDown('fast');
+			},
+			function(){
+				fileTextUploadWrapper.slideUp('fast');
+		});
+
 // http://vremenno.net/examples/x-button-on-text-input2/
 // http://www.simplecoding.org/javascript-poleznye-sobytiya.html
 	
@@ -541,15 +579,12 @@ $(document).ready( function(){
     			
 		$(function() {
 			$(".cardEditor").draggable( { handle:"div.moveCardTable",zIndex: 2700,addClasses: false } );
-			//$("div,.moveCardTable").disableSelection();
 		});
 
-    //adding cursor pointer to all clicables elements;
-    
+    //adding cursor pointer to all clicables elements;   
     (function($){
       $.event.special.click = {
-        setup: function() {
-        	
+        setup: function() {       	
         	if( !$(this).hasClass("cardEditor") ) {
           	$(this).css('cursor','pointer');
           }

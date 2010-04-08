@@ -10,25 +10,34 @@
 <!--<div class="span-24 tempTest" style="text-align:center;margin-top:1em;font-size:larger;color:green;">test</div>-->
 
 <?php echo $this->element('leftSideBar/leftSideBar');?>		    
-		    
-<?php echo $this->element('threewaysMenu/threeways_menu');?>
-
-<div class="span-14">Theme: No theme.<?php echo $html->link(__('Create new',true),array("#"));?></div>
-
-<div class="span-14" style="font-weight:bold;font-size:larger;font-style:italic;">
-	<?php __('Copy and paste text you are working on');?>
+<div class="span-14">		    
+	<?php echo $this->element('threewaysMenu/threeways_menu');?>
+	
+	<div class="span-14">Theme: No theme.<?php echo $html->link(__('Create new',true),array("#"));?></div>
+	
+	<div class="span-8" style="font-weight:bold;font-size:larger;font-style:italic;">
+		<?php __('Copy and paste text you are working on');?>
+	</div>
+	<div class="span-6 fileTextUploadMenu last" style="font-weight:bold;font-size:larger;font-style:italic;">
+		<?php __('Or upload text file');?>
+	</div>
+	<div class="span-14 fileTextUploadWrapper hide">
+		<?php echo $form->input('file',array('type'=>'file','class'=>'fileTextUpload'));?>
+	</div>
+	<div class="span-14">
+		<?php echo $form->textarea('text',array('class'=>'textUpload'));?>
+	</div>
+	<div class="span-14">
+		<?php echo $form->button(__('Upload text',true));?>
+		<div class="enlarge" style="float:right;font-size:8pt;">
+			<?php __('enlarge');?>
+		</div>
+		
+		<div class="decrease hide" style="float:right;font-size:8pt;margin-right:1em;">
+			<?php __('decrease');?>
+		</div>		
+	</div>
 </div>
-
-<div class="span-14">
-	<?php echo $form->textarea('text',array('class'=>'textUpload'));?>
-</div>
-<div class="span-14" style="font-weight:bold;font-size:larger;font-style:italic;">
-	<?php __('Or upload file');?>
-</div>
-<div class="span-14">
-	<?php echo $form->input('file',array('type'=>'file','class'=>'fileTextUpload'));?>
-</div>
-
 
 <?php echo $this->element('card/card',array('visible'=>false) );?>
 
