@@ -246,7 +246,7 @@ div.activeCardSide #backButton a:hover {
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px; 
 	padding:3px;
-	width:510px; 
+	width:590px; 
 }
 .contextTran, .definTran, .synonimTran {
   font-size:small;
@@ -349,7 +349,7 @@ a.sideToEdit:hover {
   padding:0 0.4em;
 }
 #langTo{
-	  border:1px solid #ddd;
+	  border:1px solid BurlyWood;
 }
 .langToFromWrapper{
 	float:right;
@@ -367,7 +367,7 @@ div.ttTest{
 		background-position: 0 -48px;
 }
 .backDir #langFrom{
-		border:1px solid #ddd;
+		border:1px solid BurlyWood;
 }
 .backDir #langTo{
 		border:1px solid #ccc;

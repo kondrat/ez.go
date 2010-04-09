@@ -5,11 +5,11 @@
 	} 
 ?>
 
-<div class="span-14 cardEditor <?php echo $classHide;?>" style="">
-	<div class="span-14">
-		<div class="span-14 plusMenuWrapper" style="">
+<div class="span-16 cardEditor <?php echo $classHide;?>" style="-moz-border-radius:15px;-moz-box-shadow:0 0 7px gray;">
+	<div class="span-16">
+		<div class="span-16 plusMenuWrapper" style="">
 		
-			<div class="span-14" style="text-align:center;padding-bottom:.5em;">
+			<div class="span-16" style="text-align:center;padding-bottom:.5em;">
 				<div class="plusMenuFront plusMenuWord" title="<?php __('Enter word or short phrase');?>">
 					+ <?php __('word');?>
 				</div>	
@@ -35,7 +35,7 @@
 			
 		</div>
 			
-		<div class="span-14 panelTopWrapper" style="">
+		<div class="span-16 panelTopWrapper" style="">
 		    <div class="panelTop" style="">
 			    
 				    <?php echo $form->create('Card');?>
@@ -81,9 +81,9 @@
 	
 	
 	
-		<div class="span-14">
+		<div class="span-16">
 			
-			<div id="tableFront" class="span-7" style="position:relative;">
+			<div id="tableFront" class="span-8" style="position:relative;">
 					<table class="tableCard" style="">
 						<tbody>
 							<tr>
@@ -98,7 +98,7 @@
 					<div id="frontButton" class="frontBack" style=""><?php echo $html->link(__('Side A',true),array('#'),array('onclick'=>'return false' ) );?></div>
 			</div>
 			
-			<div id="tableBack" class="span-7 last" style="position:relative;">				
+			<div id="tableBack" class="span-8 last" style="position:relative;">				
 					<table class="tableCard" style="">
 						<tbody>
 							<tr>
@@ -118,7 +118,7 @@
 			
 		</div>
 
-		<div class="span-14 panelBottomWrapper" style="">
+		<div class="span-10 push-3 panelBottomWrapper" style="">
 		    <div class="panelBottom" style="">
 		      <div id="playSound" class="sound"></div>
 		      <div class="wordToSound"><?php __('No sound');?></div>
@@ -128,7 +128,7 @@
 		</div>
 	</div>
 		<?php echo $this->element('rightSug/right_sug');?>
-		
+		<!--
 		<div class="test">
 			<div class="fancy_bg fancy_bg_n"></div>
 			<div class="fancy_bg fancy_bg_ne"></div>
@@ -139,7 +139,7 @@
 			<div class="fancy_bg fancy_bg_w"></div>
 			<div class="fancy_bg fancy_bg_nw"></div>
 		</div>
-					
+		-->		
 		<div class="closeCardTable" style=""></div>
 		<div class="hideArrow hide" style=""></div>
 		<div class="moveCardTable" style=""></div>
