@@ -140,7 +140,7 @@
 #frontButton{
 	position:absolute;
 	right:25px;
-	top:7px;
+	top:-3px;
 }
 #frontButton a{
 	color: DimGray;
@@ -172,7 +172,7 @@
 #backButton{
 	left:25px;
 	position:absolute;
-	top:7px;
+	top:-3px;
 }
 #backButton a{
 	color: DimGray;
@@ -292,13 +292,13 @@ div.activeCardSide #backButton a:hover {
 }
 
 .plusMenuFront{
-	color:lightSalmon;
+	color:#FF9900;/*lightSalmon;*/
 	font-weight:bold;
   float:left;
   margin:0 1em;
 }
 .plusMenuBack{
-	color:lightSalmon;
+	color:#FF9900;/*lightSalmon;*/
 	font-weight:bold;
   float:left;
   margin:0 1em;
@@ -342,7 +342,7 @@ a.sideToEdit:hover {
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px; 
   background-color:#EEEEEE;
-  border:1px solid #CCCCCC;
+  border:1px solid CadetBlue;
   color:CadetBlue;
   font-size:9pt;
   margin:0;
@@ -350,6 +350,7 @@ a.sideToEdit:hover {
 }
 #langTo{
 	  border:1px solid BurlyWood;
+	  color: BurlyWood;
 }
 .langToFromWrapper{
 	float:right;
@@ -368,9 +369,11 @@ div.ttTest{
 }
 .backDir #langFrom{
 		border:1px solid BurlyWood;
+		color:BurlyWood;
 }
 .backDir #langTo{
-		border:1px solid #ccc;
+		border:1px solid CadetBlue;
+		color:CadetBlue;
 }
 .langToFrom{
   color:gray;

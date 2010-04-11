@@ -27,6 +27,7 @@
 															//'jquery/jquery.ui.tabs.min',
 															'jquery/jquery.ui.mouse.min.js',
 															'jquery/jquery.ui.draggable.min',
+															'dev/func',
 															'dev/common',
 															'dev/reg',
 															'localization/messages_ru',
@@ -50,7 +51,7 @@
 							</div>
 						</div>
 						<div class="span-8 last" style="position:relative;" >
-							<div class="topSearch" style="margin-top:-10px;">
+							<div class="topSearch" style="margin-top:0px;">
 									<div class="signUpNow">
 										<?php if(!$this->Session->read('Auth.User.id') ): ?>
 											<?php echo $html->link(__('SignUp now',true), array('controller'=>'users','action'=>'reg') );?>

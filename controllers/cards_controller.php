@@ -12,14 +12,14 @@ class CardsController extends AppController {
   			//default title
   			$this->set('title_for_layout', __('Cards',true) );
   			//allowed actions
-        $this->Auth->allow('index','view','getTransl','add');
+        $this->Auth->allow('index','view','getTransl','saveCard','add');
 
         parent::beforeFilter(); 
         $this->Auth->autoRedirect = false;
         
         // swiching off Security component for ajax call
         
-				if( $this->RequestHandler->isAjax() && $this->action == 'getTransl' ) { 
+				if( $this->RequestHandler->isAjax() && $this->action == 'getTransl' || $this->action == 'saveCard' ) { 
 		   			$this->Security->validatePost = false;
 		   	}
 		   	
@@ -135,6 +135,35 @@ class CardsController extends AppController {
 
 				}				
 	
+					$this->header('Content-Type: application/json');				
+					return ($contents);
+					
+								
+			} else {				
+				$this->Security->blackHoleCallback = 'gotov';		
+			}
+			
+			
+					
+	}
+
+		//----------------------------------------------------------------
+			
+	function saveCard() {
+			Configure::write('debug', 0);
+			$this->autoLayout = false;
+			$this->autoRender = false;
+			
+			if ( $this->RequestHandler->isAjax() ){
+
+				if (strpos(env('HTTP_REFERER'), trim(env('HTTP_HOST'), '/')) === false) {
+					$this->Security->blackHoleCallback = 'gotov';
+				}
+				//main staff
+				
+
+	        $contents = 'good for now';
+	        
 					$this->header('Content-Type: application/json');				
 					return ($contents);
 					

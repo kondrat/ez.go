@@ -118,11 +118,11 @@
 			
 		</div>
 
-		<div class="span-10 push-3 panelBottomWrapper" style="">
+		<div class="span-16 panelBottomWrapper" style="">
 		    <div class="panelBottom" style="">
 		      <div id="playSound" class="sound"></div>
 		      <div class="wordToSound"><?php __('No sound');?></div>
-			    <?php echo $form->button(__('Save Card',true) );?>
+			    <?php echo $form->button(__('Save Card',true),array('id'=>'saveCardMain') );?>
 			    <div id='branding' style="position:absolute;top:13px; right:0;margin-right:1em;"> </div>
 			  </div>
 		</div>
