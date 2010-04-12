@@ -3,6 +3,38 @@ class TextsController extends AppController {
 
 	var $name = 'Texts';
 
+
+//--------------------------------------------------------------------
+//--------------------------------------------------------------------	
+  function beforeFilter() {
+
+  			//default title
+  			$this->set('title_for_layout', __('Text upload',true) );
+  			//allowed actions
+        $this->Auth->allow('add');
+
+        parent::beforeFilter(); 
+        $this->Auth->autoRedirect = false;
+        
+        // swiching off Security component for ajax call
+        
+        //to be rebuild
+				if( $this->RequestHandler->isAjax() && $this->action == 'getTransl' || $this->action == 'saveCard' ) { 
+		   			$this->Security->validatePost = false;
+		   	}
+		   	
+		   	
+
+    }
+
+//--------------------------------------------------------------------
+//--------------------------------------------------------------------
+
+
+
+
+
+
 	function index() {
 		$this->Text->recursive = 0;
 		$this->set('texts', $this->paginate());

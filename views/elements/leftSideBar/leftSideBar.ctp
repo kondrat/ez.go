@@ -3,6 +3,11 @@
 		<?php echo __('Date',true).': '.Date('d.m.Y');?>
 	</div>
 	
+	<ul class="newCards">
+	</ul>
+	
+	
+	
 </div>
 
 <!-- 

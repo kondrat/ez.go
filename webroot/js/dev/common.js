@@ -195,7 +195,7 @@ $(document).ready( function(){
 
 	//word submiting					
 		$("#submitTranslId").click( function() {
-			var userWord;
+			var Userword;
 			userWord = $.trim($("#CardExt").attr('value'));
 
 			$(".inputSring").text(userWord);
@@ -539,10 +539,15 @@ $(document).ready( function(){
       $.ajax({
         type: "POST",
         url: path+"/cards/saveCard",
-        dataType: "JSON",
-        data: 'test',
+        dataType: "json",
+        data: {"data[Card][word]": $('#mainWord').text(), "data[Card][tr]" : $('#translation').text(),"data[Card][cont]" : $('#contextTran span:last').text(),"data[Card][def]" : $('#definTran span:last').text(),"data[Card][syn]" : $('#synonimTran span:last').text() },
         success: function(data) {
-          $('.tempTest').html(data);
+
+        	if ( data.stat === 1 ) {        		
+          	$('.newCards').prepend('<li></li>').find('li:first').text(data.word).css({'color':'red'}).next().css({'color':'blue'});
+          } else {
+          	
+          }
         },
         error: function(){
             $('.tempTest').html('Problem with the server. Try again later.');

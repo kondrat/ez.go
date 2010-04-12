@@ -303,6 +303,9 @@ div.activeCardSide #backButton a:hover {
   float:left;
   margin:0 1em;
 }
+.plusMenuFront:hover, .plusMenuBack:hover{
+	text-decoration:underline;
+}
 .plusMenuActive{
 	color:black;
 }
@@ -610,4 +613,12 @@ div.fancy_bg_nw {
 .textUpload{
 	width:550px;
 	height:150px;
+}
+
+/* left Side Bar */
+.wordCard{
+	
+}
+.newCards{
+	color:green;
 }

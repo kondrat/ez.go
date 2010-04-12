@@ -18,11 +18,11 @@ class CardsController extends AppController {
         $this->Auth->autoRedirect = false;
         
         // swiching off Security component for ajax call
-        
+
 				if( $this->RequestHandler->isAjax() && $this->action == 'getTransl' || $this->action == 'saveCard' ) { 
 		   			$this->Security->validatePost = false;
 		   	}
-		   	
+
 		   	
 
     }
@@ -160,10 +160,24 @@ class CardsController extends AppController {
 					$this->Security->blackHoleCallback = 'gotov';
 				}
 				//main staff
+
+					//$this->data["Card"]["user_id"] = $this->Auth->user('id');
+				
+					if ( isset($this->Auth) && $this->Auth->user('id') !== null ) {
+						$this->data["Card"]["user_id"] = $this->Auth->user('id');
+					}
+									
 				
 
-	        $contents = 'good for now';
-	        
+					if( $this->Card->save($this->data) ) {
+						$contents['stat'] = 1;
+						$contents['word'] = $this->data["Card"]["word"];
+					} else {
+						$contents['stat'] = 0;
+					}
+
+
+	        $contents = json_encode($contents);
 					$this->header('Content-Type: application/json');				
 					return ($contents);
 					

@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* App schema generated on: 2010-04-08 22:04:13 : 1270749733*/
+/* App schema generated on: 2010-04-12 12:04:59 : 1271062019*/
 class AppSchema extends CakeSchema {
 	var $name = 'App';
 
@@ -13,10 +13,17 @@ class AppSchema extends CakeSchema {
 
 	var $cards = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
-		'user_id' => array('type' => 'integer', 'null' => true, 'default' => NULL),
+		'user_id' => array('type' => 'integer', 'null' => false, 'default' => NULL),
+		'theme_id' => array('type' => 'integer', 'null' => false, 'default' => NULL),
+		'text_id' => array('type' => 'integer', 'null' => true, 'default' => NULL),
+		'word' => array('type' => 'string', 'null' => false, 'default' => NULL),
+		'tr' => array('type' => 'string', 'null' => false, 'default' => NULL),
+		'def' => array('type' => 'string', 'null' => false, 'default' => NULL),
+		'cont' => array('type' => 'string', 'null' => false, 'default' => NULL),
+		'syn' => array('type' => 'string', 'null' => false, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'id' => array('column' => 'id', 'unique' => 0)),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
 	var $texts = array(
@@ -25,7 +32,7 @@ class AppSchema extends CakeSchema {
 		'body' => array('type' => 'text', 'null' => false, 'default' => NULL),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
-		'indexes' => array(),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
 	var $users = array(
