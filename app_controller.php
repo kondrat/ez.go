@@ -62,9 +62,12 @@ class AppController extends Controller {
 	function beforeRender() {
 		if( isset($this->params['prefix']) && $this->params['prefix'] == 'admin' ) {	
 			$this->layout = 'admin';
-		}		
-		
+		}				
 	}
+//--------------------------------------------------------------------
+
+
+
 
 }
 ?>

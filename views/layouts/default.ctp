@@ -77,7 +77,7 @@
 
 		
 	<div class="container showgrid.">    
-			  <div class="fl" style="border-bottom:1px solid #ddd;">
+			  <div class="fl" style="">
 				  <?php echo $session->flash();?>
 			  </div>
 		
@@ -93,7 +93,7 @@
 					
 			    <div class="span-24">
 			    	<div class="footerNote">
-		      	 www.englishCARDS.ru &copy;<?php echo date('Y');?>
+		      	 <?php echo $html->link('www.englishCARDS.ru',array('controller'=>'cards','action'=>'index'));?> &copy;<?php echo date('Y');?>
 		      	</div>
 		   		</div>
 		   		

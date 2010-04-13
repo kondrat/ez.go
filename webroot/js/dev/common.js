@@ -14,7 +14,8 @@ $(document).ready( function(){
 		//cleaning after reload
 	  $("#CardExt").val('');
 	  
-	  
+
+		//flash message 	  
 		var $alert = $('#flashMessage');
 		if($alert.length) {
 				var alerttimer = window.setTimeout(function () {
@@ -195,7 +196,8 @@ $(document).ready( function(){
 
 	//word submiting					
 		$("#submitTranslId").click( function() {
-			var Userword;
+
+			var userWord;
 			userWord = $.trim($("#CardExt").attr('value'));
 
 			$(".inputSring").text(userWord);
@@ -535,16 +537,48 @@ $(document).ready( function(){
 
 
     //card Ajax save;
+
+    
+    
     $("#saveCardMain").click(function(){
+    	
+	    var cardObj = {	"data[Card][word]": $('#mainWord').text(),
+	    								"data[Card][tr]" : $('#translation').text(),
+	    								"data[Card][cont]" : $('#contextTran span:last').text(),
+	    								"data[Card][def]" : $('#definTran span:last').text(),
+	    								"data[Card][syn]" : $('#synonimTran span:last').text() 
+	    							};
+    							
       $.ajax({
         type: "POST",
         url: path+"/cards/saveCard",
         dataType: "json",
-        data: {"data[Card][word]": $('#mainWord').text(), "data[Card][tr]" : $('#translation').text(),"data[Card][cont]" : $('#contextTran span:last').text(),"data[Card][def]" : $('#definTran span:last').text(),"data[Card][syn]" : $('#synonimTran span:last').text() },
+        data: cardObj,
         success: function(data) {
 
         	if ( data.stat === 1 ) {        		
-          	$('.newCards').prepend('<li></li>').find('li:first').text(data.word).css({'color':'red'}).next().css({'color':'blue'});
+          	$('.newCards').prepend('<li></li>').find('li:first').text(data.word).data(cardObj).css({'color':'red'}).next().css({'color':'blue'});
+          	
+          	$('#mainWord,#translation,#contextTran span:last,#definTran span:last,#synonimTran span:last').empty();
+          	$('#CardExt').val('');
+          	
+			 			$(".additionalRes").hide();
+						$(".dicTerms ul").empty().addClass("hide").removeClass("ter");
+						$("ul.rSugTabs li").removeClass("dicSwitcherM dicActive"); 
+						
+						$(".rightSug").hide();
+							if( cardTable.css('width') === "870px" ) {
+								
+								cardTable.animate(
+									{
+										width: '630px'
+									}
+								);														
+							}
+						hideArrow.hide().removeClass("hideArrowL hideArrowR");	
+																			        	
+          	flash_message('saved','ok');
+          	
           } else {
           	
           }
@@ -556,7 +590,15 @@ $(document).ready( function(){
     });
 
 
-
+		$(".newCards li").live('mouseover mouseout',
+			function(event){
+			  if (event.type == 'mouseover') {
+    			//alert($(this).data().toSource());
+			  } else {
+			    //alert('stop');
+			  }			
+			}
+		);
 
 
 

@@ -7,7 +7,7 @@
   		}
 		</script>
 
-<div class="span-24 tempTest" style="text-align:center;margin-top:1em;font-size:larger;color:green;">test</div>
+<!--<div class="span-24 tempTest" style="text-align:center;margin-top:1em;font-size:larger;color:green;">test</div>-->
 
 <?php echo $this->element('leftSideBar/leftSideBar');?>		    
 		    

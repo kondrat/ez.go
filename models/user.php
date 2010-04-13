@@ -74,6 +74,13 @@ class User extends AppModel {
 						  );
 
 //--------------------------------------------------------------------
+	var $belongsTo = array(
+        'Group' => array(
+            'className'    => 'Group',
+            'foreignKey'    => 'group_id'
+        )
+  );  
+
 /*
 	var $hasAndBelongsToMany = array(
 		'Project' => array(

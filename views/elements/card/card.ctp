@@ -52,7 +52,7 @@
 					    <?php echo $form->input('ext',array('label'=>false , "tabindex"=>"1") );?>
 		
 					    <div style="float:right;">
-						    <?php echo $form->button(__('Insert',true),array('id'=>'submitWrodId','class'=>'submitWord',"tabindex"=>"3","onclick"=>"return false;") );?>
+						    <?php echo $form->button(__('Insert in card',true),array('id'=>'submitWrodId','class'=>'submitWord',"tabindex"=>"3","onclick"=>"return false;") );?>
 					    </div>
 					    <div style="float:right;margin-right: 1em;">
 						    <?php //echo $html->link(__('Clean up',true),array() );?>
@@ -90,6 +90,10 @@
 								<td class="td activeTside" style="">
 									<div class="frontSideWrapper">
 										<div id="mainWord" class="mainWord inputSring"></div>
+									</div>
+									<div class="tableTheme">
+										<span class="themePrefix"><?php __('Theme');?>: </span>
+										<spna class="themeName">Theme 1</span>
 									</div>
 								</td>
 							</tr>
