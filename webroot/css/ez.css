@@ -33,7 +33,7 @@
 	left:12em;
 	padding:1em;
 	position:absolute;
-	top:7em;	
+	top:8em;	
 	border:1px solid gray;
 }
 
@@ -147,12 +147,28 @@
 	top:14px;
 	width:270px;
 }
-.themePrefix{
+.themePrefixCard{
 	font-size:8pt;
 	font-style:italic;
 }
-.themeName{
+.themeNameCard{
 	font-size:10pt;	
+}
+/*theme block*/
+#themeEdit{
+	
+}
+.themePerfix{
+}
+.themeName{
+	background-color:lightGoldenRodYellow;
+	border:1px dashed gray;
+	padding:0.2em 0.5em;
+}
+.saveTheme{
+	left:40px;
+	position:absolute;
+	top:-8px;	
 }
 
 .activeCardSide table.tableCard td.td {

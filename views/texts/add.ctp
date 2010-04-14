@@ -13,7 +13,9 @@
 <div class="span-14">		    
 	<?php echo $this->element('threewaysMenu/threeways_menu');?>
 	
-	<div class="span-14">Theme: No theme.<?php echo $html->link(__('Create new',true),array("#"));?></div>
+	<?php echo $this->element('theme/theme');?>
+
+
 	
 	<div class="span-8" style="font-weight:bold;font-size:larger;font-style:italic;">
 		<?php __('Copy and paste text you are working on');?>

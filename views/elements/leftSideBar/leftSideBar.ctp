@@ -4,6 +4,11 @@
 	</div>
 	
 	<ul class="newCards">
+		<?php if ( isset($lastCards) && $lastCards != array() ): ?>
+			<?php foreach( $lastCards as $lastCard):?>
+				<?php echo '<li>'.$lastCard['Card']['word'].'</li>';?>
+			<?php endforeach ?>
+		<?php endif ?>
 	</ul>
 	
 	

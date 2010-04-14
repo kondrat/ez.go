@@ -37,11 +37,10 @@ class UsersController extends AppController {
 
 		$this->set('title_for_layout', __('SignUp',true) );
 		
-		if($this->Auth->user('id')) {
+		if($this->Auth->user('id') && $this->Auth->user('group_id') != 2 ) {
 			$this->redirect('/',null,true);
 		}
 		
-		$this->set('title_for_layout', __('SignUp',true) );
 		
 		if ( !empty($this->data) ) {
 						
@@ -51,7 +50,7 @@ class UsersController extends AppController {
 				$a = $this->User->read();
 				$this->Auth->login($a);
 				$this->Session->setFlash(__('New user\'s accout has been created',true), 'default', array('class' => 'flok'));
-				$this->redirect(array('controller' => 'pages','action'=>'home'),null,true);
+				$this->redirect(array('controller' => 'cards','action'=>'index'),null,true);
       } else {
 				$this->data['User']['captcha'] = null;
 				$this->Session->setFlash(__('New user\'s accout hasn\'t been created',true) , 'default', array('class' => 'fler') );
@@ -128,6 +127,7 @@ class UsersController extends AppController {
 		
 		$this->set('title_for_layout', __('Login',true) );
 
+//add logic for group_id == 2 here
 		if( !empty($this->data) ) {
 
 			if( $this->Auth->login() ) {
@@ -138,18 +138,26 @@ class UsersController extends AppController {
 			}
 			
 		} else {
-			if( !is_null( $this->Session->read('Auth.User.username') ) ){
+
+			if( !is_null( $this->Session->read('Auth.User.username') ) && $this->Session->read('Auth.User.group_id') != 2 ){
 				$this->redirect( $this->Auth->redirect() );			
-			}
+			} 
 		}
 		
 	}
 
 //--------------------------------------------------------------------	
-    function logout() {    	    	
-    		$tempUserName = __('Good bay, ',true).$this->Session->read('Auth.User.username');   		
+    function logout() { 
+    		$guest =  false;   	    	
+    		$tempUserName = __('Good bay, ',true).$this->Session->read('Auth.User.username'); 
+    		if( $this->Session->read('Auth.User.group_id') == 2 ) {
+    			$guest =  true;
+    		}
+    			
         $this->Auth->logout();
-        $this->Session->setFlash( $tempUserName, 'default', array('class' => 'flok') );
+        if (!$guest) {
+        	$this->Session->setFlash( $tempUserName, 'default', array('class' => 'flok') );
+        }
         $this->redirect( '/',null,true);        
     }
 //--------------------------------------------------------------------	

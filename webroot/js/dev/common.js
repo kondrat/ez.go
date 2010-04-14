@@ -24,6 +24,7 @@ $(document).ready( function(){
 				$alert.animate({height: [$alert.css("line-height") || '52', 'swing']}, 400).click(function () {
 					window.clearTimeout(alerttimer);
 					$alert.animate({height: '0'}, 400);
+					$alert.css({'border':'none'});
 				});
 		}
 		
@@ -542,7 +543,9 @@ $(document).ready( function(){
     
     $("#saveCardMain").click(function(){
     	
-	    var cardObj = {	"data[Card][word]": $('#mainWord').text(),
+	    var cardObj = {
+	    								"data[Card][theme]": $('.themeNameCard').text(),
+	    								"data[Card][word]": $('#mainWord').text(),
 	    								"data[Card][tr]" : $('#translation').text(),
 	    								"data[Card][cont]" : $('#contextTran span:last').text(),
 	    								"data[Card][def]" : $('#definTran span:last').text(),
@@ -577,7 +580,7 @@ $(document).ready( function(){
 							}
 						hideArrow.hide().removeClass("hideArrowL hideArrowR");	
 																			        	
-          	flash_message('saved','ok');
+          	flash_message('saved','flok');
           	
           } else {
           	
@@ -602,7 +605,7 @@ $(document).ready( function(){
 
 
 
-
+	
 
 
 // http://vremenno.net/examples/x-button-on-text-input2/

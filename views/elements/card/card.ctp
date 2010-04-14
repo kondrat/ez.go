@@ -92,8 +92,8 @@
 										<div id="mainWord" class="mainWord inputSring"></div>
 									</div>
 									<div class="tableTheme">
-										<span class="themePrefix"><?php __('Theme');?>: </span>
-										<spna class="themeName">Theme 1</span>
+										<span class="themePrefixCard"><?php __('Theme');?>: </span>
+										<span class="themeNameCard">Theme 1</span>
 									</div>
 								</td>
 							</tr>

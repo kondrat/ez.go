@@ -79,7 +79,25 @@ class User extends AppModel {
             'className'    => 'Group',
             'foreignKey'    => 'group_id'
         )
-  );  
+  );
+  
+	var $hasMany = array(
+		'Theme' => array(
+			'className' => 'Theme',
+			'foreignKey' => 'user_id',
+			'dependent' => false
+		),
+		'Card' => array(
+			'className' => 'Card',
+			'foreignKey' => 'user_id',
+			'dependent' => false
+		),
+		'Text' => array(
+			'className' => 'Text',
+			'foreignKey' => 'user_id',
+			'dependent' => false
+		)
+	);  
 
 /*
 	var $hasAndBelongsToMany = array(
@@ -97,22 +115,6 @@ class User extends AppModel {
 			'finderQuery' => '',
 			'deleteQuery' => '',
 			'insertQuery' => ''
-		)
-	);
-	
-	var $hasMany = array(
-		'Hour' => array(
-			'className' => 'Hour',
-			'foreignKey' => 'user_id',
-			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
 		)
 	);
 */

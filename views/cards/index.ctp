@@ -13,11 +13,7 @@
 		    
 <?php echo $this->element('threewaysMenu/threeways_menu');?>
 
-<div class="span-14">
-	<span style="color:gray;font-size:8pt;font-style:italic;">theme:</span> Theme 1.&nbsp;
-	<?php echo $html->link(__('Edit',true),array("#"));?>&nbsp;
-	<?php echo $html->link(__('Create new',true),array("#"));?>
-</div>
+<?php echo $this->element('theme/theme');?>
 
 <?php echo $this->element('card/card');?>
 

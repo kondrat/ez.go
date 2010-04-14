@@ -29,6 +29,7 @@
 															'jquery/jquery.ui.draggable.min',
 															'dev/func',
 															'dev/common',
+															'dev/common2',
 															'dev/reg',
 															'localization/messages_ru',
 															//'sound/soundmanager2',
@@ -53,12 +54,12 @@
 						<div class="span-8 last" style="position:relative;" >
 							<div class="topSearch" style="margin-top:0px;">
 									<div class="signUpNow">
-										<?php if(!$this->Session->read('Auth.User.id') ): ?>
+										<?php if(!$this->Session->read('Auth.User.id')|| $this->Session->read('Auth.User.group_id') == 2 ): ?>
 											<?php echo $html->link(__('SignUp now',true), array('controller'=>'users','action'=>'reg') );?>
 										<?php endif ?>
 									</div>
 									<div class="signUpNow">
-										<?php if(!$this->Session->read('Auth.User.id') ): ?>
+										<?php if(!$this->Session->read('Auth.User.id')|| $this->Session->read('Auth.User.group_id') == 2 ): ?>
 											<?php echo $html->link(__('LogIn now',true), array('controller'=>'users','action'=>'login') );?>
 										<?php else: ?>
 											<?php echo $html->link(__('LogOut now',true), array('controller'=>'users','action'=>'logout') );?>

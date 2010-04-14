@@ -150,6 +150,11 @@ class CardsController extends AppController {
 		//----------------------------------------------------------------
 			
 	function saveCard() {
+		
+		$auth = false;
+		$newThemeId = null;
+		
+		//ajax preparation
 			Configure::write('debug', 0);
 			$this->autoLayout = false;
 			$this->autoRender = false;
@@ -161,11 +166,60 @@ class CardsController extends AppController {
 				}
 				//main staff
 
-					//$this->data["Card"]["user_id"] = $this->Auth->user('id');
-				
 					if ( isset($this->Auth) && $this->Auth->user('id') !== null ) {
+						$auth = true;
 						$this->data["Card"]["user_id"] = $this->Auth->user('id');
 					}
+					
+					//&& !$this->Cookie->read('guestKey')
+					
+					if( !$auth  ) {
+						
+						//no data about user in db. So we reg it in.
+						$key = 'guest_'.md5(uniqid(rand(), true));
+						$this->Cookie->write('guestKey',$key, false, '360 days');	
+						
+						//we reg the guest as a temp user
+						$this->data['User']['username'] = $key;
+						$this->data['User']['group_id'] = 2;
+						$this->data['User']['password'] = 1234;
+						$this->data['User']['auto_login'] = 1;
+						
+						if ( $this->Card->User->save($this->data, array('validate' => false) ) ) {
+								$a = $this->Card->User->read();
+								$this->Auth->login($a);
+								
+								$this->data['Theme']['theme'] = 'New theme';
+								$this->data['Theme']['user_id'] = $a['User']['id'];
+								if( $this->Card->Theme->save($this->data) ) {
+									$newThemeId = $this->Card->Theme->id;
+								}else{
+									//not ok
+								}
+								
+														
+						} else {
+							
+							Configure::write('debug', 2);
+							echo 'not saved';
+							exit();
+							
+							
+						}
+						$this->data["Card"]["user_id"] = $this->Auth->user('id');
+						$this->data["Card"]["theme_id"] = $newThemeId;
+					} 
+					/*
+					elseif ( !$auth && $this->Cookie->read('guestKey') ) {
+											
+						$this->data["Card"]["user_id"] = $this->Auth->user('id');				
+																		
+					}
+					*/
+				
+				
+				
+
 									
 				
 
@@ -196,10 +250,31 @@ class CardsController extends AppController {
 				}	
 //--------------------------------------------------------------------
 	function index() {
-		$this->Card->recursive = 0;
-		$this->set('cards', $this->paginate());
+		
+		$lastCards = array();
+		
+		if ( $this->Auth->user('id') ) {
+			$lastCards = $this->Card->find('all', array(
+					'conditions' => array('Card.user_id' => $this->Auth->user('id') ), //array of conditions
+					'fields' => array('Card.word'),
+					/*
+					'recursive' => 1, //int
+					
+					'order' => array('Model.created', 'Model.field3 DESC'), //string or array defining order
+					'group' => array('Model.field'), //fields to GROUP BY
+					'limit' => n, //int
+					'page' => n, //int
+					'offset'=>n, //int   
+					'callbacks' => false //other possible values are false, 'before', 'after'
+					*/
+				) 
+			);
+		}
+		
+		$this->set('lastCards', $lastCards);
+		
 	}
-
+//--------------------------------------------------------------------
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid card', true));
