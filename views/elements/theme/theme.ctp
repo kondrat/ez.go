@@ -1,8 +1,13 @@
 <div class="span-14" style="">
 	<div style="position:relative;">
-		
 		<span class= "themePerfix" style="color:gray;font-size:8pt;font-style:italic;">theme:</span> 
-		<span class= "themeName" style="">Theme 1</span>
+		<span class= "themeName" style="">
+			<?php if(isset($curTheme) && $curTheme != array()):?>
+				<?php echo $curTheme['0']['Theme']['theme'].' - test';?>
+			<?php else: ?>
+				Theme 1
+			<?php endif ?>
+		</span>
 		&nbsp;
 		<span class="editCreateTheme" >
 			<?php echo $html->link(__('Edit',true),array("#"),array('class'=>'editTheme','onclick'=>'return false') );?>&nbsp;

@@ -171,6 +171,13 @@
 	top:-8px;	
 }
 
+.currentTheme{
+	background-color:lightGoldenRodYellow;
+	border:1px dashed;
+	padding-left:.5em;
+}
+/*end of theme block*/
+
 .activeCardSide table.tableCard td.td {
 	border:1px solid black;
 	background-color:#fff;
