@@ -23,9 +23,7 @@ class CardsController extends AppController {
 		   			$this->Security->validatePost = false;
 		   	}
 
-		   	
-
-    }
+  }
 
 //--------------------------------------------------------------------
 //--------------------------------------------------------------------
@@ -155,6 +153,7 @@ class CardsController extends AppController {
 		$currentThemeId = array();
 		$newThemeId = null;
 		$authUserId = null;
+		$contents['theme'] = 0;
 		
 		//ajax preparation
 		Configure::write('debug', 0);
@@ -219,21 +218,27 @@ class CardsController extends AppController {
 							$this->data['User']['username'] = $key;
 							$this->data['User']['group_id'] = 2;
 							$this->data['User']['password'] = 1234;
-							$this->data['User']['auto_login'] = 1;
+							
 							
 							if ( $this->Card->User->save($this->data, array('validate' => false) ) ) {
 								
-									$a = $this->Card->User->read();
+									$a = $this->Card->User->read(array('id','username','password'));
+									//$a['User']['auto_login'] = 1;
+																	
 									$this->Auth->login($a);	
-									
+	
 									$this->data["Card"]["user_id"] = $a['User']['id'];
 															
 									$this->data['Theme']['theme'] = $this->data['Card']['theme'];
 									$this->data['Theme']['user_id'] = $a['User']['id'];
+									
 									//creating of the first theme
 									if( $this->Card->Theme->save($this->data) ) {									
 										$newThemeId = $this->Card->Theme->id;
-										$this->data["Card"]["theme_id"] = $newThemeId;										
+										$this->data["Card"]["theme_id"] = $newThemeId;
+										$contents['theme'] = 1;	
+										$contents['themeName'] = $this->data['Theme']['theme'];
+										$contents['themeId'] = $newThemeId;									
 									}else{
 										//report server problem
 									}	
@@ -293,7 +298,7 @@ class CardsController extends AppController {
 					'limit' => 1,
 					'contain' => array('Card' => array(
 																							'fields' => array('Card.word'),
-																							//'limit'=> 2
+																							'limit'=> 10
 																						)
 														)
 				)			

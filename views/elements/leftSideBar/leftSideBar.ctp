@@ -3,14 +3,18 @@
 		<?php echo __('Date',true).': '.Date('d.m.Y');?>
 	</div>
 
-	<?php if ( isset($curTheme) && $curTheme != array() ): ?>	
-		
-			<div class="currentTheme"><?php echo $curTheme['0']['Theme']['theme'];?></div>
+	<?php if ( isset($curTheme) && $curTheme != array() ): ?>			
+			<div style="font-size:smaller;border-bottom:1px dashed;font-style:italic;color:gray;">Theme: </div>
+			<div class="leftSideTheme" style=""><?php echo $curTheme['0']['Theme']['theme'];?></div>
 			<ul class="newCards">
 				<?php foreach( $curTheme['0']['Card'] as $lastCard):?>
 					<?php echo '<li>'.$lastCard['word'].'</li>';?>
 				<?php endforeach ?>						
 			</ul>
+	<?php else: ?>
+			<div style="font-size:smaller;border-bottom:1px dashed;font-style:italic;color:gray;">Theme: </div>
+			<div class="leftSideTheme" style=""></div>
+			<ul class="newCards"></ul>	
 	<?php endif ?>	
 	
 </div>

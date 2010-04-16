@@ -17,9 +17,13 @@
 		echo $html->css('ie');
 		echo $html->css('ez-ie');
 		echo '<![endif]-->';
-
-		echo $html->scriptBlock('var path = "'.Configure::read('path').'";' );
-		echo $html->script(array(	'jquery/jquery-1.4.2.min',
+		$userReg = ($this->Session->read('Auth.User.id'))? 1:0;
+		echo $html->scriptBlock(
+												'var path = "'.Configure::read('path').'";'."\n".'var userReg = '.$userReg.';' 
+													);
+		echo $html->script(array(	
+															'vars',
+															'jquery/jquery-1.4.2.min',
 															//'jquery/jquery.form',
 															//'jquery/jquery-ui-1.8.custom.min',
 															'jquery/jquery.ui.core.min',
@@ -65,6 +69,9 @@
 											<?php echo $html->link(__('LogOut now',true), array('controller'=>'users','action'=>'logout') );?>
 										<?php endif ?>
 									</div>	
+									<div style="color:gray;margin:.1em;position:absolute;top:50px;right:140px;background-color:lightgrey;padding:0 .5em;">
+										<?php echo $html->link(__('tempLogOut',true), array('controller'=>'users','action'=>'logout'),array('class'=>'tempLogOut') );?>
+									</div>
 							</div>
 						</div>
 					</div>

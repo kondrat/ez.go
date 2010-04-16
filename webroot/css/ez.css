@@ -154,6 +154,9 @@
 .themeNameCard{
 	font-size:10pt;	
 }
+.leftSideTheme{
+	font-weight:bold;
+}
 /*theme block*/
 #themeEdit{
 	
@@ -667,4 +670,14 @@ div.fancy_bg_nw {
 }
 .newCards{
 	color:green;
+	list-style:none;
+	margin-left:0;
+	text-align:center;
+}
+.newCards li{
+	background-color:#eee;
+	margin:.2em .5em;
+	border:1px solid gray;
+	overflow:hidden;
+	padding:0 0.5em;
 }

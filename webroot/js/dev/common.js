@@ -8,6 +8,7 @@ var song;
 var noSound;
 
 $(document).ready( function(){
+
 		
 		var cardTable = $("div.cardEditor");
 		var hideArrow = $(".hideArrow");
@@ -558,7 +559,9 @@ $(document).ready( function(){
         dataType: "json",
         data: cardObj,
         success: function(data) {
-
+        	
+					userReg = 1;
+					
         	if ( data.stat === 1 ) {        		
           	$('.newCards').prepend('<li></li>').find('li:first').text(data.word).data(cardObj).css({'color':'red'}).next().css({'color':'blue'});
           	
@@ -577,14 +580,20 @@ $(document).ready( function(){
 										width: '630px'
 									}
 								);														
-							}
+							}						
 						hideArrow.hide().removeClass("hideArrowL hideArrowR");	
-																			        	
+							
+						if (data.theme){
+							themeName.data('id',data.themeId);
+							themeName.data('theme',data.themeName);
+						}												        	
           	flash_message('saved','flok');
           	
           } else {
           	
           }
+          
+          
         },
         error: function(){
             $('.tempTest').html('Problem with the server. Try again later.');
