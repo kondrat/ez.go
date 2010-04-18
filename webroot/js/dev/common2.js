@@ -50,7 +50,7 @@ $(document).ready( function(){
 			//if user regged we update the theme;
 			if(userReg) {
 				var themeObj = {
-												"data[Theme][theme]": themeNameText,
+												//"data[Theme][theme]": themeNameText,
 												"data[Theme][id]": themeName.data('id'),
 											};
 	      $.ajax({

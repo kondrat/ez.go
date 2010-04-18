@@ -9,7 +9,10 @@ class ThemesController extends AppController {
   			//default title
   			$this->set('title_for_layout', __('Cards',true) );
   			//allowed actions
-        $this->Auth->allow('updateTheme');
+        $this->Auth->allow(
+                          'updateTheme',
+                          //'test'
+                          );
 
         parent::beforeFilter(); 
         $this->Auth->autoRedirect = false;
@@ -25,7 +28,26 @@ class ThemesController extends AppController {
 //--------------------------------------------------------------------
 //--------------------------------------------------------------------
 
-
+	function test(){
+			$ttM = $this->Theme->find('all',array(
+			                                        'conditions'=> array( 
+			                                                            //'Theme.current_theme MAX',
+			                                                            // 'theme' =>'MAX(theme)' 
+			                                                            //'Theme.id' => $this->Auth->user('id') 
+			                                                            ),
+			                                         'fields'=> array('id',
+			                                                          'theme',
+			                                                          'current_theme'
+			                                                          ),
+			                                         'order'=>array('Theme.current_theme DESC'),
+			                                         'contain'=>false
+			                                        )
+			                          );
+				  Configure::write('debug', 2);
+			  	$this->set('ttm',$ttM);
+				  //exit();	
+	}
+	
 //--------------------------------------------------------------------
 	//ajax staff
 		//----------------------------------------------------------------
@@ -42,13 +64,27 @@ class ThemesController extends AppController {
 						}		
 				
 				
-			//	if($this->Auth->user('id'))
+
 				
+
+									
+				
+			//	if($this->Auth->user('id'))
+				$this->data['Theme']['current_theme'] = time();
+				/*
+				  Configure::write('debug', 2);
+			  	debug($this->data);
+				  exit();
+				*/				
 				
 				if($this->Theme->save($this->data) ) {
 					$contents['stat'] = 1;
-					$contents['theme'] = $this->data["Theme"]["theme"];
+				//	$contents['theme'] = $this->data["Theme"]["theme"];
 				}	else {
+				
+				Configure::write('debug', 2);
+				exit();
+				
 					$contents['stat'] = 0;
 				}
 					
