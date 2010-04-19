@@ -2,6 +2,7 @@
 class ThemesController extends AppController {
 
 	var $name = 'Themes';
+	var $publicActions = array('updateTheme','selTheme' );
 //--------------------------------------------------------------------
 //--------------------------------------------------------------------	
   function beforeFilter() {
@@ -11,7 +12,8 @@ class ThemesController extends AppController {
   			//allowed actions
         $this->Auth->allow(
                           'updateTheme',
-                          //'test'
+                          'selTheme',
+                          'test'
                           );
 
         parent::beforeFilter(); 
@@ -19,7 +21,7 @@ class ThemesController extends AppController {
         
         // swiching off Security component for ajax call
 
-				if( $this->RequestHandler->isAjax() && $this->action == 'updateTheme' ) { 
+				if( $this->RequestHandler->isAjax() && in_array( $this->action, $this->publicActions) ) { 
 		   			$this->Security->validatePost = false;
 		   	}
 
@@ -57,36 +59,38 @@ class ThemesController extends AppController {
 		$this->autoLayout = false;
 		$this->autoRender = false;
 			
-			if ( $this->RequestHandler->isAjax() ){			
+			if ( $this->RequestHandler->isAjax() ){
+							
 						//our host only
 						if (strpos(env('HTTP_REFERER'), trim(env('HTTP_HOST'), '/')) === false) {
 							$this->Security->blackHoleCallback = 'gotov';
 						}		
 				
+				$auth = $this->Auth->user('id');				
 				
+				if($auth){
+					
+						$this->data['Theme']['current_theme'] = time();
+						$this->data['Theme']['user_id'] = $auth;
 
-				
-
-									
-				
-			//	if($this->Auth->user('id'))
-				$this->data['Theme']['current_theme'] = time();
-				/*
-				  Configure::write('debug', 2);
-			  	debug($this->data);
-				  exit();
-				*/				
-				
-				if($this->Theme->save($this->data) ) {
-					$contents['stat'] = 1;
-				//	$contents['theme'] = $this->data["Theme"]["theme"];
-				}	else {
-				
-				Configure::write('debug', 2);
-				exit();
-				
+						if($this->Theme->save($this->data) ) {
+							$contents['stat'] = 1;
+							$contents['theme'] = $this->data["Theme"]["theme"];
+							if( !isset($this->data['Theme']['id']) ){
+								$newThemeId = $this->Theme->id;
+								$contents['themeId'] = $newThemeId;
+							} else {
+								$contents['themeId'] = $this->data['Theme']['id'];
+							}
+						}	else {
+							$contents['stat'] = 0;
+						}					
+					
+				} else {
 					$contents['stat'] = 0;
 				}
+			
+
 					
 	      $contents = json_encode($contents);
 				$this->header('Content-Type: application/json');				
@@ -98,7 +102,68 @@ class ThemesController extends AppController {
 	}
 
 
+	function selTheme(){
+		//ajax preparation
+		Configure::write('debug', 0);
+		$this->autoLayout = false;
+		$this->autoRender = false;
+			
+			if ( $this->RequestHandler->isAjax() ){
+							
+						//our host only
+						if (strpos(env('HTTP_REFERER'), trim(env('HTTP_HOST'), '/')) === false) {
+							$this->Security->blackHoleCallback = 'gotov';
+						}		
+				
+				$auth = $this->Auth->user('id');				
+				
+				if($auth && $this->data['Theme']['id'] != null ){
+					
+						$this->data['Theme']['current_theme'] = time();
+						
 
+						if($this->Theme->save($this->data) ) {
+							$contents['stat'] = 1;
+							
+							$allThemeCards = $this->Theme->Card->find('all', array(
+									'conditions' => array('Card.theme_id' => $this->data['Theme']['id'], 'Card.user_id' => $auth),
+									'fields' => array('Card.id','Card.word'),
+									'order' => array('Card.id DESC'),
+									'contain' => false
+								)
+							);
+							
+							$contents['cards'] = $allThemeCards;
+							
+							
+						}	else {	
+							$contents['stat'] = 0;
+						}					
+
+						
+
+
+
+
+					
+				} else {
+					$contents['stat'] = 0;
+				}
+			
+
+					
+	      $contents = json_encode($contents);
+				$this->header('Content-Type: application/json');				
+				return ($contents);						
+							
+			} else {				
+				$this->Security->blackHoleCallback = 'gotov';		
+			}		
+	}
+	
+	
+	
+	
 				//blackhole redirection
 				//-----------------------------
 				function gotov() {	

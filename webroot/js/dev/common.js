@@ -543,9 +543,11 @@ $(document).ready( function(){
     
     
     $("#saveCardMain").click(function(){
+
     	
 	    var cardObj = {
-	    								"data[Card][theme]": $('.themeNameCard').text(),
+	    								"data[Theme][id]": themeName.data('id'),
+	    								"data[Theme][theme]": themeName.data('theme'),
 	    								"data[Card][word]": $('#mainWord').text(),
 	    								"data[Card][tr]" : $('#translation').text(),
 	    								"data[Card][cont]" : $('#contextTran span:last').text(),

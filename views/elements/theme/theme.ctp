@@ -3,7 +3,7 @@
 		<span class= "themePerfix" style="color:gray;font-size:8pt;font-style:italic;">theme:</span> 
 		<span class= "themeName" style="">
 			<?php if(isset($curTheme) && $curTheme != array()):?>
-			
+				<?php $selectedTheme = ($curTheme['0']['Theme']['theme'])?$curTheme['0']['Theme']['theme']:null;?>
 				<?php $currentThemeObj = $javascript->object(
 																	array(
 																			'theme'=> $curTheme['0']['Theme']['theme'],
@@ -32,6 +32,11 @@
 			<?php echo $form->input("themeEdit",array('label'=> false,'div'=> false,'class'=>'') );?>
 			<?php echo $form->button(__('Save',true),array('id'=>'saveThemeSave'));?>&nbsp;
 			<?php echo $form->button(__('Cancel',true),array('id'=>'saveThemeCancel') );?>
+		</div>
+		<div class="selTheme hide" style="">
+			<?php echo $form->input("themeSelect",array('options' => array($allThemes) ,'selected' => $curTheme['0']['Theme']['id'],'label'=> false,'div'=> false,'class'=>'') );?>
+			
+			<?php echo $form->button(__('Cancel',true),array('id'=>'selThemeCancel') );?>
 		</div>
 	</div>
 </div>

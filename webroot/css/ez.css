@@ -168,7 +168,7 @@
 	border:1px dashed gray;
 	padding:0.2em 0.5em;
 }
-.saveTheme{
+.saveTheme,.selTheme {
 	left:40px;
 	position:absolute;
 	top:-8px;	

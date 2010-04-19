@@ -2,7 +2,7 @@
 class CardsController extends AppController {
 
 	var $name = 'Cards';
-
+	var $publicActions = array('getTransl','saveCard' );
 
 
 //--------------------------------------------------------------------
@@ -19,7 +19,7 @@ class CardsController extends AppController {
         
         // swiching off Security component for ajax call
 
-				if( $this->RequestHandler->isAjax() && $this->action == 'getTransl' || $this->action == 'saveCard' ) { 
+				if( $this->RequestHandler->isAjax() && in_array( $this->action, $this->publicActions) ) { 
 		   			$this->Security->validatePost = false;
 		   	}
 
@@ -175,17 +175,23 @@ class CardsController extends AppController {
 						$auth = true;
 					
 						//current theme fetching
+						/*
 						$currentThemeId = $this->Card->Theme->find('first',array(
 								'conditions'=> array('Theme.user_id' => $authUserId ),
 								'fields' => array('Theme.id'),
+								'order' => array('Theme.current_theme DESC'),
 								'contain' => false
 							)							
 						);
-
-						if( $currentThemeId == array() || $currentThemeId['Theme']['id'] == null ) {
-
-									$this->data['Theme']['theme'] = $this->data['Card']['theme'];
+						*/
+						//if( $currentThemeId == array() || $currentThemeId['Theme']['id'] == null ) {
+									
+									$this->data['Theme']['id'] = $this->data['Theme']['id'];
+									
+									$this->data['Theme']['theme'] = $this->data['Theme']['theme'];
+									
 									$this->data['Theme']['user_id'] = $authUserId;
+												
 									//creating of the first theme
 									if( $this->Card->Theme->save($this->data) ) {									
 										$newThemeId = $this->Card->Theme->id;
@@ -194,9 +200,9 @@ class CardsController extends AppController {
 										//report server problem
 									}							
 						
-						} else {
-							$this->data['Card']['theme_id'] = $currentThemeId['Theme']['id'];
-						}
+					//	} else {
+					//		$this->data['Card']['theme_id'] = $currentThemeId['Theme']['id'];
+					//	}
 						
 						
 						
@@ -212,7 +218,7 @@ class CardsController extends AppController {
 						
 							//no data about user in db. So we reg it in.
 							$key = 'guest_'.md5(uniqid(rand(), true));
-							$this->Cookie->write('guestKey',$key, false, '360 days');	
+							//$this->Cookie->write('guestKey',$key, false, '360 days');	
 							
 							//we reg the guest as a temp user
 							$this->data['User']['username'] = $key;
@@ -229,8 +235,9 @@ class CardsController extends AppController {
 	
 									$this->data["Card"]["user_id"] = $a['User']['id'];
 															
-									$this->data['Theme']['theme'] = $this->data['Card']['theme'];
+									$this->data['Theme']['theme'] = $this->data['Theme']['theme'];
 									$this->data['Theme']['user_id'] = $a['User']['id'];
+									$this->data['Theme']['current_theme'] = time();
 									
 									//creating of the first theme
 									if( $this->Card->Theme->save($this->data) ) {									
@@ -294,11 +301,12 @@ class CardsController extends AppController {
 			$curTheme = $this->Card->Theme->find('all', array(
 					'conditions' => array('Theme.user_id' => $this->Auth->user('id') ),
 					'fields' => array('Theme.theme'),
-					'order' => array('Theme.id DESC'),
+					'order' => array('Theme.current_theme DESC'),
 					'limit' => 1,
 					'contain' => array('Card' => array(
 																							'fields' => array('Card.word'),
-																							'limit'=> 10
+																							'limit'=> 10,
+																							'order'=>'Card.id DESC'
 																						)
 														)
 				)			
@@ -306,7 +314,17 @@ class CardsController extends AppController {
 		
 		}
 
+		$allThemes = $this->Card->Theme->find('list', array(
+					'conditions' => array('Theme.user_id' => $this->Auth->user('id') ),
+					'fields' => array('Theme.id','Theme.theme'),
+					'order' => array('Theme.id DESC'),
+					'contain' => false
+			)
+		);
+
 		$this->set('curTheme', $curTheme);
+		
+		$this->set('allThemes',$allThemes);
 		
 		
 	}
