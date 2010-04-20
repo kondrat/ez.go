@@ -23,6 +23,13 @@ class Text extends AppModel {
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
+		),
+		'Theme' => array(
+			'className' => 'Theme',
+			'foreignKey' => 'theme_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
 		)
 	);
 }

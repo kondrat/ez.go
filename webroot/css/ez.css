@@ -179,6 +179,13 @@
 	border:1px dashed;
 	padding-left:.5em;
 }
+#themeSelect optgroup {
+	color:green;
+	font-weight: normal;
+}
+#themeSelect option {
+	color:black;
+}
 /*end of theme block*/
 
 .activeCardSide table.tableCard td.td {

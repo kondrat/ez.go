@@ -7,7 +7,7 @@ $(document).ready( function(){
 	var themeNameText = $.trim(themeName.text());
 	
 	
-	if ( currentTheme.theme === undefined ) {
+	if ( typeof(currentTheme.theme) === 'undefined' ) {
 		currentTheme.theme = themeNameText;
 	}
 	themeName.data(currentTheme);
@@ -91,18 +91,30 @@ $(document).ready( function(){
 	        dataType: "json",
 	        data: themeObj,
 	        success: function(data) {
+	        	
 						
-	        	if ( data.stat === 1 ) {        		
-							themeName.data('theme',data.theme);							
+						
+	        	if ( data.stat === 1 ) { 
+	        		       		
+							themeName.data('theme',data.theme);
+														
 							if(themeAction === 'create'){
+								
 								themeName.data('id',data.themeId);
 								$("ul.newCards").empty();
-								$("#themeSelect").append('<option value="'+data.themeId+'">'+data.theme+'</option>');
-							} else if(themeAction === 'edit') {
-								//to finish. update the themeName in the select
-							}
+								var themeSelect = $("#themeSelect");
+								$("option:first").removeAttr("selected");
+								themeSelect.children().prepend('<option value="'+data.themeId+'">'+data.theme+'</option>').children("option:first").css({'color':'brown','font-weight':'bold'});
+								$("option:first").attr('selected', 'yes');
 								
-							
+							} else if(themeAction === 'edit') {
+		          	$.each($("#themeSelect option"), function(key, val) {
+		          		if( $(this).val() == data.themeId ) {
+		          			$(this).text(data.theme);
+		          		} 
+		          	});
+							}
+														
 							//alert(themeName.data().toSource());
 	          } else {
 	          	
@@ -121,55 +133,56 @@ $(document).ready( function(){
 
 
 	
-	$("#themeSelect option").click(function(){
+	$("#themeSelect option").live('click',function(){
 		//alert($(this).val()+' | '+$(this).text() );
-		var selectedTheme = $(this).text();
-		var selcetedId = $(this).val();
-		selectTheme.fadeOut(function() {
-			themeNameText = selectedTheme;
-			themeName.text(themeNameText).show();
-			editCreateTheme.show();
-			$(".themeNameCard,.leftSideTheme").text(themeNameText);
-			
-			
-			var prevSelectedId = themeName.data('id');
-			themeName.data('theme',themeNameText);
-			themeName.data('id',selcetedId);
-			//alert(themeName.data().toSource());
-			if( prevSelectedId != themeName.data('id') ) {
-				$("ul.newCards").empty();
-				var themeObj = {
-												//"data[Theme][theme]": themeName.data('theme'),
-												"data[Theme][id]": themeName.data('id')
-											};
-				
-	      $.ajax({
-	        type: "POST",
-	        url: path+"/themes/selTheme",
-	        dataType: "json",
-	        data: themeObj,
-	        success: function(data) {
-						
-	        	if ( data.stat === 1 ) {        		
-							$.each(data.cards, function(key, val) {
-								$("ul.newCards").append('<li>'+val.Card.word+'</li>');
-							});
-	          } else {
-	          	
-	          }
-	        },
-	        error: function(){
-	            $('.tempTest').html('Problem with the server. Try again later.');
-	        }
-	      });					
-				
-				
-				
-				
-			}
-			
-		});		
 		
+		if($(this).val() != '') {
+		
+				var selectedTheme = $(this).text();
+				var selcetedId = $(this).val();
+				selectTheme.fadeOut(function() {
+					themeNameText = selectedTheme;
+					themeName.text(themeNameText).show();
+					editCreateTheme.show();
+					$(".themeNameCard,.leftSideTheme").text(themeNameText);
+					
+					
+					var prevSelectedId = themeName.data('id');
+					themeName.data('theme',themeNameText);
+					themeName.data('id',selcetedId);
+					//alert(themeName.data().toSource());
+					if( prevSelectedId != themeName.data('id') ) {
+						
+						$("ul.newCards").empty();
+						var themeObj = {
+														//"data[Theme][theme]": themeName.data('theme'),
+														"data[Theme][id]": themeName.data('id')
+													};
+						
+			      $.ajax({
+			        type: "POST",
+			        url: path+"/themes/selTheme",
+			        dataType: "json",
+			        data: themeObj,
+			        success: function(data) {
+								
+			        	if ( data.stat === 1 ) {        		
+									$.each(data.cards, function(key, val) {
+										$("ul.newCards").append('<li>'+val.Card.word+'</li>');
+									});
+			          } else {
+			          	
+			          }
+			        },
+			        error: function(){
+			            $('.tempTest').html('Problem with the server. Try again later.');
+			        }
+			      });					
+					
+					}
+					
+				});		
+		}
 	});
 
 	
