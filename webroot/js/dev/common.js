@@ -529,13 +529,7 @@ $(document).ready( function(){
 			} 
 		});
 
-		var fileTextUploadWrapper =  $(".fileTextUploadWrapper");
-		$(".fileTextUploadMenu").toggle(function(){
-				fileTextUploadWrapper.slideDown('fast');
-			},
-			function(){
-				fileTextUploadWrapper.slideUp('fast');
-		});
+
 
 
     //card Ajax save;

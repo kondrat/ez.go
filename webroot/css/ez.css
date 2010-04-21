@@ -159,7 +159,7 @@
 }
 /*theme block*/
 #themeEdit{
-	
+	margin-right:0.5em;	
 }
 .themePerfix{
 }
@@ -173,11 +173,17 @@
 	position:absolute;
 	top:-8px;	
 }
-
+.saveTheme button {
+	/*height:25px;*/
+	/*vertical-align:baseline;*/
+}
 .currentTheme{
 	background-color:lightGoldenRodYellow;
 	border:1px dashed;
 	padding-left:.5em;
+}
+#themeSelect {
+	margin-right:.5em;
 }
 #themeSelect optgroup {
 	color:green;
@@ -669,6 +675,16 @@ div.fancy_bg_nw {
 .textUpload{
 	width:550px;
 	height:150px;
+}
+.upDownSmallArrow {
+	width: 16px;
+	height: 13px;
+	background: transparent url('../img/icons/up_down_arrow_small.png') no-repeat 0 -19px;
+	margin-top:10px;
+}
+.fileTextUploadMenu div {
+	float:left;
+	margin-left:.5em;
 }
 
 /* left Side Bar */

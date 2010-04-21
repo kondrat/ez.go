@@ -34,6 +34,7 @@
 															'dev/func',
 															'dev/common',
 															'dev/common2',
+															'dev/common3',
 															'dev/reg',
 															'localization/messages_ru',
 															//'sound/soundmanager2',
@@ -53,8 +54,8 @@
 						<div class="span-16 ">
 							<div style="float:left; margin:1em 0;">
 								<?php echo $html->link($html->image(
-																										//'pic/ez-logo-50-w.png'
-																										'pic/ez-logo-50-3.png'
+																										'pic/ez-logo-50-w.png'
+																										//'pic/ez-logo-50-3.png'
 																										), array('controller'=>'cards','action'=>'index'),array('escape'=>false) );?> 
 							</div>
 						</div>

@@ -48,27 +48,38 @@ $(document).ready( function(){
 	});
 
 	$("#saveThemeCancel").click(function(){	
-		saveTheme.fadeOut();
-		themeName.text(themeNameText).show();
-		editCreateTheme.show();
+		saveTheme.fadeOut( function() {
+			themeName.text(themeNameText).show();
+			editCreateTheme.show();
+		});
 	});
 	$("#selThemeCancel").click(function(){	
-		selectTheme.fadeOut();
-		themeName.text(themeNameText).show();
-		editCreateTheme.show();
+		selectTheme.fadeOut(function(){
+			themeName.text(themeNameText).show();
+			editCreateTheme.show();
+		});
 	});
 	
 	
 	
 	$("#saveThemeSave").click(function(){
 		saveTheme.fadeOut(function() {
-			themeNameText = $.trim($("#themeEdit").val());
-			themeName.text(themeNameText).show();
+				var newThemeNameTextBool = 0;
+				var newThemeNameText = $.trim($("#themeEdit").val());
+				if (newThemeNameText !== '') {
+					themeNameText = newThemeNameText;
+					newThemeNameTextBool = 1;
+				} else {
+					newThemeNameTextBool = 0;
+				}
+			
+				themeName.text(themeNameText).show();
+			
 			editCreateTheme.show();
 			$(".themeNameCard,.leftSideTheme").text(themeNameText);
 			
 			//if user regged we update the theme;
-			if(userReg) {
+			if(userReg && newThemeNameTextBool) {
 				var themeObj;
 				switch (themeAction) {
 					case 'edit':
@@ -125,8 +136,11 @@ $(document).ready( function(){
 	        }
 	      });				
 			} else {
-				themeName.data('theme', themeNameText );
+				
+					themeName.data('theme', themeNameText );
+				
 			}
+			
 		});
 
 	});

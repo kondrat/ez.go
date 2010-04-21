@@ -21,7 +21,10 @@
 			<?php __('Copy and paste text you are working on');?>
 		</div>
 		<div class="span-6 fileTextUploadMenu last" style="font-size:larger;font-style:italic;">
-			<span><?php __('or');?></span>&nbsp;<span style="border-bottom:1px dashed;"><?php __('upload text file');?></span>
+			<div style="font-size:smaller;margin-top:4px;"><?php __('or');?></div>
+			<div style="border-bottom:1px dashed;"><?php __('upload text file');?></div>
+			<div class="upDownSmallArrow"></div>
+			
 		</div>
 	</div>	
 	
@@ -37,7 +40,7 @@
 	<div class="span-14">
 		<?php echo $form->textarea('text',array('class'=>'textUpload'));?>
 	</div>
-	<div class="span-14">
+	<div class="span-14 textUploadControl">
 		<?php echo $form->button(__('Upload text',true));?>
 		<div class="enlarge" style="float:right;font-size:8pt;">
 			<?php echo $html->image('icons/down_arrow.png');?>&nbsp;<span style="vertical-align:top;"><?php __('enlarge');?></span>
@@ -50,37 +53,3 @@
 </div>
 
 <?php echo $this->element('card/card',array('visible'=>false) );?>
-
-
-
-<div class="span-20 last">
-	<!--
-	<table class="tableCard" style="">
-		<tbody>
-			
-			<tr>
-				<td class="td">
-					<div class="cardInner">
-						<div class="man">
-							table first
-						</div>
-					</div>
-				</td>
-				<td class="td">
-					<table>
-						<tr>
-							<td><div class="ctrlPanelWrapper"><div class="ctrlPanel"><?php echo $html->image('icons/edit.png');?>&nbsp;&nbsp;<?php echo $html->image('icons/delete.png');?></div></div></td>
-						</tr>
-						<tr>
-							<td>table first</td>
-						</tr>
-						<tr><td></td></tr>
-					</table>
-				</td>
-				<td class="td">table first</td>
-			</tr>
-
-		</tbody>
-	</table>
-	-->
-</div>

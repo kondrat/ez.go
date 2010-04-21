@@ -19,3 +19,6 @@ legend {
 div.formWrap #UserAutoLogin {
 	position:absolute;
 }
+button{
+	vertical-align:top;
+}
