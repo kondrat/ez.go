@@ -674,7 +674,8 @@ div.fancy_bg_nw {
 
 .textUpload{
 	width:550px;
-	height:150px;
+	height:90px;
+	margin-top:0;
 }
 .upDownSmallArrow {
 	width: 16px;
@@ -686,6 +687,26 @@ div.fancy_bg_nw {
 	float:left;
 	margin-left:.5em;
 }
+
+.currentText {
+	border-bottom:1px solid;
+	border-top:1px solid;
+	color:gray;
+	margin:1em 0;
+	padding:1em .5em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* left Side Bar */
 .wordCard{

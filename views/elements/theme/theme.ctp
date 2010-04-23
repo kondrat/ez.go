@@ -1,5 +1,5 @@
 <?php $selectedTheme = null;?>
-<div class="span-14" style="-moz-border-radius:10px 10px 10px 10px;background-color:linen;padding:1em;">
+<div class="span-14" style="-moz-border-radius:10px 10px 10px 10px;background-color:linen;padding:1em 0 1em 1em;">
 	<div style="position:relative;">
 		<span class= "themePerfix" style="color:gray;font-size:8pt;font-style:italic;">theme:</span> 
 		<span class= "themeName" style="">

@@ -14,5 +14,27 @@ $(document).ready( function(){
 				fileTextUploadControl.attr("disabled", false);
 				$(".enlarge").show();
 		});
+
+
+
+		$("#uplaodText").click(function(){
+			var curText = $(".textUpload").val();
+			$(".currentText").text(curText);
+			$(".textUpload").val('');
+		});
+		
+		$(".textUpload").select(function(){
+			alert($(this).toSource() );
+		});
+
+
+
+
+
+
+
+
+
+
 		
 });
