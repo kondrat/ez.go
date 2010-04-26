@@ -1,6 +1,6 @@
 	<div class="textUploadBlock">
 		<div class="span-14" style="margin:1em 0 0;">	
-			<div class="span-8" style="font-size:larger;font-style:italic;">
+			<div class="span-8" style="font-style:italic;margin-top:1em;font-weight:bold;;">
 				<?php __('Copy and paste text you are working on');?>
 			</div>
 		</div>	
@@ -21,7 +21,7 @@
 		</div>
 	
 	
-		<div class="span-6 fileTextUploadMenu last" style="font-size:larger;font-style:italic;margin:1em 0;">
+		<div class="span-6 fileTextUploadMenu last" style="font-size:larger;font-style:italic;margin:1em 0;font-weight:bold;">
 			<div style="font-size:smaller;margin-top:4px;"><?php __('or');?></div>
 			<div style="border-bottom:1px dashed;"><?php __('upload text file');?></div>
 			<div class="upDownSmallArrow"></div>		

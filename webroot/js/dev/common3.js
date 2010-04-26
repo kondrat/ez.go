@@ -30,26 +30,50 @@ $(document).ready( function(){
 
 
     $(".currentText").bind('mouseup', function() {
-      //alert('over');
       copy_txt();
+		  if (txt_quote !=="") {
+		   	$(".cardEditor").fadeIn();
+		   	$("#mainWord").text(txt_quote);
+		   	$("#contextTran span:last").text(contextCurrent); 
+		   }      
+      
     });
-/*
-    $(".currentText").click( function() {
-      copy_txt();
-    });
-*/
 
+		var currText2 = $(".currentText").text();
+		
+		var re2 =  /.+[\.|\?|!]\s+/g;  //'(?sx-m)[^\r\n].*?(?:(?:\.|\?|!)\s)'; 		
+		found = currText2.match(re2);		
+		var phr = '';
+		$.each(found,function(key, val){
+			phr += '<span class="currentPhrase">'+val+'</span>';		
+		});
+		
+		
+		
+		$(".currentText").html(phr);
+		
+		
+		$(".currentPhrase").live('mouseover mouseout',function(event){			
+			  if (event.type == 'mouseover') {
+			    $(this).css({'background-color':'#ddd'});//'lightGoldenRodYellow'});
+			    contextCurrent = $(this).text();
+			  } else {
+			    $(this).css("background-color","white");
+			    contextCurrent = '';
+			  }
+		});
+		
 
 
 		
 });
 
-
-var txt_quote="";
+var contextCurrent = '';
+var txt_quote = '';
 
 function copy_txt() {
-// Если переменная txt_quote не пустая, то очищаем её
-   txt_quote = "";
+	// if var txt_quote not empty, clear it.
+  txt_quote = "";
   if (window.getSelection) {
      txt_quote = window.getSelection().toString();
   } else if (document.getSelection) {
@@ -59,7 +83,7 @@ function copy_txt() {
   }  
   
   if (txt_quote !=="") {
-   alert(txt_quote);
+   //alert(txt_quote);
    }
   
 }

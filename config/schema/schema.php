@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* App schema generated on: 2010-04-15 22:04:50 : 1271355530*/
+/* App schema generated on: 2010-04-26 22:04:29 : 1272305249*/
 class AppSchema extends CakeSchema {
 	var $name = 'App';
 
@@ -32,10 +32,18 @@ class AppSchema extends CakeSchema {
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
+	var $textblocks = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
+		'text_id' => array('type' => 'integer', 'null' => true, 'default' => '0'),
+		'body' => array('type' => 'text', 'null' => true, 'default' => NULL),
+		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
+		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
+	);
 	var $texts = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
 		'user_id' => array('type' => 'integer', 'null' => false, 'default' => NULL),
-		'body' => array('type' => 'text', 'null' => false, 'default' => NULL),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1)),
@@ -44,8 +52,9 @@ class AppSchema extends CakeSchema {
 	var $themes = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => NULL, 'key' => 'primary'),
 		'user_id' => array('type' => 'integer', 'null' => false, 'default' => '0', 'key' => 'index'),
-		'theme' => array('type' => 'text', 'null' => false, 'default' => NULL),
+		'theme' => array('type' => 'string', 'null' => false, 'default' => NULL, 'length' => 250),
 		'card_count' => array('type' => 'integer', 'null' => false, 'default' => '0'),
+		'current_theme' => array('type' => 'integer', 'null' => true, 'default' => '0'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => NULL),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1), 'user_id' => array('column' => 'user_id', 'unique' => 0)),

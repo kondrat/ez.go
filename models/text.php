@@ -32,5 +32,14 @@ class Text extends AppModel {
 			'order' => ''
 		)
 	);
+	
+	var $hasMany = array(
+		'Textblock' => array(
+			'className' => 'Textblock',
+			'foreignKey' => 'text_id',
+			'dependent' => false
+		)
+	);
+	
 }
 ?>
