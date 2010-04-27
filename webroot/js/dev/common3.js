@@ -19,8 +19,43 @@ $(document).ready( function(){
 
 		$("#uplaodText").click(function(){
 			var curText = $(".textUpload").val();
-			$(".currentText").text(curText);
-			$(".textUpload").val('');
+			/*
+				$(".currentText").text(curText);
+				$(".textUpload").val('');
+			*/
+	    var textObj = {
+	    								"data[Text][text]": curText,
+	    							};			
+			
+			
+				$.ajax({
+						type: "POST",
+					  url: path+"/texts/textUpload",
+	       	 	dataType: "json",
+	        	data: textObj,				  
+					  success: function(data) {
+					    if ( data.stat === 1 ) {
+					    	$(".currentText").empty();
+					    	$.each(data.resText, function(i,v){
+					    		
+					    		$(".currentText").append('<div class="pageChunk hide." id="page'+i+'"></div>');
+					    		
+					    		var resText = '';
+					    		$.each(v,function(k,v2){
+					    			resText += '<span class="currentPhrase">'+v2+'.</span> ';
+					    		})
+					    		$("#page"+i).html(resText);
+					    	}); 
+					    	
+					    }else{
+					    }
+					 	},
+		        error: function(){
+		        		flash_message('Problem with the server. Try again later.','fler');
+		            $('.tempTest').html('Problem with the server. Try again later.');
+		        }
+				});
+			
 		});
 		
 		$(".textUpload").select(function(){

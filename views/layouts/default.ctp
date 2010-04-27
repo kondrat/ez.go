@@ -22,7 +22,7 @@
 												'var path = "'.Configure::read('path').'";'."\n".'var userReg = '.$userReg.';' 
 													);
 		echo $html->script(array(	
-															'vars',
+															'dev/vars',
 															'jquery/jquery-1.4.2.min',
 															//'jquery/jquery.form',
 															//'jquery/jquery-ui-1.8.custom.min',

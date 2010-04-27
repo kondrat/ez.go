@@ -694,8 +694,17 @@ div.fancy_bg_nw {
 	color:gray;
 	margin:0 0 1em 0;
 	padding:1em .5em;
+	text-indent:2em;
 }
-
+.currentPhrase{
+	background-color:#eee;
+}
+.pageChunk{
+	-moz-border-radius:15px 15px 15px 15px;
+	border:1px solid red;
+	margin-bottom:1em;
+	padding:5px;
+}
 
 
 

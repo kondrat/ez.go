@@ -2,7 +2,7 @@
 class TextsController extends AppController {
 
 	var $name = 'Texts';
-
+	var $publicActions = array('textUpload');
 
 //--------------------------------------------------------------------
 //--------------------------------------------------------------------	
@@ -11,7 +11,7 @@ class TextsController extends AppController {
   			//default title
   			$this->set('title_for_layout', __('Text upload',true) );
   			//allowed actions
-        $this->Auth->allow('add');
+        $this->Auth->allow('add','textUpload','ttest');
 
         parent::beforeFilter(); 
         $this->Auth->autoRedirect = false;
@@ -19,7 +19,7 @@ class TextsController extends AppController {
         // swiching off Security component for ajax call
         
         //to be rebuild
-				if( $this->RequestHandler->isAjax() && $this->action == 'getTransl' || $this->action == 'saveCard' ) { 
+				if( $this->RequestHandler->isAjax() && in_array( $this->action, $this->publicActions) ) { 
 		   			$this->Security->validatePost = false;
 		   	}
 		   	
@@ -30,6 +30,83 @@ class TextsController extends AppController {
 //--------------------------------------------------------------------
 //--------------------------------------------------------------------
 
+	//ajax staff
+		//----------------------------------------------------------------
+
+	function ttest(){
+		$text1 = "It goes <div style='color:red;'>was</div> a time when Zack Morris phone jokes weren't invented yet, but leaving a prototype phone in a bar would have still kicked your professional ass. You see, when Cooper was trucking around a cellphone in 1973, it weighed nearly two kilos and cost approximately $1 million for Motorola to produce. Battery life was a brisk 20 minutes. Order a pizza or do more QA testing?�choices! Fast forward to today, and Cooper is put off by the size of a smartphone's instruction manual (often larger and heavier than the phone itself, he says), which he argues can require an engineer's expertise to figure out. No bother though, as Cooper predicts that in the not-so-distant future tiny cellphone implants ill deliver calls from mom via the bony spots behind our ears.";
+		$keywords = preg_split("/(\.|\!|\?)[\s]+/", $text1);
+		debug($keywords);
+	}	
+
+
+	function textUpload() {
+		
+			$contents = false;
+			$ttText = null;
+			$finPhrase = '';
+			$strLen = null;
+			
+			//ajax preparation
+			Configure::write('debug', 0);
+			$this->autoLayout = false;
+			$this->autoRender = false;
+			
+			if ( $this->RequestHandler->isAjax() ){
+
+				if (strpos(env('HTTP_REFERER'), trim(env('HTTP_HOST'), '/')) === false) {
+					$this->Security->blackHoleCallback = 'gotov';
+				}
+				//main staff
+				
+					$ttText = trim($this->data['Text']['text']);
+					App::import('Sanitize');
+					$ttText = Sanitize::html($ttText);
+					
+					$text1 = "It goes <div style='color:red;'>was</div> a time when Zack Morris phone jokes weren't invented yet, but leaving a prototype phone in a bar would have still kicked your professional ass. You see, when Cooper was trucking around a cellphone in 1973, it weighed nearly two kilos and cost approximately $1 million for Motorola to produce. Battery life was a brisk 20 minutes. Order a pizza or do more QA testing?�choices! Fast forward to today, and Cooper is put off by the size of a smartphone's instruction manual (often larger and heavier than the phone itself, he says), which he argues can require an engineer's expertise to figure out. No bother though, as Cooper predicts that in the not-so-distant future tiny cellphone implants ill deliver calls from mom via the bony spots behind our ears.";
+					$keywords = preg_split("/(\.|\!|\?)[\s]+/", $ttText);
+					
+
+					$l = 0;	
+					$k = 1;
+					foreach(	$keywords as $keyW ) {
+						if($strLen >=2400*$k){
+							$l++;
+							$k++;
+						}
+						if ( substr($keyW, -1) === '.') {
+							$finPhrase[$l][] = substr($keyW, 0,-1);
+						} else {
+							$finPhrase[$l][] = $keyW;
+						}
+						$strLen += strlen($keyW);
+						
+					}	
+					
+					//Configure::write('debug', 2);	
+					//debug($finPhrase);					
+					$contents = json_encode( array("stat" => 1,'strlen'=> $strLen,'resText' => $finPhrase));
+				
+
+	
+					$this->header('Content-Type: application/json');				
+					return ($contents);
+					
+								
+			} else {				
+				$this->Security->blackHoleCallback = 'gotov';		
+			}
+			
+			
+					
+	}
+
+		//----------------------------------------------------------------
+				//blackhole redirection
+				//-----------------------------
+				function gotov() {	
+					$this->redirect(null, 404, true);
+				}	
 //--------------------------------------------------------------------
 	function add() {
 		$lastCards = array();
