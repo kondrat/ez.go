@@ -1,5 +1,7 @@
 $(document).ready( function(){
 
+		var pageChunkNumber = 0;
+
 		var fileTextUploadWrapper =  $(".fileTextUploadWrapper");
 		var fileTextUploadControl = $(".textUpload, .textUploadControl button");
 		$(".fileTextUploadMenu").toggle(function(){
@@ -15,16 +17,50 @@ $(document).ready( function(){
 				$(".enlarge").show();
 		});
 
+		var handlerDown = function() {
+				var moveDown =  $(".pageChunkCur").outerHeight(true);
+				//alert(moveDown);
+				moveDown +=0;
+				$(".pageChunkCur").next().show();
+				$(".currentTextSlide").animate(
+					{
+						"margin-top" : '-='+moveDown+'px'
+					}, 
+					{			
+						complete: function() {
+								//alert('pageChunkNumber: '+pageChunkNumber+'; '+$(".pageChunk").filter(".pageChunkCur").index());
+								$(".pageChunkCur").removeClass("pageChunkCur").next().addClass("pageChunkCur");
+								
+								if($(".pageChunkCur").next().height() === null ) {
+									$(".curTextDown").unbind('click',handlerDown).addClass("scrollDwDisable");
+								} else {
+		      				
+		      			}
+		      		//???	
+		      		// it binds each time
+		      			$(".curTextUp").bind('click',handlerUp).removeClass("scrollUpDisable");
+		      			
+		    		}
+	    		}
+					
+				);	  
+		};
+		var handlerUp = function() {
+			alert('up');
+		};
+
 
 
 		$("#uplaodText").click(function(){
+			
 			var curText = $(".textUpload").val();
+			$(".currentTextSlide").css({'margin-top':'0px'});
 			/*
 				$(".currentText").text(curText);
 				$(".textUpload").val('');
 			*/
 	    var textObj = {
-	    								"data[Text][text]": curText,
+	    								"data[Text][text]": curText
 	    							};			
 			
 			
@@ -35,17 +71,34 @@ $(document).ready( function(){
 	        	data: textObj,				  
 					  success: function(data) {
 					    if ( data.stat === 1 ) {
-					    	$(".currentText").empty();
+					    	$(".currentTextSlide").empty();
+					    	var curTextHeight = 500;
+					    	
 					    	$.each(data.resText, function(i,v){
 					    		
-					    		$(".currentText").append('<div class="pageChunk hide." id="page'+i+'"></div>');
+					    		$(".currentTextSlide").append('<div class="pageChunk hide" id="page_'+i+'"></div>');
 					    		
 					    		var resText = '';
-					    		$.each(v,function(k,v2){
-					    			resText += '<span class="currentPhrase">'+v2+'.</span> ';
-					    		})
-					    		$("#page"+i).html(resText);
+						    		$.each(v,function(k,v2){
+						    			resText += '<span class="currentPhrase">'+v2+'.</span> ';
+						    		});					    		
+					    		$("#page_"+i).html(resText);
+									 pageChunkNumber = i+1;
+									 
 					    	}); 
+					    	
+								if( pageChunkNumber <= 1 ) {
+									$(".curTextUp").unbind('click',handlerUp).addClass("scrollUpDisable");
+									$(".curTextDown").unbind('click',handlerDown).addClass("scrollDwDisable");
+								} else {
+									$(".curTextDown").bind('click',handlerDown).removeClass("scrollDwDisable");
+								}
+														    	
+					    	$(".pageChunk:first").addClass("pageChunkCur").fadeIn();
+					  //toFix
+					    	var firstCurTextHeight = $(".pageChunk").height();
+					    	$(".currentText").height(firstCurTextHeight+20);
+					    	
 					    	
 					    }else{
 					    }
@@ -58,9 +111,7 @@ $(document).ready( function(){
 			
 		});
 		
-		$(".textUpload").select(function(){
-			alert($(this).toSource() );
-		});
+		
 
 
 
@@ -74,23 +125,13 @@ $(document).ready( function(){
       
     });
 
-		var currText2 = $(".currentText").text();
 		
-		var re2 =  /.+[\.|\?|!]\s+/g;  //'(?sx-m)[^\r\n].*?(?:(?:\.|\?|!)\s)'; 		
-		found = currText2.match(re2);		
-		var phr = '';
-		$.each(found,function(key, val){
-			phr += '<span class="currentPhrase">'+val+'</span>';		
-		});
-		
-		
-		
-		$(".currentText").html(phr);
-		
+		//$(".curTextDown").bind('click', handlerDown);
+
 		
 		$(".currentPhrase").live('mouseover mouseout',function(event){			
 			  if (event.type == 'mouseover') {
-			    $(this).css({'background-color':'#ddd'});//'lightGoldenRodYellow'});
+			    $(this).css({'background-color':'lightGoldenRodYellow'});
 			    contextCurrent = $(this).text();
 			  } else {
 			    $(this).css("background-color","white");
@@ -100,8 +141,16 @@ $(document).ready( function(){
 		
 
 
+
+
+
+
+
+
 		
 });
+
+
 
 var contextCurrent = '';
 var txt_quote = '';
@@ -136,7 +185,25 @@ function paste_txt(textarea) {
 
 
 
-
+$('#clickme').click(function() {
+  $('#book').animate(
+	  {
+	    width: 'toggle',
+	    height: 'toggle'
+	  },
+	  {
+	    duration: 5000, 
+	    specialEasing: {
+	      width: 'linear',
+	      height: 'easeOutBounce'
+	    }, 
+	    complete: function() {
+	      $(this).after('<div>Animation complete.</div>');
+	    }
+	  }
+  );
+  
+});
 
 
 
