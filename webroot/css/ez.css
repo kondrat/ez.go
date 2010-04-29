@@ -693,29 +693,35 @@ div.fancy_bg_nw {
 }
 .curTextUpDownSlider{
 	-moz-border-radius:5px 5px 5px 5px;
-	background-color:white;
-	border:1px solid gray;
+	background-color:#eee;
+	border:1px solid #ddd;
 	padding:2px;
 	position:absolute;
 	right:0;
-	top:40px;
+	top:20px;
 }
 .curTextUp {
-	background: transparent url('../img/icons/up_down_page_slider.png') no-repeat 0 0;
+	background: transparent url('../img/icons/up_down_page_slider.png') no-repeat 0 -30px;
 	width:19px;
 	height:19px;
 }
 .curTextDown {
-	background: transparent url('../img/icons/up_down_page_slider.png') no-repeat 0 -90px;
+	background: transparent url('../img/icons/up_down_page_slider.png') no-repeat 0 -60px;
 	width:19px;
 	height:19px;
 }
-.scrollDwDisable {
-	background-position: 0 -60px;
+
+.DownAr {
+	background-position: 0 -90px;
+	cursor:pointer;
 }
-.scrollUpDisable{
-	background-position: 0 -30px;
+.UpAr {
+	background-position: 0 0px;
+	cursor:pointer;
 }
+
+
+
 
 .currentText {
 	border-bottom:1px solid;
@@ -725,19 +731,23 @@ div.fancy_bg_nw {
 	padding:1em .5em;
 	text-indent:2em;
 	overflow:hidden;
-	/*height:500px;*/
+	height:0px;
 }
 .currentPhrase{
 	background-color:#eee;
 }
 .pageChunk{
-	/*-moz-border-radius:15px 15px 15px 15px;*/
-	border:1px solid darkSalmon;
+	-moz-border-radius:15px 15px 15px 15px;
+	border:1px solid lightGrey;
+	color:lightgrey;
 	margin-bottom:15px;
 	padding:5px;
 }
 
-
+.pageChunkCur {
+	border:1px solid darkSalmon;
+	color:grey;
+}
 
 
 
