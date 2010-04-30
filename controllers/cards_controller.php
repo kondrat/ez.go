@@ -329,6 +329,22 @@ class CardsController extends AppController {
 		
 	}
 //--------------------------------------------------------------------
+	function printset() {
+
+	}
+//--------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid card', true));

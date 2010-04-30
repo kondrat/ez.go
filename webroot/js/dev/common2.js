@@ -6,6 +6,8 @@ $(document).ready( function(){
 	themeName = $(".themeName");	
 	var themeNameText = $.trim(themeName.text());
 	
+
+
 	
 	if ( typeof(currentTheme.theme) === 'undefined' ) {
 		currentTheme.theme = themeNameText;

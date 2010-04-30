@@ -2,7 +2,7 @@
 	$items = array(
 	__('Type in word or phrase',true) => array('controller'=>'cards','action'=>'index'),
 	__('Upload text and select',true) => array('controller'=>'texts','action'=>'add'),
-	__('Print out your set',true) => array('pringset'),
+	__('Print out your set',true) => array('controller'=>'cards','action'=>'printset'),
 	); 
 	$here = Router::url(substr($this->here, strlen($this->webroot)-1)); 
 ?>                    

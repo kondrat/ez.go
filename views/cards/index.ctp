@@ -17,8 +17,6 @@
 
 <?php echo $this->element('card/card');?>
 
-<?php //echo $this->element('rightSug/right_sug');?>
-
 
 
 <div class="span-20 last">

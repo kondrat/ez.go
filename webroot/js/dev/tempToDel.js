@@ -14,6 +14,22 @@ $(document).ready(function(){
 	$("#fill_clean").click(function(){
 		$(".textUpload").val('');
 	});	
+	$("#show_card_table").click(function(){
+		$(".cardEditor").fadeIn();
+	});	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	var fill1 = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '+
 				'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. ';
 	var fill2 = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '+

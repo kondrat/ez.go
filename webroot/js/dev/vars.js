@@ -1,1 +1,2 @@
 var themeName;
+var currentTheme = {};
