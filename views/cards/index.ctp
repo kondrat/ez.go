@@ -7,15 +7,16 @@
   		}
 		</script>
 
-<!--<div class="span-24 tempTest" style="text-align:center;margin-top:1em;font-size:larger;color:green;">test</div>-->
+<?php echo $this->element('threeWaysMenu/three_ways_menu');?>
 
-<?php echo $this->element('leftSideBar/leftSideBar');?>		    
+<?php echo $this->element('themeEditor/theme_editor');?>
+
+<?php echo $this->element('leftSideBar/left_side_bar');?>		    
 		    
-<?php echo $this->element('threewaysMenu/threeways_menu');?>
 
-<?php echo $this->element('theme/theme');?>
 
-<?php echo $this->element('card/card');?>
+
+<?php echo $this->element('cardEditor/card_editor');?>
 
 
 

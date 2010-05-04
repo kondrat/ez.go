@@ -3,7 +3,7 @@
     <?php __('Just click on what you need');?>
   </div>
   <div class="topSugWrapper">
-  	<div><?php __('Translation');?>:</div>
+  	<div><?php __('Translation for');?>:<span id="transFor"></span></div>
   	<ul class="topSug">
   		<li></li>
   	</ul>

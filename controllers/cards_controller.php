@@ -12,7 +12,7 @@ class CardsController extends AppController {
   			//default title
   			$this->set('title_for_layout', __('Cards',true) );
   			//allowed actions
-        $this->Auth->allow('index','view','getTransl','saveCard','add');
+        $this->Auth->allow('index','view','getTransl','saveCard','add','printset');
 
         parent::beforeFilter(); 
         $this->Auth->autoRedirect = false;

@@ -1,5 +1,4 @@
-var card = {"a":{},"b":{}};
-//console.log(card);
+
 var tt;
 var from = 'en';
 var to = 'ru';
@@ -87,7 +86,7 @@ $(document).ready( function(){
 			$(".sideToEdit:first").hide();
 			$(".sideToEdit:last").show();	
 			
-			//$(".plusMenuBack:first").addClass("plusMenuActive");
+
 			$(".plusMenuTransl").trigger('click');
 			
 			$(".inputSring").removeClass("inputSring");
@@ -102,7 +101,7 @@ $(document).ready( function(){
 
 	var letOk = false;
 	$('#CardExt').keypress( function(e) {
-		console.log(e.which);
+		//console.log(e.which);
 		
 	  var chr = (String.fromCharCode(e.which));
 	  rexp = /([^\w0-9\s\.\?,'-])/; 
@@ -115,16 +114,25 @@ $(document).ready( function(){
 	  }
  
 	});	
-	
-	$('#CardExt').keyup( function(e) {
-		if ( letOk = true) {
-			
-	  	var textIn = $("#CardExt").val();
-	  	
-	  	$(".inputSring").trigger("myFirstEvent", textIn);
-	  		
-	  }
+
+	var CardQuick = $("#CardQuick").attr("checked");
+
+	$("#CardQuick").click(function(){
+		CardQuick = $(this).attr("checked");
 	});
+
+
+			
+		$('#CardExt').keyup( function(e) {
+			if ( CardQuick === true) {			
+				if ( letOk = true) {		
+			  	var textIn = $("#CardExt").val();	  	
+			  	$(".inputSring").trigger("myFirstEvent", textIn);	  		
+			  }
+			}
+		});
+	
+
 
 
 	$(".plusMenuFront,.plusMenuBack").click(function(){
@@ -196,32 +204,41 @@ $(document).ready( function(){
     });
 
 
-	//word submiting					
+	//word submiting for translation
+						
 		$("#submitTranslId").click( function() {
 
 			var userWord;
+			var userWordLower;
 			userWord = $.trim($("#CardExt").attr('value'));
+			userWordLower = userWord.toLowerCase();
+			
 
-			$(".inputSring").text(userWord);
+			//double of the input.
+			$(".inputSring,#transFor").text(userWord);
+			
+			
+			
 			//dictionary preparation
 			$(".additionalRes").hide();
 			$(".dicTerms ul").empty().addClass("hide").removeClass("ter");
 			$("ul.rSugTabs li").removeClass("dicSwitcherM dicActive");
+			$("#transFor").empty();
 			
 	//trimm and check uesr word;		
-			songWord = userWord;
+			songWord = userWordLower;
 			
 			song = "http://www.gstatic.com/dictionary/static/sounds/de/0/"+songWord+".mp3";
 			
 						$.post(
 							path+"/cards/getTransl",
 							{"data[Card][ext]": userWord, "data[Card][langFrom]" : from, "data[Card][langTo]" : to },
+							
 					    	function(data){
 									
 											if( data.sentences ) {
 											  //console.log(data.sentences);
-
-											  
+										  
 												 if( data.dict ) {
 				
 												  var dic = data.dict;
@@ -295,16 +312,7 @@ $(document).ready( function(){
 												});												
 												$(".topSug li").text(translatedWord);
 												
-												if ($("#CardOne").attr("checked") === true) {
-													//alert("true: "+$("#CardOne").attr("checked"));
-													$("#translation").text(	translatedWord );
-													$("#backButton").trigger('click');
-//glupost!!!!!!!!!!!!!
-													
-												} else {
-													//alert("false: "+$("#CardOne").attr("checked"));
-													
-												}
+
 												
 
 												
@@ -369,6 +377,8 @@ $(document).ready( function(){
 		});	
 
 
+
+
 		$(".dicTerms li,.topSug li").live('click',function(){
 			var toIns = $(this).text();
 			$("#CardExt").val(toIns);			
@@ -427,11 +437,11 @@ $(document).ready( function(){
 			var valCardExt = $("#CardExt").val();		
 			$(".inputSring").trigger("myFirstEvent", valCardExt);					 		  	
 		});
+
 		
 		$(".inputSring").live("myFirstEvent",function(e, valCardExt){
 			
 			$(".inputSring").text(valCardExt);
-			//$(".tempTest").text( valCardExt );
 			
 			if (valCardExt.length > 0) {
 				$("span.inputSring").prev().show();
@@ -444,6 +454,8 @@ $(document).ready( function(){
 		$(".closeCardTable").click(function(){
 			$(".cardEditor").fadeOut();
 		});		
+		
+		
 //to del
 		/*
 		$(".threeWaysOne").click(function(){

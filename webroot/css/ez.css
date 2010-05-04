@@ -72,6 +72,7 @@
   margin-bottom:1em;
   padding-bottom:3px;
   background-color:#C3D9FF;
+  background:-moz-linear-gradient(center top , #C3D9FF, white 140%) repeat scroll 0 0 transparent;
 	-moz-border-radius:10px;
 	border-radius:10px;
 	-webkit-border-radius:10px;
@@ -93,6 +94,7 @@
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	-moz-box-shadow:0 0 6px gray;
+	background:-moz-linear-gradient(center bottom , #C3D9FF, white 140%) repeat scroll 0 0 transparent;
 }
 .panelBottom{
   border:1px solid white;
@@ -110,6 +112,7 @@
 }
 .activeCardSide .tableCard{
 	background-color: #C3D9FF;
+	background:-moz-linear-gradient(center top , #C3D9FF, white 140%) repeat scroll 0 0 transparent;
 }
 
 .tableCard{
@@ -164,8 +167,10 @@
 .themePerfix{
 }
 .themeName{
-	background-color:lightGoldenRodYellow;
-	border:1px dashed gray;
+	/*background-color:lightGoldenRodYellow;
+	border:1px dashed gray;*/
+	font-size:large;
+	font-style:italic;
 	padding:0.2em 0.5em;
 }
 .saveTheme,.selTheme {
@@ -285,7 +290,7 @@ div.activeCardSide #backButton a:hover {
 
 
 .inputSring{
-	background-color:#eee;
+	background-color:#C3D9FF;
 }
 
 .mainWord{
@@ -419,7 +424,7 @@ a.sideToEdit:hover {
 }
 .langToFromWrapper{
 	float:right;
-	margin:0.5em 1em 0 0;
+	margin:0.5em 70px 0 0;
 	font-weight:bold;
 	position:relative;
 }
@@ -548,6 +553,13 @@ div.ttTest{
 	font-size:larger;
 	line-height:1.1em;
 }
+#transFor{
+	background-color:Beige;
+	color:black;
+	margin-left:5px;
+	padding:2px;
+}
+
 
 #rightSugTabs{
 	padding: 0 15px 15px 15px;
@@ -773,7 +785,9 @@ div.fancy_bg_nw {
 	margin:.2em .5em;
 	border:1px solid gray;
 	overflow:hidden;
-	padding:0 0.5em;
+	padding:1em 0;
+	height:20px;
+	-moz-border-radius:5px;
 }
 
 /* Print Set */
@@ -803,7 +817,7 @@ div.fancy_bg_nw {
 	margin-bottom:10px;
 	-moz-border-radius:5px;
 	border:1px solid;
-	height:60px;	
+	height:90px;	
 }
 .hideAll{
 	display:none;

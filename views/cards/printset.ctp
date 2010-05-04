@@ -1,8 +1,7 @@
-<!--<div class="span-24 tempTest" style="text-align:center;margin-top:1em;font-size:larger;color:green;">test</div>-->
+<?php echo $this->element('threeWaysMenu/three_ways_menu');?>
 
-<?php echo $this->element('leftSideBar/leftSideBar');?>		    
-		    
-<?php echo $this->element('threewaysMenu/threeways_menu');?>
+<?php echo $this->element('leftSideBar/left_side_bar_print');?>		
+
 <div class="span-14">
 	<div id="printSet" class="span-3 prepend-3">
 		print this
@@ -11,7 +10,7 @@
 		preview
 	</div>
 </div>
-<div class="span-10 push-1 printSet" >
+<div class="span-10 push-2 printSet" >
 	<div class="printCardsWrapper">
 		<table style="border-spacing:7px;margin-bottom:0;">
 			<tr class="printCardTr">

@@ -1,6 +1,12 @@
 <div class="span-4" style="min-height:500px;">
-	<div class="wordCard" style="margin-top:1em;">
-		<?php echo __('Date',true).': '.Date('d.m.Y');?>
+	<div class="searchCard" style="">
+		<div style="font-size:smaller;border-bottom:1px dashed;font-style:italic;color:gray;"><?php echo __('Find Card',true);?>:</div>
+		<?php echo $form->input('Card',array('label'=>false,'div'=>false));?>
+	</div>
+	
+	<div class="wordCard" >
+		<div style="font-size:smaller;border-bottom:1px dashed;font-style:italic;color:gray;"><?php echo __('Date',true);?>:</div>
+		<div><?php echo Date('d.m.Y');?> - <?php echo Date('d.m.Y');?></div>
 	</div>
 
 	<?php if ( isset($curTheme) && $curTheme != array() ): ?>			
@@ -13,12 +19,7 @@
 			</ul>
 	<?php else: ?>
 			<div style="font-size:smaller;border-bottom:1px dashed;font-style:italic;color:gray;">Theme: </div>
-			<div class="leftSideTheme" style=""></div>
+			<div class="leftSideTheme" style="">Theme1</div>
 			<ul class="newCards"></ul>	
-	<?php endif ?>	
-	
+	<?php endif ?>		
 </div>
-
-<!-- 
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
--->

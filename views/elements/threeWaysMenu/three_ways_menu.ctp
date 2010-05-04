@@ -7,7 +7,7 @@
 	$here = Router::url(substr($this->here, strlen($this->webroot)-1)); 
 ?>                    
 
-<div class="span-20 last threeWays">
+<div class="prepend-4 span-20 last threeWays">
 	<?php foreach ($items as $name => $link): ?>
 		<div class="topT">
 			<?php if (Router::url($link) == $here): ?>

@@ -46,7 +46,7 @@
 					    </div>
 					    <div style="float:right;" class="quickMode">
 					      <?php __('Quick mode');?>
-					      <?php echo $form->checkbox('One',array() );?>
+					      <?php echo $form->checkbox('Quick',array('checked'=>true) );?>
 					    </div>
 					
 					    <?php echo $form->input('ext',array('label'=>false , "tabindex"=>"1") );?>
@@ -131,7 +131,7 @@
 			  </div>
 		</div>
 	</div>
-		<?php echo $this->element('rightSug/right_sug');?>
+		<?php echo $this->element('cardEditor/rightSug/right_sug');?>
 		<!--
 		<div class="test">
 			<div class="fancy_bg fancy_bg_n"></div>
