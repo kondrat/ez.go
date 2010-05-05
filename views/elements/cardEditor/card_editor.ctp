@@ -69,6 +69,9 @@
 				      	<div class="langToFrom">				      	  
 				      	  <span id="langTo">ru</span>
 				      	</div>
+				      	<div>
+				      		change lang Pair
+				      	</div>
 				      	
 				      	  <div class="langTable hide" style="">	
 				      	  	<?php echo $this->element("langSwitcher/lang_switcher");?>		    	  	    	  

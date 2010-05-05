@@ -1,34 +1,54 @@
 
-var tt;
-var from = 'en';
-var to = 'ru';
-var backDirect = false;
-var song;
+
+
 var noSound;
 
 $(document).ready( function(){
 
-		
-		var cardTable = $("div.cardEditor");
-		var hideArrow = $(".hideArrow");
-		//cleaning after reload
-	  $("#CardExt").val('');
-	  
+		var com1 = {
+			//alert message object
+			alertMessage: '',
+			//card editor object
+			cardTable :'',
+			//small arrow hide - show translation object
+			hideArrow:'',
+			//checking the letter in the input string if not OK - don't let it in
+			correctLetter: '',
+			//look for quick mode flag
+			quickModeChecked: '',
+			activeSide: '',
+			//side on which we have translated our string or word
+			tranlslSide:'',
+			//change lang switching arrow direction
+			backLangDirect: false,
+			//lang pair initial
+			from: 'en',
+			to:'ru'
+		};
 
-		//flash message 	  
-		var $alert = $('#flashMessage');
-		if($alert.length) {
+
+		//flash alert message 	  
+		com1.alertMessage = $('#flashMessage');
+		
+		if(com1.alertMessage.length) {
 				var alerttimer = window.setTimeout(function () {
-					$alert.trigger('click');
+					com1.alertMessage.trigger('click');
 				}, 4500);
-				$alert.animate({height: [$alert.css("line-height") || '52', 'swing']}, 400).click(function () {
+				com1.alertMessage.animate({height: [com1.alertMessage.css("line-height") || '52', 'swing']}, 400).click(function () {
 					window.clearTimeout(alerttimer);
-					$alert.animate({height: '0'}, 400);
-					$alert.css({'border':'none'});
+					com1.alertMessage.animate({height: '0'}, 400);
+					com1.alertMessage.css({'border':'none'});
 				});
 		}
+
 		
+		com1.cardTable = $("div.cardEditor");
+		com1.hideArrow = $(".hideArrow");
 		
+		//cleaning after reload
+	  $("#CardExt").val('');
+
+	
 	//cards control panel ( edit del)				
 		$(".td").hover( function(){
 				$(this).find(".ctrlPanel").show();
@@ -37,17 +57,26 @@ $(document).ready( function(){
 			}
 		);
 		
-
-		var prev_tooltip;// = $(".userActions").text();
 		useraction_tooltip(".plusMenuBack,.plusMenuFront");	
 
 
 	//front - back side switching
     //front
-    
-    
-    
+   
 		$("#frontButton").click(function() {
+			
+			com1.activeSide = 'a';
+			$(".langToFromWrapper").removeClass("backDir");
+			
+
+			com1.to = $("#langTo").text();
+			com1.from = $("#langFrom").text();
+			
+			if ( com1.tranlslSide === 'a' ){
+				$(".dicTerms, .topSug").removeClass("insertWordClick");
+			} else if (com1.tranlslSide === 'b') {
+				$(".dicTerms, .topSug").addClass("insertWordClick");
+			}
 			
 			$("#tableBack").removeClass("activeCardSide");
 			$("#tableFront").addClass("activeCardSide");
@@ -69,19 +98,30 @@ $(document).ready( function(){
 		});
 
 		$("#frontButton").trigger('click');
-		
-		
+	
+				
 		//back
 		$("#backButton").click(function() {
 			
+			com1.activeSide = 'b';
+			
+			$(".langToFromWrapper").addClass("backDir");
+
+			com1.to = $("#langFrom").text();
+			com1.from = $("#langTo").text();
+
+			
+			if ( com1.tranlslSide === 'b' ){
+				$(".dicTerms, .topSug").removeClass("insertWordClick");
+			} else if (com1.tranlslSide === 'a') {
+				$(".dicTerms, .topSug").addClass("insertWordClick");
+			}
+						
 			$("#tableFront").removeClass("activeCardSide");
 			$("#tableBack").addClass("activeCardSide");
 			
 			$(".plusMenuFront").hide();
-			$(".plusMenuBack").show();
-			
-			
-			
+			$(".plusMenuBack").show();		
 			
 			$(".sideToEdit:first").hide();
 			$(".sideToEdit:last").show();	
@@ -92,40 +132,38 @@ $(document).ready( function(){
 			$(".inputSring").removeClass("inputSring");
 			$("#translation").addClass("inputSring");
 			$("#CardExt").val($("#translation").text());
-	
 					
 		});
 
 	
 
 
-	var letOk = false;
+	com1.correctLetter = false;
+	
 	$('#CardExt').keypress( function(e) {
-		//console.log(e.which);
-		
+
 	  var chr = (String.fromCharCode(e.which));
 	  rexp = /([^\w0-9\s\.\?,'-])/; 
 	  if( rexp.test(chr) && e.which !== 8 && e.which !== 0 ) {
-	  	//console.log('falseChr');
-	  	letOk = false;
+	  	com1.correctLetter = false;
 	    return false;
 	  } else {
-	  	letOk = true;
+	  	com1.correctLetter = true;
 	  }
  
 	});	
 
-	var CardQuick = $("#CardQuick").attr("checked");
+	com1.quickModeChecked = $("#CardQuick").attr("checked");
 
 	$("#CardQuick").click(function(){
-		CardQuick = $(this).attr("checked");
+		com1.quickModeChecked = $(this).attr("checked");
 	});
 
 
 			
 		$('#CardExt').keyup( function(e) {
-			if ( CardQuick === true) {			
-				if ( letOk = true) {		
+			if ( com1.quickModeChecked === true) {			
+				if ( com1.correctLetter = true) {		
 			  	var textIn = $("#CardExt").val();	  	
 			  	$(".inputSring").trigger("myFirstEvent", textIn);	  		
 			  }
@@ -165,27 +203,22 @@ $(document).ready( function(){
 		
 	//lang switching
 	
-		var bgPos;
 		$(".langSwitch").hover(function(){
-			$(this).addClass("ttTest");
+			$(this).addClass("changeLangDirect");
 			},function(){
-				$(this).removeClass("ttTest");
+				$(this).removeClass("changeLangDirect");
 			}
 		); 
 	
 		$(".langSwitch").click(function(){
-			$(this).removeClass("ttTest");
-			if( !backDirect ) {
-				to = $("#langFrom").text();
-				from = $("#langTo").text();
-				$(".langToFromWrapper").addClass("backDir");
-				backDirect = true;
-			} else {
-				to = $("#langTo").text();
-				from = $("#langFrom").text();
-				$(".langToFromWrapper").removeClass("backDir");
-				backDirect = false;
-			}			
+			
+			$(this).removeClass("changeLangDirect");
+			
+			if (  com1.activeSide === 'a' ) {
+				$("#backButton").trigger('click');
+			} else if ( com1.activeSide === 'b' ) {
+				$("#frontButton").trigger('click');
+			}
 		});
 
 		
@@ -193,7 +226,7 @@ $(document).ready( function(){
 				
     $("#langTo").toggle(function(){
       
-       $(".langTable").show('normal');
+       $(".langTable").show();
       },
       function(){
          $(".langTable").fadeOut();
@@ -205,34 +238,39 @@ $(document).ready( function(){
 
 
 	//word submiting for translation
+
+//CHEck if word is empty or not!!!!!!!!!
+
 						
 		$("#submitTranslId").click( function() {
-
-			var userWord;
-			var userWordLower;
-			userWord = $.trim($("#CardExt").attr('value'));
-			userWordLower = userWord.toLowerCase();
 			
-
+			var userWord = $.trim($("#CardExt").attr('value'));
+			var userWordLower = userWord.toLowerCase();
+			
 			//double of the input.
-			$(".inputSring,#transFor").text(userWord);
+			$(".inputSring").text(userWord);
+			$("#transFor").text(userWord);
 			
 			
 			
 			//dictionary preparation
 			$(".additionalRes").hide();
-			$(".dicTerms ul").empty().addClass("hide").removeClass("ter");
+			$(".dicTerms ul").empty().addClass("hide");
 			$("ul.rSugTabs li").removeClass("dicSwitcherM dicActive");
-			$("#transFor").empty();
+			//$("#transFor").empty();
+
+
+
+
 			
 	//trimm and check uesr word;		
-			songWord = userWordLower;
+			com.songWord = userWordLower;
 			
-			song = "http://www.gstatic.com/dictionary/static/sounds/de/0/"+songWord+".mp3";
+			com.song = "http://www.gstatic.com/dictionary/static/sounds/de/0/"+com.songWord+".mp3";
 			
 						$.post(
 							path+"/cards/getTransl",
-							{"data[Card][ext]": userWord, "data[Card][langFrom]" : from, "data[Card][langTo]" : to },
+							{"data[Card][ext]": userWord, "data[Card][langFrom]" : com1.from, "data[Card][langTo]" : com1.to },
 							
 					    	function(data){
 									
@@ -283,7 +321,7 @@ $(document).ready( function(){
 												  	
 												  		if( keyT === 'terms') {	
 												  				$.each( valueT, function(keyN, valueN) {											  					
-													  					$("ul."+typeW+"Terms").append('<li>'+ valueN+'</li>').addClass("ter");
+													  					$("ul."+typeW+"Terms").append('<li>'+ valueN+'</li>');
 													  			});
 													  			$("li."+typeW ).addClass("dicSwitcherM");											  			
 												  				typeW=null;
@@ -293,7 +331,7 @@ $(document).ready( function(){
 												  });
 												  
 												  $(".dicSwitcherM:first").addClass("dicActive");
-												  $(".ter:first").removeClass("hide");
+												  $(".dicTerms ul:eq(0)").removeClass("hide");
 												  $(".additionalRes").show();
 												} else {
 													
@@ -302,26 +340,28 @@ $(document).ready( function(){
 												//ok, go to side B 
 												
 											  var sen = data.sentences;
-											  var translatedWord = '';
+											  var translatedSentence = '';
 											  $.each(sen, function(key, value) { 
 														$.each(value, function(keyIn, valIn){
 															if( keyIn === 'trans' ) {
-																translatedWord += valIn; 																										
+																translatedSentence += valIn; 																										
 															} 	
   													});											
 												});												
-												$(".topSug li").text(translatedWord);
+												$(".topSug li").text(translatedSentence);
 												
+												com1.tranlslSide = com1.activeSide;
+												$(".insertWordClick").removeClass("insertWordClick");
 
 												
 
 												
 												
 												
-												if(userWord != translatedWord) {
+												if(userWord != translatedSentence) {
 		
-													if( cardTable.css('width') !== "870px" ) {
-														cardTable.animate({
+													if( com1.cardTable.css('width') !== "870px" ) {
+														com1.cardTable.animate({
 																width: '870px'
 															},
 															'linear',
@@ -329,19 +369,19 @@ $(document).ready( function(){
 																$(".rightSug").fadeIn('fast');
 															}
 														);
-														hideArrow.show().removeClass("hideArrowR").addClass("hideArrowL");
+														com1.hideArrow.show().removeClass("hideArrowR").addClass("hideArrowL");
 													}
 												} else {
 													$(".rightSug").hide();
-														if( cardTable.css('width') === "870px" ) {
+														if( com1.cardTable.css('width') === "870px" ) {
 															
-															cardTable.animate(
+															com1.cardTable.animate(
 																{
 																	width: '630px'
 																}
 															);														
 														}
-														hideArrow.hide().removeClass("hideArrowL hideArrowR");
+														com1.hideArrow.hide().removeClass("hideArrowL hideArrowR");
 												}
 												
 											} else {
@@ -358,7 +398,20 @@ $(document).ready( function(){
 			return false;
 		});
 		
-		
+		//inserting translation result in inputstring
+		$(".insertWordClick li").live('click',function(){
+			var toIns = $(this).text();
+			$("#CardExt").val(toIns);			
+			$(".inputSring").trigger("myFirstEvent", toIns);			
+		});
+				
+
+
+
+
+
+
+
 
 		$(".dicSwitcherM").live('mouseover mouseout',function(event){		
 			  if (event.type == 'mouseover') {
@@ -379,11 +432,6 @@ $(document).ready( function(){
 
 
 
-		$(".dicTerms li,.topSug li").live('click',function(){
-			var toIns = $(this).text();
-			$("#CardExt").val(toIns);			
-			$(".inputSring").trigger("myFirstEvent", toIns);			
-		});
 
 
 
@@ -397,21 +445,7 @@ $(document).ready( function(){
 
 
 
-
-
-
-
-
-		
-		
-		
-		$(".submitTranslate").click( function() {
-			var userTran;
-			tt = userTran = $("#UserWord").attr('value');
-			initialize(tt);
-			return false;
-		});
-		
+	
 		$(".submitMore").click( function() {
 			var userMore;
 			userMore = $("#UserExt").attr('value');
@@ -456,12 +490,7 @@ $(document).ready( function(){
 		});		
 		
 		
-//to del
-		/*
-		$(".threeWaysOne").click(function(){
-			$(".cardEditor").fadeIn();
-		});
-		*/
+
 
 		//arrow class 
 		$(".hideArrow").click(function(){	
@@ -469,7 +498,7 @@ $(document).ready( function(){
 				if ( thisArrow.hasClass("hideArrowL") ) {
 						
 					$(".rightSug").fadeOut( function() {
-						cardTable.animate(
+						com1.cardTable.animate(
 							{
 								width: '630px'
 							},
@@ -480,7 +509,7 @@ $(document).ready( function(){
   				});
   															
 				}	else {				
-					cardTable.animate(
+					com1.cardTable.animate(
 						{
 							width: '870px'
 						},
@@ -577,19 +606,19 @@ $(document).ready( function(){
           	$('#CardExt').val('');
           	
 			 			$(".additionalRes").hide();
-						$(".dicTerms ul").empty().addClass("hide").removeClass("ter");
+						$(".dicTerms ul").empty().addClass("hide");
 						$("ul.rSugTabs li").removeClass("dicSwitcherM dicActive"); 
 						
 						$(".rightSug").hide();
-							if( cardTable.css('width') === "870px" ) {
+							if( com1.cardTable.css('width') === "870px" ) {
 								
-								cardTable.animate(
+								com1.cardTable.animate(
 									{
 										width: '630px'
 									}
 								);														
 							}						
-						hideArrow.hide().removeClass("hideArrowL hideArrowR");	
+						com1.hideArrow.hide().removeClass("hideArrowL hideArrowR");	
 							
 						if (data.theme){
 							themeName.data('id',data.themeId);
@@ -619,15 +648,27 @@ $(document).ready( function(){
 			  }			
 			}
 		);
-
-
-
-	
-
-
-// http://vremenno.net/examples/x-button-on-text-input2/
-// http://www.simplecoding.org/javascript-poleznye-sobytiya.html
 	
 });//end of file
 
 
+
+
+
+
+
+
+
+
+
+//old
+/*		
+		$(".submitTranslate").click( function() {			
+			var userTran;
+			tt = userTran = $("#UserWord").attr('value');
+			initialize(tt);
+			return false;
+		});
+*/
+// http://vremenno.net/examples/x-button-on-text-input2/
+// http://www.simplecoding.org/javascript-poleznye-sobytiya.html

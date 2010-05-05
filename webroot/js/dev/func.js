@@ -15,10 +15,9 @@
 							}, 
 							800
 						).click(function () {
-							window.clearTimeout(alerttimer);
-							$alert.animate({height: '0'}, 400);
-							$alert.css({'border':'none'});
-							
+									window.clearTimeout(alerttimer);
+									$alert.animate({height: '0'}, 400);
+									$alert.css({'border':'none'});							
 						});
 		}
 
@@ -43,19 +42,21 @@
     })(jQuery);    			
 		
 
-				function useraction_tooltip(target_items){
-					$(target_items).each(function(i){
-						var my_tooltip = $(this).attr('title');					
-						$(this).removeAttr("title").mouseover(function(){
-							$(".userActions").text(my_tooltip).addClass("userActionTip");												
-						}).mouseout(function(){
-							$(".userActions").text(prev_tooltip).removeClass("userActionTip");
-						}).click(function(){							
-							$(".userActions").text(my_tooltip);
-							prev_tooltip = my_tooltip;
-						});
-					});
-				}
+		function useraction_tooltip(target_items){
+			var prev_tooltip;
+			$(target_items).each(function(i){
+				var my_tooltip = $(this).attr('title');	
+								
+				$(this).removeAttr("title").mouseover(function(){
+					$(".userActions").text(my_tooltip).addClass("userActionTip");												
+				}).mouseout(function(){
+					$(".userActions").text(prev_tooltip).removeClass("userActionTip");
+				}).click(function(){							
+					$(".userActions").text(my_tooltip);
+					prev_tooltip = my_tooltip;
+				});
+			});
+		}
 
 
     //drag the main card editor
@@ -69,21 +70,26 @@
 
 
 
-			    function initialize(tt) {
-			     // var text = document.getElementById("UserWord").innerHTML;
-			      google.language.detect(tt, function(result) {
-			        if (!result.error && result.language) {
-			          google.language.translate(tt, result.language, "ru",
-			            function(result) {
-			            	var translated = document.getElementById("translation");
-			            	if (result.translation) {
-			              	translated.innerHTML = result.translation;
-			            	}
-			          });
-			        }
-			      });
-    			}
-    			
+
+
+
+
+/*
+	  function initialize(tt) {
+	   // var text = document.getElementById("UserWord").innerHTML;
+	    google.language.detect(tt, function(result) {
+	      if (!result.error && result.language) {
+	        google.language.translate(tt, result.language, "ru",
+	          function(result) {
+	          	var translated = document.getElementById("translation");
+	          	if (result.translation) {
+	            	translated.innerHTML = result.translation;
+	          	}
+	        });
+	      }
+	    });
+		}
+*/   			
     			
     			
     			

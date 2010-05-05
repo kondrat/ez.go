@@ -32,7 +32,7 @@
 															'jquery/jquery.ui.mouse.min.js',
 															'jquery/jquery.ui.draggable.min',
 															'dev/func',
-															'dev/common',
+															'dev/common1',
 															'dev/common2',
 															'dev/common3',
 															'dev/print',

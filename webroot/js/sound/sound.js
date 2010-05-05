@@ -19,7 +19,7 @@ $(document).ready( function(){
            //alert(song);
 					 var aSoundObject = soundManager.createSound({			
 					  id: 'mySound',
-					  url: song,
+					  url: com.song,
 					  autoLoad: false,
 					  autoPlay:true,
 					  multiShot:false,
@@ -35,7 +35,7 @@ $(document).ready( function(){
 					    	//alert('sound');
 					      $("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
 					      noSound = 1;
-					      $(".wordToSound").text(songWord);
+					      $(".wordToSound").text(com.songWord);
 					    }					
 					  },
 					  onfinish:function() {	
@@ -55,8 +55,7 @@ $(document).ready( function(){
 					if(noSound === 1) {
 						var aSoundObject2 = soundManager.createSound({			
 					  	id: 'mySound',
-					  	url: song,
-					  	//url : "http://translate.google.com/translate_tts?q=girl%20and%20boy%20plays%20football%20and%20make%20money&tl=en",
+					  	url: com.song,
 						  onload: function() {
 						    //alert( 'The sound '+this.sID+' loaded!');	
 						    if( this.readyState !== 3 ) {

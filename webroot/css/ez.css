@@ -72,7 +72,9 @@
   margin-bottom:1em;
   padding-bottom:3px;
   background-color:#C3D9FF;
-  background:-moz-linear-gradient(center top , #C3D9FF, white 140%) repeat scroll 0 0 transparent;
+  position:relative;
+  
+  background:-moz-linear-gradient(center top , #C3D9FF, white 140%) repeat scroll 0 0 transparent; 
 	-moz-border-radius:10px;
 	border-radius:10px;
 	-webkit-border-radius:10px;
@@ -424,17 +426,18 @@ a.sideToEdit:hover {
 }
 .langToFromWrapper{
 	float:right;
-	margin:0.5em 70px 0 0;
 	font-weight:bold;
-	position:relative;
+	left:275px;
+	position:absolute;
+	top:80px;
 }
 .backDir div.langSwitch {
 	background-position: 0 0;
 }
-.backDir div.ttTest{
+.backDir div.changeLangDirect{
 		background-position: 0 -72px;
 }
-div.ttTest{
+div.changeLangDirect{
 		background-position: 0 -48px;
 }
 .backDir #langFrom{
@@ -549,10 +552,17 @@ div.ttTest{
 }
 .topSug{
 	margin:0 1em;
-	color:green;
+	color:gray;
 	font-size:larger;
 	line-height:1.1em;
 }
+.dicTerms {
+	color:gray;
+}
+.insertWordClick {
+	color:black;
+}
+
 #transFor{
 	background-color:Beige;
 	color:black;
@@ -586,9 +596,9 @@ li.dicSwBase{
 	color:gray;
 	display:none;
 }
-.dicTerms li,.topSug li,.rSugTabs li {
+.insertWordClick,.rSugTabs li {
   cursor:pointer;
-  }
+ }
 
 
 
