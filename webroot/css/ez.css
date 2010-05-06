@@ -403,14 +403,14 @@ a.sideToEdit:hover {
 	color:red;
 }
 .langSwitch{
-  margin:0 0.3em 0 0.5em;
+  margin:1px 0 0;
   background:transparent url(../img/icons/langSwitch.png) no-repeat scroll 0 -24px;
   width:16px;
   height:16px;
   float:left;
   vertical-align:middle;
 }
-#langFrom,#langTo{
+#langSideA,#langSideB{
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px; 
   background-color:#EEEEEE;
@@ -419,18 +419,62 @@ a.sideToEdit:hover {
   font-size:9pt;
   margin:0;
   padding:0 0.4em;
+  line-height:1.2em;
+  width:40px;
+  text-align:center;
 }
-#langTo{
-	  border:1px solid BurlyWood;
-	  color: BurlyWood;
+#langSideA{
+	position:absolute;
+	top:0;
+	right:22px;
 }
+#langSideB{
+	border:1px solid BurlyWood;
+	color: BurlyWood;
+	position:absolute;
+	top:0;
+	left:22px;
+}
+/*lang select options*/
+#sideA,#sideB{
+	height:1.5em;
+}
+#sideA optgroup, #sideB optgroup {
+	color:gray;
+	font-size:smaller;
+	font-weight:normal;
+	background-color:#eee;
+}
+#sideA option,#sideB option {
+	color:#000;
+	font-size:inherit;
+	font-weight:normal;
+	background-color:#fff;	
+}
+
 .langToFromWrapper{
-	float:right;
-	font-weight:bold;
-	left:275px;
+	left:305px;
 	position:absolute;
 	top:80px;
 }
+
+
+#changeLangPair{
+	color:gray;
+	font-size:smaller;
+	font-weight:normal;
+	text-decoration:underline;
+	position:absolute;
+	right:-72px;
+	text-align:center;
+	top:16px;
+	width:160px;
+}
+#changeLangPair:hover{
+	color:red;
+	text-decoration:none;
+}
+
 .backDir div.langSwitch {
 	background-position: 0 0;
 }
@@ -440,33 +484,36 @@ a.sideToEdit:hover {
 div.changeLangDirect{
 		background-position: 0 -48px;
 }
-.backDir #langFrom{
+.backDir #langSideA{
 		border:1px solid BurlyWood;
 		color:BurlyWood;
 }
-.backDir #langTo{
+.backDir #langSideB{
 		border:1px solid CadetBlue;
 		color:CadetBlue;
 }
-.langToFrom{
-  color:gray;
-  font-weight:normal;
-  float:left;
-}
-.langTable{
+
+.langPad{
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px; 
 	-moz-box-shadow:0 0 3px;
   background-color:Cornsilk;
   border:1px solid;
-  padding:5px;
+  padding:10px;
   position:absolute;
   text-align:center;
   z-index:1000;
-  top:25px;
-  left:-230px;
+  top:130px;
+  left:120px;
 }
-.closeLangTable, .closeCardTable{
+#langPadSubmit{
+	padding:0 .5em;
+}
+.langPadLabel{
+	font-weight:bold;
+	color:Brown;
+}
+.closeLangPad, .closeCardTable{
 	background:transparent url(../img/icons/error.png) no-repeat scroll right 0;
 	height:16px;
 	width:16px;

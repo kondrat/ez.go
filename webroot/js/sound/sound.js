@@ -1,8 +1,10 @@
-var songWord;
-
-
-	
 $(document).ready( function(){
+
+		var sound = {
+			noSound: 0
+		}
+
+
 
 
 				soundManager.debugMode = false;
@@ -15,8 +17,6 @@ $(document).ready( function(){
         
     $('#submitTranslId').click(function() {
          $("#playSound").removeClass("activeSound");
- 				
-           //alert(song);
 					 var aSoundObject = soundManager.createSound({			
 					  id: 'mySound',
 					  url: com.song,
@@ -28,13 +28,13 @@ $(document).ready( function(){
 					  onload: function() {
 					    //alert( 'The sound '+this.sID+' loaded!');	
 					    if( this.readyState !== 3 ) {
-					    	noSound = 0;
+					    	sound.noSound = 0;
 					    	$(".wordToSound").text("No sound");
 					      this.destruct();
 					    } else {
 					    	//alert('sound');
 					      $("#playSound").removeClass("activeSoundPlay").addClass("activeSound");
-					      noSound = 1;
+					      sound.noSound = 1;
 					      $(".wordToSound").text(com.songWord);
 					    }					
 					  },
@@ -52,7 +52,7 @@ $(document).ready( function(){
 				
 		$('#playSound').click(function() {
 			
-					if(noSound === 1) {
+					if(sound.noSound === 1) {
 						var aSoundObject2 = soundManager.createSound({			
 					  	id: 'mySound',
 					  	url: com.song,

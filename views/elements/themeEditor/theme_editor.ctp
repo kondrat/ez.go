@@ -1,6 +1,6 @@
 <?php $selectedTheme = null;?>
 
-	<div class="prepend-4 span-14 append-4" style="-moz-border-radius:5px;background-color:SeaShell;margin-bottom: 1em;">
+	<div class="prepend-4 span-16 append-4 last" style="-moz-border-radius:5px;background-color:SeaShell;margin-bottom: 1em;">
 		<div style="position:relative;">
 			<span class= "themePerfix" style="color:gray;font-size:8pt;"><?php __('theme');?>:</span> 
 			<span class= "themeName" style="">

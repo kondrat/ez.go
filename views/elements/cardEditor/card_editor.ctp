@@ -6,6 +6,7 @@
 ?>
 
 <div class="span-16 cardEditor <?php echo $classHide;?>" style="-moz-border-radius:15px;-moz-box-shadow:0 0 7px gray;">
+	<?php echo $this->element("cardEditor/langSwitcher/lang_switcher");?>
 	<div class="span-16">
 		<div class="span-16 plusMenuWrapper" style="">
 		
@@ -60,22 +61,11 @@
 					    </div>
 				    <?php echo $form->end();?>
 				    
-				    <div class="langToFromWrapper" style="">
-				    
-				        <div class="langToFrom">			          
-				      	  <span id="langFrom">en</span>
-				      	</div>
-				      	<div class="langSwitch"></div>
-				      	<div class="langToFrom">				      	  
-				      	  <span id="langTo">ru</span>
-				      	</div>
-				      	<div>
-				      		change lang Pair
-				      	</div>
-				      	
-				      	  <div class="langTable hide" style="">	
-				      	  	<?php echo $this->element("langSwitcher/lang_switcher");?>		    	  	    	  
-				      	  </div>			    	  
+				    <div class="langToFromWrapper" style="">			    			    		
+				    			<div id="langSwitch" class="langSwitch"></div>
+					        <div id="langSideA">en</div>
+					      	<div id="langSideB">ru</div>					      		
+				      		<div id="changeLangPair" style=""><?php __('change lang Pair');?></div>			      							      				      			      	  			    	  
 				    </div>
 
 			    

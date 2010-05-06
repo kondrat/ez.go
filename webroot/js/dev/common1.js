@@ -1,8 +1,3 @@
-
-
-
-var noSound;
-
 $(document).ready( function(){
 
 		var com1 = {
@@ -23,7 +18,8 @@ $(document).ready( function(){
 			backLangDirect: false,
 			//lang pair initial
 			from: 'en',
-			to:'ru'
+			to:'ru',
+			langSwitch: ''
 		};
 
 
@@ -69,8 +65,8 @@ $(document).ready( function(){
 			$(".langToFromWrapper").removeClass("backDir");
 			
 
-			com1.to = $("#langTo").text();
-			com1.from = $("#langFrom").text();
+			com1.to = $("#langSideB").text();
+			com1.from = $("#langSideA").text();
 			
 			if ( com1.tranlslSide === 'a' ){
 				$(".dicTerms, .topSug").removeClass("insertWordClick");
@@ -107,8 +103,8 @@ $(document).ready( function(){
 			
 			$(".langToFromWrapper").addClass("backDir");
 
-			com1.to = $("#langFrom").text();
-			com1.from = $("#langTo").text();
+			com1.to = $("#langSideA").text();
+			com1.from = $("#langSideB").text();
 
 			
 			if ( com1.tranlslSide === 'b' ){
@@ -202,18 +198,16 @@ $(document).ready( function(){
 			
 		
 	//lang switching
-	
-		$(".langSwitch").hover(function(){
+		com1.langSwitch = $("#langSwitch");
+		com1.langSwitch.hover(function(){
 			$(this).addClass("changeLangDirect");
 			},function(){
 				$(this).removeClass("changeLangDirect");
 			}
 		); 
 	
-		$(".langSwitch").click(function(){
-			
-			$(this).removeClass("changeLangDirect");
-			
+		com1.langSwitch.click(function(){			
+			$(this).removeClass("changeLangDirect");			
 			if (  com1.activeSide === 'a' ) {
 				$("#backButton").trigger('click');
 			} else if ( com1.activeSide === 'b' ) {
@@ -223,18 +217,35 @@ $(document).ready( function(){
 
 		
 		
-				
-    $("#langTo").toggle(function(){
-      
-       $(".langTable").show();
-      },
-      function(){
-         $(".langTable").fadeOut();
-      }
-    );
-    $("#langFrom,.closeLangTable").click(function() {
-      $("#langTo").trigger('click');
+		//cange lang pair control		
+    $("#changeLangPair").click(function(){      
+       $(".langPad").show();
     });
+    $(".closeLangPad,#langPadSubmit").click(function(){
+       $(".langPad").fadeOut();
+    });
+    
+    
+		$("#langPadSubmit").click(function(){			
+			var sideLangA = $("#sideA").attr("value");
+			var sideLangB = $("#sideB").attr("value");						
+			$("#langSideA").text(sideLangA);
+			$("#langSideB").text(sideLangB);
+			if (  com1.activeSide === 'a' ) {;		
+				com1.to = sideLangB;
+				com1.from = sideLangA;				
+			} else if ( com1.activeSide === 'b' ) {	
+				com1.to = sideLangA;
+				com1.from = sideLangB;								
+			}
+		});
+
+
+
+
+
+
+
 
 
 	//word submiting for translation
@@ -243,6 +254,8 @@ $(document).ready( function(){
 
 						
 		$("#submitTranslId").click( function() {
+			
+			alert(com1.from+' | '+com1.to);
 			
 			var userWord = $.trim($("#CardExt").attr('value'));
 			var userWordLower = userWord.toLowerCase();
