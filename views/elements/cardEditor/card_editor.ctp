@@ -53,7 +53,7 @@
 					    <?php echo $form->input('ext',array('label'=>false , "tabindex"=>"1") );?>
 		
 					    <div style="float:right;">
-						    <?php echo $form->button(__('Insert in card',true),array('id'=>'submitWrodId','class'=>'submitWord',"tabindex"=>"3","onclick"=>"return false;") );?>
+						    <?php echo $form->button(__('Insert in card',true),array('id'=>'submitWordId','class'=>'submitWord',"tabindex"=>"3","onclick"=>"return false;") );?>
 					    </div>
 					    <div style="float:right;margin-right: 1em;">
 						    <?php //echo $html->link(__('Clean up',true),array() );?>

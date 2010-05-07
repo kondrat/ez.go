@@ -3,12 +3,15 @@ $(document).ready( function(){
 		var com1 = {
 			//alert message object
 			alertMessage: '',
+			//Main cardEditor input
+			cardExt: '',
 			//card editor object
 			cardTable :'',
 			//small arrow hide - show translation object
 			hideArrow:'',
-			//checking the letter in the input string if not OK - don't let it in
-			correctLetter: '',
+			//correct letter concept canceled. Checking the letter in the input string if not OK - don't let it in
+			//correctLetter: '',
+			
 			//look for quick mode flag
 			quickModeChecked: '',
 			activeSide: '',
@@ -37,12 +40,16 @@ $(document).ready( function(){
 				});
 		}
 
-		
+
+		com1.cardExt = $("#CardExt");
 		com1.cardTable = $("div.cardEditor");
 		com1.hideArrow = $(".hideArrow");
 		
 		//cleaning after reload
-	  $("#CardExt").val('');
+	  com1.cardExt.val('').focus(function(){whats();});
+	  //com1.cardExt.focus();
+		$("#submitTranslId,#submitWordId").attr({"disabled":"disabled"});
+
 
 	
 	//cards control panel ( edit del)				
@@ -52,6 +59,8 @@ $(document).ready( function(){
 				$(this).find(".ctrlPanel").hide();
 			}
 		);
+
+
 		
 		useraction_tooltip(".plusMenuBack,.plusMenuFront");	
 
@@ -88,7 +97,7 @@ $(document).ready( function(){
 
 			$(".inputSring").removeClass("inputSring");
 			$("#mainWord").addClass("inputSring");	
-			$("#CardExt").val($(".inputSring").text());		
+			com1.cardExt.val($(".inputSring").text());		
 
 			
 		});
@@ -127,48 +136,104 @@ $(document).ready( function(){
 			
 			$(".inputSring").removeClass("inputSring");
 			$("#translation").addClass("inputSring");
-			$("#CardExt").val($("#translation").text());
+			com1.cardExt.val($("#translation").text());
 					
 		});
 
 	
 
-
-	com1.correctLetter = false;
+		//correct letter concept canceled
+		/*
+		com1.correctLetter = false;
+		
+		com1.cardExt.keypress( function(e) {
 	
-	$('#CardExt').keypress( function(e) {
-
-	  var chr = (String.fromCharCode(e.which));
-	  rexp = /([^\w0-9\s\.\?,'-])/; 
-	  if( rexp.test(chr) && e.which !== 8 && e.which !== 0 ) {
-	  	com1.correctLetter = false;
-	    return false;
-	  } else {
-	  	com1.correctLetter = true;
-	  }
- 
-	});	
-
-	com1.quickModeChecked = $("#CardQuick").attr("checked");
-
-	$("#CardQuick").click(function(){
-		com1.quickModeChecked = $(this).attr("checked");
-	});
+		  var chr = (String.fromCharCode(e.which));
+		  rexp = /([^\w0-9\s\.\?,'-])/; 
+		  if( rexp.test(chr) && e.which !== 8 && e.which !== 0 ) {
+		  	com1.correctLetter = false;
+		    return false;
+		  } else {
+		  	com1.correctLetter = true;
+		  }
+	 
+		});	
+		*/
+		com1.quickModeChecked = $("#CardQuick").attr("checked");
+	
+		$("#CardQuick").click(function(){
+			com1.quickModeChecked = $(this).attr("checked");
+		});
 
 
+		var what;
+		com1.cardExt.keyup( function(e) {
+									
+				//if ( com1.correctLetter = true) { //correct letter concept canceled
+					
+					var textIn = com1.cardExt.val();
+					if ( textIn !== '') {
+						$("#submitTranslId,#submitWordId").attr({"disabled":false});
+						whats();
+					} else {
+						$("#submitTranslId,#submitWordId").attr({"disabled":"disabled"});
+						whats();
+					}
+										  	
+			  	if ( com1.quickModeChecked === true) {  	
+			  		$(".inputSring").trigger("myFirstEvent", textIn);
+			  	}
+			  
+			//}
 			
-		$('#CardExt').keyup( function(e) {
-			if ( com1.quickModeChecked === true) {			
-				if ( com1.correctLetter = true) {		
-			  	var textIn = $("#CardExt").val();	  	
-			  	$(".inputSring").trigger("myFirstEvent", textIn);	  		
-			  }
-			}
+		});
+		
+//--------------------------------------------------
+		
+		//whats();
+		function whats() {
+				what = window.setInterval( function() {
+				var whatInt;	
+					console.log( whatInt = com1.cardExt.val() );
+					
+					if( whatInt !== '' ){
+						window.clearInterval(what);
+					}
+				}, 2000			
+			);
+		}		
+			
+		com1.cardExt.click(function(){
+			//alert( com1.cardExt.val() );
 		});
 	
+		$('#langSideA').click(function(e) {
+			window.clearInterval(what);
+			//com1.cardExt.focus();
+			//alert(e.which);
+			/*
+			var textIn = com1.cardExt.val();
+					if ( textIn !== '') {
+						alert('Handler for .mousedown() called.');
+					} else {
+						//alert('Ha');
+					}
+  		*/
+		});	
+		$('#langSideB').click(function(e) {
+			com1.cardExt.blur();
+			//alert(e.which);
+			/*
+			var textIn = com1.cardExt.val();
+					if ( textIn !== '') {
+						alert('Handler for .mousedown() called.');
+					} else {
+						//alert('Ha');
+					}
+  		*/
+		});	
 
-
-
+//------------------------------------------------
 	$(".plusMenuFront,.plusMenuBack").click(function(){
 			$(".plusMenuActive").removeClass("plusMenuActive");
 			$(this).addClass("plusMenuActive");			
@@ -177,22 +242,22 @@ $(document).ready( function(){
 	$(".plusMenuTransl").click(function(){
 			$(".inputSring").removeClass("inputSring");
 			$("#translation").addClass("inputSring");	
-			$("#CardExt").val($("#translation").text()).focus();	
+			com1.cardExt.val($("#translation").text()).focus();	
 	});
 	$(".plusMenuDefin").click(function(){
 			$(".inputSring").removeClass("inputSring");
 			$("#definTran span:last").addClass("inputSring");
-			$("#CardExt").val($("#definTran span:last").text()).focus();		
+			com1.cardExt.val($("#definTran span:last").text()).focus();		
 	});
 	$(".plusMenuExample").click(function(){
 			$(".inputSring").removeClass("inputSring");
 			$("#contextTran span:last").addClass("inputSring");
-			$("#CardExt").val($("#definTran span:last").text()).focus();		
+			com1.cardExt.val($("#definTran span:last").text()).focus();		
 	});
 	$(".plusMenuSynonim").click(function(){
 			$(".inputSring").removeClass("inputSring");
 			$("#synonimTran span:last").addClass("inputSring");
-			$("#CardExt").val($("#synonimTran span:last").text()).focus();		
+			com1.cardExt.val($("#synonimTran span:last").text()).focus();		
 	});
 
 			
@@ -257,7 +322,7 @@ $(document).ready( function(){
 			
 			alert(com1.from+' | '+com1.to);
 			
-			var userWord = $.trim($("#CardExt").attr('value'));
+			var userWord = $.trim(com1.cardExt.attr('value'));
 			var userWordLower = userWord.toLowerCase();
 			
 			//double of the input.
@@ -414,7 +479,7 @@ $(document).ready( function(){
 		//inserting translation result in inputstring
 		$(".insertWordClick li").live('click',function(){
 			var toIns = $(this).text();
-			$("#CardExt").val(toIns);			
+			com1.cardExt.val(toIns);			
 			$(".inputSring").trigger("myFirstEvent", toIns);			
 		});
 				
@@ -480,8 +545,8 @@ $(document).ready( function(){
 	
 	
 	
-		$("#submitWrodId").click(function(){		
-			var valCardExt = $("#CardExt").val();		
+		$("#submitWordId").click(function(){		
+			var valCardExt = com1.cardExt.val();		
 			$(".inputSring").trigger("myFirstEvent", valCardExt);					 		  	
 		});
 
@@ -616,7 +681,7 @@ $(document).ready( function(){
           	$('.newCards').prepend('<li></li>').find('li:first').text(data.word).data(cardObj).css({'color':'red'}).next().css({'color':'blue'});
           	
           	$('#mainWord,#translation,#contextTran span:last,#definTran span:last,#synonimTran span:last').empty();
-          	$('#CardExt').val('');
+          	com1.cardExt.val('');
           	
 			 			$(".additionalRes").hide();
 						$(".dicTerms ul").empty().addClass("hide");
