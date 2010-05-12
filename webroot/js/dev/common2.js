@@ -27,8 +27,8 @@ $(document).ready( function(){
 	
 	$(".editTheme").click(function(){	
 		themeAction = 'edit';	
-		themeName.empty().hide();
-		editCreateTheme.hide();		
+		//themeName.empty().hide();
+		//editCreateTheme.hide();		
 		saveTheme.fadeIn();
 		$("#themeEdit").val(themeNameText);
 		
@@ -36,15 +36,15 @@ $(document).ready( function(){
 
 	$(".createNewTheme").click(function(){
 		themeAction = 'create';		
-		themeName.empty().hide();
-		editCreateTheme.hide();		
+		//themeName.empty().hide();
+		//editCreateTheme.hide();		
 		saveTheme.fadeIn();
 		$("#themeEdit").val('');
 	});
 
 	$(".selectTheme").click(function(){	
-		themeName.empty().hide();
-		editCreateTheme.hide();		
+		//themeName.empty().hide();
+		//editCreateTheme.hide();		
 		selectTheme.fadeIn();
 		
 	});

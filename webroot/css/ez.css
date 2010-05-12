@@ -178,7 +178,9 @@
 .saveTheme,.selTheme {
 	left:40px;
 	position:absolute;
-	top:-8px;	
+	top:-3px;	
+	background-color:gainsboro;
+	padding:0.5em 1em;
 }
 .saveTheme button {
 	/*height:25px;*/
@@ -292,7 +294,7 @@ div.activeCardSide #backButton a:hover {
 
 
 .inputSring{
-	background-color:#C3D9FF;
+	background-color:#e1ecff;
 }
 
 .mainWord{

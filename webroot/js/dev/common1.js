@@ -25,7 +25,7 @@ $(document).ready( function(){
 			langSwitch: ''
 		};
 
-
+		
 		//flash alert message 	  
 		com1.alertMessage = $('#flashMessage');
 		
@@ -46,7 +46,7 @@ $(document).ready( function(){
 		com1.hideArrow = $(".hideArrow");
 		
 		//cleaning after reload
-	  com1.cardExt.val('').focus(function(){whats();});
+	  com1.cardExt.val('').blur().focus(function(){whats();});
 	  //com1.cardExt.focus();
 		$("#submitTranslId,#submitWordId").attr({"disabled":"disabled"});
 
@@ -93,9 +93,11 @@ $(document).ready( function(){
 			$(".sideToEdit:last").hide();
 			$(".sideToEdit:first").show();			
 
+			$(".inputSring").removeClass("inputSring").css({backgroundColor: ""});
+
 			$(".plusMenuWord").trigger('click');
 
-			$(".inputSring").removeClass("inputSring");
+			
 			$("#mainWord").addClass("inputSring");	
 			com1.cardExt.val($(".inputSring").text());		
 
@@ -131,10 +133,11 @@ $(document).ready( function(){
 			$(".sideToEdit:first").hide();
 			$(".sideToEdit:last").show();	
 			
+			$(".inputSring").removeClass("inputSring").css({backgroundColor: ""});
 
 			$(".plusMenuTransl").trigger('click');
 			
-			$(".inputSring").removeClass("inputSring");
+			
 			$("#translation").addClass("inputSring");
 			com1.cardExt.val($("#translation").text());
 					
@@ -165,47 +168,90 @@ $(document).ready( function(){
 			com1.quickModeChecked = $(this).attr("checked");
 		});
 
+//vars to add in list
+		var ii = 0;
+		var	keyUpAnim;
+		var whatsBlock = 0;
+		
+		com1.cardExt.keyup( function(e) {									
+			//if ( com1.correctLetter = true) { //correct letter concept canceled	
+			  	if ( com1.quickModeChecked === true) {
+			  		 
+			  			whatsBlock = 1;
+			  			//console.log(intSec); 	
+			  			$(".inputSring").trigger("inputSringEvent");
+			  		
+			  			ii = 0;
+			  			window.clearInterval(keyUpAnim);
 
-		var what;
-		com1.cardExt.keyup( function(e) {
-									
-				//if ( com1.correctLetter = true) { //correct letter concept canceled
-					
-					var textIn = com1.cardExt.val();
-					if ( textIn !== '') {
-						$("#submitTranslId,#submitWordId").attr({"disabled":false});
-						whats();
-					} else {
-						$("#submitTranslId,#submitWordId").attr({"disabled":"disabled"});
-						whats();
-					}
-										  	
-			  	if ( com1.quickModeChecked === true) {  	
-			  		$(".inputSring").trigger("myFirstEvent", textIn);
-			  	}
-			  
-			//}
-			
+			  							  			
+			  			keyUpAnim = window.setInterval( function() {
+			  				ii++;
+			  				//console.log(ii);
+				  			if( ii >= 2 ) {
+				  				$(".inputSring").animate({ backgroundColor: "#C3D9FF" }, 500).animate({ backgroundColor: "#e1ecff" }, 1000);
+				  				ii = 0;
+				  				whatsBlock = 0;
+				  				window.clearInterval(keyUpAnim);
+				  			}
+
+			  			},1000
+			  		);
+		  		
+			  		
+			  	}			  	
+			//}			
 		});
 		
 //--------------------------------------------------
 		
-		//whats();
+		var what;
 		function whats() {
+			
 				what = window.setInterval( function() {
-				var whatInt;	
-					console.log( whatInt = com1.cardExt.val() );
-					
-					if( whatInt !== '' ){
-						window.clearInterval(what);
-					}
+					var whatInt = $.trim(com1.cardExt.val());	
+					var strInt = $.trim($(".inputSring").text());
+					//console.log(whatInt+'  '+strInt);					
+					if( whatInt !== strInt ){
+						
+						//intSec = true;
+						$(".inputSring").trigger("inputSringEvent");
+						if ( whatsBlock === 0 ) {
+							$(".inputSring").animate({ backgroundColor: "#C3D9FF" }, 500).animate({ backgroundColor: "#e1ecff" }, 1000);
+						}
+					} 
 				}, 2000			
 			);
 		}		
+
+		var intSec = true;
+
+		$(".inputSring").live("inputSringEvent",function(){
 			
-		com1.cardExt.click(function(){
-			//alert( com1.cardExt.val() );
-		});
+			var textIn = com1.cardExt.val();
+			$(this).text(textIn);
+			
+			if (textIn.length > 0) {
+				
+				$("#submitTranslId,#submitWordId").attr({"disabled":false});
+				
+				$("span.inputSring").prev().show();				
+			}else{
+				whats();
+				$("#submitTranslId,#submitWordId").attr({"disabled":"disabled"});
+				
+				$("span.inputSring").prev().hide();
+			}			
+		});		
+
+
+
+
+
+
+
+
+
 	
 		$('#langSideA').click(function(e) {
 			window.clearInterval(what);
@@ -233,6 +279,17 @@ $(document).ready( function(){
   		*/
 		});	
 
+
+
+
+
+
+
+
+
+
+
+
 //------------------------------------------------
 	$(".plusMenuFront,.plusMenuBack").click(function(){
 			$(".plusMenuActive").removeClass("plusMenuActive");
@@ -240,25 +297,27 @@ $(document).ready( function(){
 	})
 
 	$(".plusMenuTransl").click(function(){
-			$(".inputSring").removeClass("inputSring");
+			$(".inputSring").removeClass("inputSring").css({backgroundColor:""});
 			$("#translation").addClass("inputSring");	
 			com1.cardExt.val($("#translation").text()).focus();	
 	});
 	$(".plusMenuDefin").click(function(){
-			$(".inputSring").removeClass("inputSring");
+			$(".inputSring").removeClass("inputSring").css({backgroundColor:""});
 			$("#definTran span:last").addClass("inputSring");
 			com1.cardExt.val($("#definTran span:last").text()).focus();		
 	});
 	$(".plusMenuExample").click(function(){
-			$(".inputSring").removeClass("inputSring");
+			$(".inputSring").removeClass("inputSring").css({backgroundColor:""});
 			$("#contextTran span:last").addClass("inputSring");
-			com1.cardExt.val($("#definTran span:last").text()).focus();		
+			com1.cardExt.val($("#contextTran span:last").text()).focus();		
 	});
 	$(".plusMenuSynonim").click(function(){
-			$(".inputSring").removeClass("inputSring");
+			$(".inputSring").removeClass("inputSring").css({backgroundColor:""});
 			$("#synonimTran span:last").addClass("inputSring");
 			com1.cardExt.val($("#synonimTran span:last").text()).focus();		
 	});
+
+
 
 			
 		
@@ -353,7 +412,7 @@ $(document).ready( function(){
 					    	function(data){
 									
 											if( data.sentences ) {
-											  //console.log(data.sentences);
+											  ////console.log(data.sentences);
 										  
 												 if( data.dict ) {
 				
@@ -479,8 +538,9 @@ $(document).ready( function(){
 		//inserting translation result in inputstring
 		$(".insertWordClick li").live('click',function(){
 			var toIns = $(this).text();
-			com1.cardExt.val(toIns);			
-			$(".inputSring").trigger("myFirstEvent", toIns);			
+			com1.cardExt.val(toIns);	
+			//intSec = true;		
+			$(".inputSring").trigger("inputSringEvent").animate({ backgroundColor: "#C3D9FF" }, 500).animate({ backgroundColor: "#e1ecff" }, 1000);			
 		});
 				
 
@@ -546,21 +606,12 @@ $(document).ready( function(){
 	
 	
 		$("#submitWordId").click(function(){		
-			var valCardExt = com1.cardExt.val();		
-			$(".inputSring").trigger("myFirstEvent", valCardExt);					 		  	
+			//intSec = true;
+			$(".inputSring").trigger("inputSringEvent").animate({ backgroundColor: "#C3D9FF" }, 500).animate({ backgroundColor: "#e1ecff" }, 1000);					 		  	
 		});
 
 		
-		$(".inputSring").live("myFirstEvent",function(e, valCardExt){
-			
-			$(".inputSring").text(valCardExt);
-			
-			if (valCardExt.length > 0) {
-				$("span.inputSring").prev().show();
-			}else{
-				$("span.inputSring").prev().hide();
-			}			
-		});		
+
 		
 
 		$(".closeCardTable").click(function(){
