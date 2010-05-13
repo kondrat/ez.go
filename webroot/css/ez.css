@@ -319,16 +319,13 @@ div.activeCardSide #backButton a:hover {
 	padding:3px;
 	width:590px; 
 }
-.contextTran, .definTran, .synonimTran {
+.exTran, .definTran, .synonimTran,.mainWordTest {
   font-size:small;
   font-style:italic;
   text-align:left;
-  line-height:1.3em;
-  
+  line-height:1.3em;  
 }
-.contextTran .inputSring , .definTran .inputSring, .synonimTran .inputSring {
-	
-}
+
 .mainTran{
 	/*border-bottom:1px dashed;*/
 	font-size:smaller;
@@ -355,29 +352,20 @@ div.activeCardSide #backButton a:hover {
   margin:0 1em;
 }
 
-.plusMenu{
-	font-weight:bold;
-	color:lightGray;
-  float:left;
-  margin:0 1em;
+#plusMenuWrapper{
+	text-align:center;
+	padding-bottom:.5em;
 }
-
-.plusMenuFront{
+#plusMenuWrapper div div{
 	color:#FF9900;/*lightSalmon;*/
 	font-weight:bold;
   float:left;
   margin:0 1em;
 }
-.plusMenuBack{
-	color:#FF9900;/*lightSalmon;*/
-	font-weight:bold;
-  float:left;
-  margin:0 1em;
-}
-.plusMenuFront:hover, .plusMenuBack:hover{
+#plusMenuWrapper div div:hover{
 	text-decoration:underline;
 }
-.plusMenuActive{
+#plusMenuWrapper div div.plusMenuActive{
 	color:black;
 }
 

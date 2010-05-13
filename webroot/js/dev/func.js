@@ -41,7 +41,7 @@
       }
     })(jQuery);    			
 		
-
+/*
 		function useraction_tooltip(target_items){
 			var prev_tooltip;
 			$(target_items).each(function(i){
@@ -57,7 +57,7 @@
 				});
 			});
 		}
-
+*/
 
     //drag the main card editor
 		$(function() {
@@ -81,7 +81,7 @@
 	      if (!result.error && result.language) {
 	        google.language.translate(tt, result.language, "ru",
 	          function(result) {
-	          	var translated = document.getElementById("translation");
+	          	var translated = document.getElementById("wordTran");
 	          	if (result.translation) {
 	            	translated.innerHTML = result.translation;
 	          	}

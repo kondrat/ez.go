@@ -3,6 +3,8 @@ $(document).ready( function(){
 		var com1 = {
 			//alert message object
 			alertMessage: '',
+			//id of element to insert words
+			insertId: '',
 			//Main cardEditor input
 			cardExt: '',
 			//card editor object
@@ -25,6 +27,9 @@ $(document).ready( function(){
 			langSwitch: ''
 		};
 
+		//alert(menuInput.toSource());
+
+
 		
 		//flash alert message 	  
 		com1.alertMessage = $('#flashMessage');
@@ -41,6 +46,8 @@ $(document).ready( function(){
 		}
 
 
+
+		com1.insertId = $("#mainWord");
 		com1.cardExt = $("#CardExt");
 		com1.cardTable = $("div.cardEditor");
 		com1.hideArrow = $(".hideArrow");
@@ -52,7 +59,7 @@ $(document).ready( function(){
 
 
 	
-	//cards control panel ( edit del)				
+//cards control panel ( edit del)				
 		$(".td").hover( function(){
 				$(this).find(".ctrlPanel").show();
 			},function(){
@@ -62,7 +69,7 @@ $(document).ready( function(){
 
 
 		
-		useraction_tooltip(".plusMenuBack,.plusMenuFront");	
+	//	useraction_tooltip("#plusMenuWrapper div div");	
 
 
 	//front - back side switching
@@ -85,28 +92,16 @@ $(document).ready( function(){
 			
 			$("#tableBack").removeClass("activeCardSide");
 			$("#tableFront").addClass("activeCardSide");
-			$(".plusMenuWord").addClass("plusMenuActive");
 			
-			$(".plusMenuFront").show();
-			$(".plusMenuBack").hide();
-			
-			$(".sideToEdit:last").hide();
-			$(".sideToEdit:first").show();			
+			$("#plusMenuFront").show();
+			$("#plusMenuBack").hide();			
+			$("#sideToEdit a:last").hide();
+			$("#sideToEdit a:first").show();			
 
-			$(".inputSring").removeClass("inputSring").css({backgroundColor: ""});
-
-			$(".plusMenuWord").trigger('click');
-
-			
-			$("#mainWord").addClass("inputSring");	
-			com1.cardExt.val($(".inputSring").text());		
-
+			$("#plusMenuWord").trigger('click');					
 			
 		});
-
-		$("#frontButton").trigger('click');
-	
-				
+			
 		//back
 		$("#backButton").click(function() {
 			
@@ -127,23 +122,28 @@ $(document).ready( function(){
 			$("#tableFront").removeClass("activeCardSide");
 			$("#tableBack").addClass("activeCardSide");
 			
-			$(".plusMenuFront").hide();
-			$(".plusMenuBack").show();		
+			$("#plusMenuFront").hide();
+			$("#plusMenuBack").show();					
+			$("#sideToEdit a:first").hide();
+			$("#sideToEdit a:last").show();	
 			
-			$(".sideToEdit:first").hide();
-			$(".sideToEdit:last").show();	
-			
-			$(".inputSring").removeClass("inputSring").css({backgroundColor: ""});
-
-			$(".plusMenuTransl").trigger('click');
-			
-			
-			$("#translation").addClass("inputSring");
-			com1.cardExt.val($("#translation").text());
-					
+			$("#plusMenuTransl").trigger('click');
+	
 		});
 
-	
+
+		$("#sideToEdit").click(
+			function(){				
+				if( com1.activeSide === 'a' ) {
+					$("#backButton").trigger('click');
+				} else if ( com1.activeSide === 'b' ) {
+					$("#frontButton").trigger('click');
+				}
+			}
+		);
+
+
+
 
 		//correct letter concept canceled
 		/*
@@ -169,6 +169,10 @@ $(document).ready( function(){
 		});
 
 //vars to add in list
+
+		//com1.insertId
+
+
 		var ii = 0;
 		var	keyUpAnim;
 		var whatsBlock = 0;
@@ -178,18 +182,18 @@ $(document).ready( function(){
 			  	if ( com1.quickModeChecked === true) {
 			  		 
 			  			whatsBlock = 1;
-			  			//console.log(intSec); 	
-			  			$(".inputSring").trigger("inputSringEvent");
-			  		
+			  			 	
+			  			//com1.insertId.trigger("inputSringEvent");
+			  			testCom(com1.insertId);
 			  			ii = 0;
 			  			window.clearInterval(keyUpAnim);
 
 			  							  			
 			  			keyUpAnim = window.setInterval( function() {
 			  				ii++;
-			  				//console.log(ii);
+			  				
 				  			if( ii >= 2 ) {
-				  				$(".inputSring").animate({ backgroundColor: "#C3D9FF" }, 500).animate({ backgroundColor: "#e1ecff" }, 1000);
+				  				com1.insertId.parent().animate({ backgroundColor: "#C3D9FF" }, 500).animate({ backgroundColor: "#e1ecff" }, 1000);
 				  				ii = 0;
 				  				whatsBlock = 0;
 				  				window.clearInterval(keyUpAnim);
@@ -210,24 +214,42 @@ $(document).ready( function(){
 			
 				what = window.setInterval( function() {
 					var whatInt = $.trim(com1.cardExt.val());	
-					var strInt = $.trim($(".inputSring").text());
+					var strInt = $.trim(com1.insertId.text());
 					//console.log(whatInt+'  '+strInt);					
-					if( whatInt !== strInt ){
+					if( whatInt !== strInt ){						
+						testCom(com1.insertId);
 						
-						//intSec = true;
-						$(".inputSring").trigger("inputSringEvent");
 						if ( whatsBlock === 0 ) {
-							$(".inputSring").animate({ backgroundColor: "#C3D9FF" }, 500).animate({ backgroundColor: "#e1ecff" }, 1000);
+							com1.insertId.parent().animate({ backgroundColor: "#C3D9FF" }, 500).animate({ backgroundColor: "#e1ecff" }, 1000);
 						}
 					} 
 				}, 2000			
 			);
 		}		
-
+		
+		//--------------------------------------
 		var intSec = true;
+		
+		function testCom(mon){
+			//alert(mon.toSource());
+			var textIn = com1.cardExt.val();
+			mon.text(textIn);
+			if (textIn.length > 0) {
+				
+				$("#submitTranslId,#submitWordId").attr({"disabled":false});
+				
+				mon.prev().show();				
+			}else{
+				//whats();
+				$("#submitTranslId,#submitWordId").attr({"disabled":"disabled"});
+				
+				mon.prev().hide();
+			}	
+		};
 
-		$(".inputSring").live("inputSringEvent",function(){
-			
+/*
+		com1.insertId.live("inputSringEvent",function(){
+			//alert( com1.insertId.toSource());
 			var textIn = com1.cardExt.val();
 			$(this).text(textIn);
 			
@@ -237,88 +259,86 @@ $(document).ready( function(){
 				
 				$("span.inputSring").prev().show();				
 			}else{
-				whats();
+				//whats();
 				$("#submitTranslId,#submitWordId").attr({"disabled":"disabled"});
 				
 				$("span.inputSring").prev().hide();
 			}			
-		});		
+		});	
+*/	
+		//-------------------------------------
 
-
-
-
-
-
-
-
-
+	$("#submitWordId").click(function(){
+			testCom(com1.insertId);		
+			com1.insertId.parent().animate({ backgroundColor: "#C3D9FF" }, 500).animate({ backgroundColor: "#e1ecff" }, 1000);					 		  	
+	});
 	
-		$('#langSideA').click(function(e) {
-			window.clearInterval(what);
-			//com1.cardExt.focus();
-			//alert(e.which);
-			/*
-			var textIn = com1.cardExt.val();
-					if ( textIn !== '') {
-						alert('Handler for .mousedown() called.');
-					} else {
-						//alert('Ha');
-					}
-  		*/
-		});	
-		$('#langSideB').click(function(e) {
-			com1.cardExt.blur();
-			//alert(e.which);
-			/*
-			var textIn = com1.cardExt.val();
-					if ( textIn !== '') {
-						alert('Handler for .mousedown() called.');
-					} else {
-						//alert('Ha');
-					}
-  		*/
-		});	
+	//inserting translation result in inputstring
+	$(".insertWordClick li").live('click',function(){
+			var toIns = $(this).text();
+			com1.cardExt.val(toIns);
+			testCom(com1.insertId);				
+			com1.insertId.parent().animate({ backgroundColor: "#C3D9FF" }, 500).animate({ backgroundColor: "#e1ecff" }, 1000);			
+	});
 
+		com1.insertId.hover( function(){
+				$(this).css({ backgroundColor: "red" });
+			},function(){
+				$(this).css({ backgroundColor: "" });
+			}
+		);
 
-
-
-
-
-
-
-
-
-
-
+		
 //------------------------------------------------
-	$(".plusMenuFront,.plusMenuBack").click(function(){
-			$(".plusMenuActive").removeClass("plusMenuActive");
-			$(this).addClass("plusMenuActive");			
-	})
+			
+	$("#plusMenuWord").data( { "strId":menuInput.pmW.strId ,"toltip":menuInput.pmW.tip});	
+	$("#plusMenuTest").data( { "strId":menuInput.pmT.strId ,"toltip":menuInput.pmT.tip});		
+	$("#plusMenuTransl").data( { "strId":menuInput.pmTr.strId ,"toltip":menuInput.pmTr.tip});		
+	$("#plusMenuExample").data( { "strId":menuInput.pmEx.strId ,"toltip":menuInput.pmEx.tip});
+	$("#plusMenuDefin").data( { "strId":menuInput.pmD.strId ,"toltip":menuInput.pmD.tip});				
+	$("#plusMenuSynonim").data( { "strId":menuInput.pmS.strId ,"toltip":menuInput.pmS.tip});
 
-	$(".plusMenuTransl").click(function(){
-			$(".inputSring").removeClass("inputSring").css({backgroundColor:""});
-			$("#translation").addClass("inputSring");	
-			com1.cardExt.val($("#translation").text()).focus();	
-	});
-	$(".plusMenuDefin").click(function(){
-			$(".inputSring").removeClass("inputSring").css({backgroundColor:""});
-			$("#definTran span:last").addClass("inputSring");
-			com1.cardExt.val($("#definTran span:last").text()).focus();		
-	});
-	$(".plusMenuExample").click(function(){
-			$(".inputSring").removeClass("inputSring").css({backgroundColor:""});
-			$("#contextTran span:last").addClass("inputSring");
-			com1.cardExt.val($("#contextTran span:last").text()).focus();		
-	});
-	$(".plusMenuSynonim").click(function(){
-			$(".inputSring").removeClass("inputSring").css({backgroundColor:""});
-			$("#synonimTran span:last").addClass("inputSring");
-			com1.cardExt.val($("#synonimTran span:last").text()).focus();		
+	var prev_tooltip = '';
+				
+	$("#plusMenuWrapper div div").each(function(i){
+					
+					var my_tooltip;
+					if ( (my_tooltip = $(this).data("toltip")) === undefined )  {
+							my_tooltip = '';
+					}		
+					var strId = $(this).data("strId");					
+					if ( strId === undefined )  {
+							strId = 'test';
+					}							
+							
+					$(this).mouseover(function(){	
+										
+						$(".userActions").text(my_tooltip).addClass("userActionTip");	
+																						
+					}).mouseout(function(){			
+									
+						$(".userActions").text(prev_tooltip).removeClass("userActionTip");
+						
+					}).click(function(){
+												
+						$(".userActions").text(my_tooltip);
+						prev_tooltip = my_tooltip;
+						$(".plusMenuActive").removeClass("plusMenuActive");
+						$(this).addClass("plusMenuActive");
+						
+						com1.insertId.parent().removeClass("inputSring").stop().css({backgroundColor:""});						
+						var corStrId = "#"+strId;
+						com1.insertId = $( corStrId );
+						
+						com1.insertId.parent().addClass("inputSring");
+						//com1.cardExt.val($(".inputSring").text());
+						com1.cardExt.val(com1.insertId.text());
+						
+					});
 	});
 
 
-
+	$("#frontButton").trigger('click');
 			
 		
 	//lang switching
@@ -385,7 +405,7 @@ $(document).ready( function(){
 			var userWordLower = userWord.toLowerCase();
 			
 			//double of the input.
-			$(".inputSring").text(userWord);
+			com1.insertId.text(userWord);
 			$("#transFor").text(userWord);
 			
 			
@@ -534,21 +554,8 @@ $(document).ready( function(){
 			//initialize(userWord);
 			return false;
 		});
-		
-		//inserting translation result in inputstring
-		$(".insertWordClick li").live('click',function(){
-			var toIns = $(this).text();
-			com1.cardExt.val(toIns);	
-			//intSec = true;		
-			$(".inputSring").trigger("inputSringEvent").animate({ backgroundColor: "#C3D9FF" }, 500).animate({ backgroundColor: "#e1ecff" }, 1000);			
-		});
+
 				
-
-
-
-
-
-
 
 
 		$(".dicSwitcherM").live('mouseover mouseout',function(event){		
@@ -589,7 +596,7 @@ $(document).ready( function(){
 			userMore = $("#UserExt").attr('value');
 			
 			
-			$(".contextTran").text(userMore);
+			$(".exTran").text(userMore);
 			
 			
 			
@@ -600,18 +607,6 @@ $(document).ready( function(){
 
 
 		//more controls
-		
-
-	
-	
-	
-		$("#submitWordId").click(function(){		
-			//intSec = true;
-			$(".inputSring").trigger("inputSringEvent").animate({ backgroundColor: "#C3D9FF" }, 500).animate({ backgroundColor: "#e1ecff" }, 1000);					 		  	
-		});
-
-		
-
 		
 
 		$(".closeCardTable").click(function(){
@@ -658,15 +653,7 @@ $(document).ready( function(){
 		);		
 		
 		
-		$(".sideToEdit").click(
-			function(){
-				if ($("#tableFront").hasClass("activeCardSide")) {
-					$("#backButton").trigger('click');
-				} else {
-					$("#frontButton").trigger('click');
-				}				
-			}
-		);
+
 		
 
 
@@ -713,8 +700,8 @@ $(document).ready( function(){
 	    								"data[Theme][id]": themeName.data('id'),
 	    								"data[Theme][theme]": themeName.data('theme'),
 	    								"data[Card][word]": $('#mainWord').text(),
-	    								"data[Card][tr]" : $('#translation').text(),
-	    								"data[Card][cont]" : $('#contextTran span:last').text(),
+	    								"data[Card][tr]" : $('#wordTran').text(),
+	    								"data[Card][cont]" : $('#exTran span:last').text(),
 	    								"data[Card][def]" : $('#definTran span:last').text(),
 	    								"data[Card][syn]" : $('#synonimTran span:last').text() 
 	    							};
@@ -731,7 +718,7 @@ $(document).ready( function(){
         	if ( data.stat === 1 ) {        		
           	$('.newCards').prepend('<li></li>').find('li:first').text(data.word).data(cardObj).css({'color':'red'}).next().css({'color':'blue'});
           	
-          	$('#mainWord,#translation,#contextTran span:last,#definTran span:last,#synonimTran span:last').empty();
+          	$('#mainWord,#wordTran,#exTran span:last,#definTran span:last,#synonimTran span:last').empty();
           	com1.cardExt.val('');
           	
 			 			$(".additionalRes").hide();
@@ -801,3 +788,32 @@ $(document).ready( function(){
 */
 // http://vremenno.net/examples/x-button-on-text-input2/
 // http://www.simplecoding.org/javascript-poleznye-sobytiya.html
+
+//toDel
+		/*	
+		$('#langSideA').click(function(e) {
+			window.clearInterval(what);
+			//com1.cardExt.focus();
+			//alert(e.which);
+			
+			var textIn = com1.cardExt.val();
+					if ( textIn !== '') {
+						alert('Handler for .mousedown() called.');
+					} else {
+						//alert('Ha');
+					}
+  		
+		});	
+		$('#langSideB').click(function(e) {
+			com1.cardExt.blur();
+			//alert(e.which);
+			
+			var textIn = com1.cardExt.val();
+					if ( textIn !== '') {
+						alert('Handler for .mousedown() called.');
+					} else {
+						//alert('Ha');
+					}
+  		
+		});	
+		*/

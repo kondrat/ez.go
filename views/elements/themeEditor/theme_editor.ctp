@@ -7,7 +7,7 @@
 				<?php if(isset($curTheme) && $curTheme != array()):?>
 					<?php $selectedTheme = ($curTheme['0']['Theme']['theme'])? $curTheme['0']['Theme']['id']:null;?>
 	
-					<?php $currentThemeObj = $javascript->object(
+					<?php $currentThemeObj = $js->object(
 																		array(
 																				'theme'=> $curTheme['0']['Theme']['theme'],
 																				'id' =>  $curTheme['0']['Theme']['id']
@@ -16,7 +16,7 @@
 					?>
 					<?php echo $curTheme['0']['Theme']['theme'];?>
 				<?php else: ?>
-					<?php $currentThemeObj = $javascript->object(array());?>
+					<?php $currentThemeObj = $js->object(array());?>
 					Theme 1
 				<?php endif ?>
 				<?php echo $html->scriptBlock('var currentTheme = '.$currentThemeObj.';',array('inline'=>false)); ?>

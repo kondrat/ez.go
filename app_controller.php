@@ -3,7 +3,7 @@ class AppController extends Controller {
 	var $components = array( 'Security','Cookie','Session','Auth','AutoLogin', 'RequestHandler', 'Email',
 				'DebugKit.Toolbar'
 			);
-	var $helpers = array('Session','Javascript','Html', 'Form', 'Cache');
+	var $helpers = array('Session','Js','Html', 'Form', 'Cache');
 	var $publicControllers = array('pages', 'test');
 //--------------------------------------------------------------------
 	function beforeFilter() {
