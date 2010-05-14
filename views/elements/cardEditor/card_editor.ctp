@@ -9,27 +9,27 @@
 													array(
 														
 															'pmW'=> array( 
-																											'strId' => 'mainWord',
+																											//'strId' => 'mainWord',
 																											'tip' => __('Enter word or short phrase',true)
 																										),
 															'pmT'=> array( 
-																											'strId' => 'mainWordTest',
+																											//'strId' => 'mainMore',
 																											'tip' => __('Enter test phrase',true)
 																										),																											
 															'pmTr'=> array( 
-																											'strId' => 'wordTran',
+																											//'strId' => 'wordTran',
 																											'tip' => __('Enter translation of word',true)
 																										),
 															'pmEx'=> array( 
-																											'strId' => 'exTran',
+																											//'strId' => 'exTran',
 																											'tip' => __('Enter an example usage  of word',true)
 																										),
 															'pmD'=> array( 
-																											'strId' => 'definTran',
+																											//'strId' => 'defTran',
 																											'tip' => __('Enter definition of word',true)
 																										),
 															'pmS'=> array( 
-																											'strId' => 'synonimTran',
+																											//'strId' => 'synTran',
 																											'tip' =>__('Enter an synonims of word',true)
 																										)
 													)
@@ -43,11 +43,11 @@
 			<?php echo $this->element("cardEditor/langSwitcher/lang_switcher");?>
 	<div class="span-16">
 			<div id="plusMenuWrapper" class="span-16">							
-						<div id="plusMenuFront">
+						<div id="plusMenuFront" class="hide">
 								<div id="plusMenuWord">+ <?php __('word');?></div>							
-								<div id="plusMenuTest">+ <?php __('test');?></div>		
+								<div id="plusMenuTest">+ <?php __('more');?></div>		
 						</div>
-						<div id="plusMenuBack">
+						<div id="plusMenuBack" class="hide">
 								<div id="plusMenuTransl">+ <?php __('transl');?></div>
 								<div id="plusMenuExample">+ <?php __('example');?></div>
 								<div id="plusMenuDefin">+ <?php __('definition');?></div>
@@ -102,9 +102,9 @@
 							<tbody>
 								<tr>
 									<td class="td activeTside">
-										<div class="frontSideWrapper">
-											<div class="mainWord"><span id="mainWord"></span></div>
-											<div class="mainWordTest"><span class="perfix">[more]:&nbsp;</span><span id="mainWordTest"></span></div>
+										<div class="cardInputs">
+											<div class="hide"><span id="mainWord"></span></div>
+											<div class="hide"><span class="perfix">[more]:&nbsp;</span><span id="mainMore"></span></div>
 										</div>
 										<div class="tableTheme">
 											<span class="themePrefixCard"><?php __('Theme');?>: </span>
@@ -122,12 +122,12 @@
 							<tbody>
 								<tr>
 									<td class="td">
-										<div class="backSideWrapper">
+										<div class="cardInputs">
 											
-												<div class="mainTran"><span id="wordTran"></span></div>
-												<div class="exTran"><span class="perfix">[ex]:&nbsp;</span><span id="exTran"></span></div>
-												<div class="definTran"><span class="perfix">[def]:&nbsp;</span><span id="definTran"></span></div>
-												<div class="synonimTran"><span class="perfix">[syn]:&nbsp;</span><span id="synonimTran"></span></div>
+												<div class="hide"><span id="wordTran"></span></div>
+												<div class="hide"><span class="perfix">[ex]:&nbsp;</span><span id="exTran"></span></div>
+												<div class="hide"><span class="perfix">[def]:&nbsp;</span><span id="defTran"></span></div>
+												<div class="hide"><span class="perfix">[syn]:&nbsp;</span><span id="synTran"></span></div>
 												
 										</div>
 									</td>
