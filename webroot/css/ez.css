@@ -134,8 +134,10 @@
 	font-size:26px;
 	height:170px;
 	width: 33.3%;
+	/*
 	line-height:1.1em;
 	text-align:center;
+	*/
 	overflow:hidden;
 }
 .td{
@@ -229,6 +231,15 @@
 	max-height:160px;
 	overflow:hidden;
 }
+.activeCardSide .cardInputs div{
+	cursor:pointer;
+}
+#toRemove{
+	color:lightgrey;
+	font-size:smaller;
+	font-style:italic;
+	font-weight:normal;
+}
 /* add it for ie6
 * html div#division { 
    width: expression( document.body.clientWidth > 776 ? "777px" : "auto" ); *//* sets max-width for IE */
@@ -298,11 +309,21 @@ div.activeCardSide #backButton a:hover {
 }
 
 #mainWord{
-	line-height:1.2em;	
+
 }
-
-
-
+.mainWord{
+	line-height:1.2em;	
+	text-align:center;
+}
+.wordTran{
+	text-align:center;
+}
+.wordMore {
+	text-align:left;
+}
+.wordMore #toRemove{
+	font-size:small;
+}
 
 
 
@@ -333,9 +354,8 @@ div.activeCardSide #backButton a:hover {
 	margin-bottom:0.1em;
 }
 .perfix{
-	font-size:smaller;
+	font-size:7pt;
 	color:gray;
-	/*display:none;*/
   margin-left:1em;
 }
 

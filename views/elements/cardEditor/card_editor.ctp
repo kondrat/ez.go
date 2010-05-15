@@ -8,34 +8,18 @@
 <?php $userActionTipsObj = $js->object(
 													array(
 														
-															'pmW'=> array( 
-																											//'strId' => 'mainWord',
-																											'tip' => __('Enter word or short phrase',true)
-																										),
-															'pmT'=> array( 
-																											//'strId' => 'mainMore',
-																											'tip' => __('Enter test phrase',true)
-																										),																											
-															'pmTr'=> array( 
-																											//'strId' => 'wordTran',
-																											'tip' => __('Enter translation of word',true)
-																										),
-															'pmEx'=> array( 
-																											//'strId' => 'exTran',
-																											'tip' => __('Enter an example usage  of word',true)
-																										),
-															'pmD'=> array( 
-																											//'strId' => 'defTran',
-																											'tip' => __('Enter definition of word',true)
-																										),
-															'pmS'=> array( 
-																											//'strId' => 'synTran',
-																											'tip' =>__('Enter an synonims of word',true)
-																										)
+															'pmW'=> array( 'tip' => __('Enter word or short phrase',true) ),
+															'pmT'=> array( 'tip' => __('Enter test phrase',true) ),																																																				
+															'pmTr'=> array( 'tip' => __('Enter translation of word',true) ), 																									
+															'pmEx'=> array( 'tip' => __('Enter an example usage  of word',true) ), 																									
+															'pmD'=> array( 'tip' => __('Enter definition of word',true) ),																									
+															'pmS'=> array( 'tip' =>__('Enter an synonims of word',true) ),
+															
+															'rem'=> array( 'str' =>__('Your text will be here...',true) )																										
 													)
 										);														
 ?>
-<?php echo $html->scriptBlock('var menuInput = '.$userActionTipsObj.';',array('inline'=>false)); ?>
+<?php echo $html->scriptBlock('var cObj = '.$userActionTipsObj.';',array('inline'=>false)); ?>
 
 
 <div class="span-16 cardEditor <?php echo $classHide;?>" style="-moz-border-radius:15px;-moz-box-shadow:0 0 7px gray;">
@@ -103,8 +87,8 @@
 								<tr>
 									<td class="td activeTside">
 										<div class="cardInputs">
-											<div class="hide"><span id="mainWord"></span></div>
-											<div class="hide"><span class="perfix">[more]:&nbsp;</span><span id="mainMore"></span></div>
+											<div class="mainWord hide"><span id="mainWord"></span></div>
+											<div class="wordMore hide"><span class="perfix">[more]:&nbsp;</span><span id="mainMore"></span></div>
 										</div>
 										<div class="tableTheme">
 											<span class="themePrefixCard"><?php __('Theme');?>: </span>
@@ -124,10 +108,10 @@
 									<td class="td">
 										<div class="cardInputs">
 											
-												<div class="hide"><span id="wordTran"></span></div>
-												<div class="hide"><span class="perfix">[ex]:&nbsp;</span><span id="exTran"></span></div>
-												<div class="hide"><span class="perfix">[def]:&nbsp;</span><span id="defTran"></span></div>
-												<div class="hide"><span class="perfix">[syn]:&nbsp;</span><span id="synTran"></span></div>
+												<div class="wordTran hide"><span id="wordTran"></span></div>
+												<div class="wordMore hide"><span class="perfix">[ex]:&nbsp;</span><span id="exTran"></span></div>
+												<div class="wordMore hide"><span class="perfix">[def]:&nbsp;</span><span id="defTran"></span></div>
+												<div class="wordMore hide"><span class="perfix">[syn]:&nbsp;</span><span id="synTran"></span></div>
 												
 										</div>
 									</td>

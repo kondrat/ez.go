@@ -27,7 +27,7 @@ $(document).ready( function(){
 			langSwitch: ''
 		};
 
-		//alert(menuInput.toSource());
+		//alert(cObj.toSource());
 
 
 		
@@ -170,13 +170,10 @@ $(document).ready( function(){
 
 //vars to add in list
 
-		//com1.insertId
-
-
 		var ii = 0;
 		var	keyUpAnim;
 		
-		
+
 		com1.cardExt.keyup( function(e) {									
 			//if ( com1.correctLetter = true) { //correct letter concept canceled	
 			
@@ -188,11 +185,12 @@ $(document).ready( function(){
 							com1.insertId.text( com1.cardExt.val() );	  
 							
 										
-			  			testCom();
+			  			testWordLineEmpty();
 		  			
 			  			ii = 0;
 			  			window.clearInterval(keyUpAnim);
-							//console.log(e.which);
+							
+							//#C3D9FF - dark
 			  			com1.insertId.parent().animate({ backgroundColor: "#C3D9FF" }, 500);				  			
 			  			keyUpAnim = window.setInterval( function() {
 			  				ii++;
@@ -212,7 +210,7 @@ $(document).ready( function(){
 		
 		//--------------------------------------
 		
-		function testCom(){
+		function testWordLineEmpty(){
 			
 			//removing all placeHolders in cardLines
 			$("#toRemove").remove();
@@ -228,7 +226,7 @@ $(document).ready( function(){
 				
 				$("#submitTranslId,#submitWordId").attr({"disabled":"disabled"});
 				
-				com1.insertId.after('<span id="toRemove">You text here</span>');
+				com1.insertId.after('<span id="toRemove">'+cObj.rem.str+'</span>');
 				
 				com1.insertId.parent().show();
 				
@@ -236,8 +234,7 @@ $(document).ready( function(){
 		};		
 		
 //--------------------------------------------------
-		
-		
+	
 		function lookForInput() {
 			
 			var what = window.setInterval( function() {
@@ -251,8 +248,6 @@ $(document).ready( function(){
 			);
 			
 		};		
-		
-
 
 /*
 		com1.insertId.live("inputSringEvent",function(){
@@ -288,12 +283,12 @@ $(document).ready( function(){
 		
 //------------------------------------------------
 			
-	$("#plusMenuWord").data( { "strId":"#mainWord" ,"toltip":menuInput.pmW.tip});	
-	$("#plusMenuTest").data( { "strId":"#mainMore" ,"toltip":menuInput.pmT.tip});		
-	$("#plusMenuTransl").data( { "strId":"#wordTran" ,"toltip":menuInput.pmTr.tip});		
-	$("#plusMenuExample").data( { "strId":"#exTran" ,"toltip":menuInput.pmEx.tip});
-	$("#plusMenuDefin").data( { "strId":"#defTran" ,"toltip":menuInput.pmD.tip});				
-	$("#plusMenuSynonim").data( { "strId":"#synTran" ,"toltip":menuInput.pmS.tip});
+	$("#plusMenuWord").data( { "strId":"#mainWord" ,"toltip":cObj.pmW.tip});	
+	$("#plusMenuTest").data( { "strId":"#mainMore" ,"toltip":cObj.pmT.tip});		
+	$("#plusMenuTransl").data( { "strId":"#wordTran" ,"toltip":cObj.pmTr.tip});		
+	$("#plusMenuExample").data( { "strId":"#exTran" ,"toltip":cObj.pmEx.tip});
+	$("#plusMenuDefin").data( { "strId":"#defTran" ,"toltip":cObj.pmD.tip});				
+	$("#plusMenuSynonim").data( { "strId":"#synTran" ,"toltip":cObj.pmS.tip});
 
 	$("#mainWord").data( { "menuId":"#plusMenuWord"});
 	$("#mainMore").data( { "menuId":"#plusMenuTest"});
@@ -331,12 +326,13 @@ $(document).ready( function(){
 				
 				//main block
 					//cleaning prev strId
-				com1.insertId.parent().removeClass("inputSring").stop().css({backgroundColor:""});		
+				var prevLine = com1.insertId.parent();
+				prevLine.stop(true).removeClass("inputSring").css({backgroundColor:""});
 				
 				$("#toRemove").remove();
 				
 				if ( com1.insertId.text().length == 0 ) {					
-					com1.insertId.parent().hide();
+					prevLine.hide();
 				}
 				
 					//setting for new strId
@@ -346,7 +342,7 @@ $(document).ready( function(){
 				
 				com1.cardExt.val(com1.insertId.text());
 				
-				testCom();
+				testWordLineEmpty();
 				
 				
 			});
@@ -354,19 +350,17 @@ $(document).ready( function(){
 
 		
 		
-		$(".cardInputs div").hover( function(){
-				$(this).css({ backgroundColor: "lightBlue" });
-			},function(){
-				$(this).css({ backgroundColor: "" });
-			}
-		).click(function(){
-			var menuId = $(this).children("span:last").data("menuId");
-			$(menuId).trigger("click");
+		$(".activeCardSide .cardInputs div").live("mouseover mouseout click", function(event){
+			  if (event.type == 'mouseover') {
+			    $(this).css({ backgroundColor: "#C3D9FF" });
+			  } else if (event.type == 'mouseout' ) {
+			    $(this).css({ backgroundColor: "" });
+			  }	else if (event.type == 'click'){
+			  	var menuId = $(this).children("span:last").data("menuId");
+					$(menuId).trigger("click");
+			  }		
 		});
-
-
-
-
+				
 
 	$("#frontButton").trigger('click');
 			
