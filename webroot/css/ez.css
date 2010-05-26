@@ -235,7 +235,7 @@
 	cursor:pointer;
 }
 #toRemove{
-	color:lightgrey;
+	color:LightSalmon;
 	font-size:smaller;
 	font-style:italic;
 	font-weight:normal;
@@ -380,13 +380,15 @@ div.activeCardSide #backButton a:hover {
 	color:#FF9900;/*lightSalmon;*/
 	font-weight:bold;
   float:left;
-  margin:0 1em;
+	margin:0 0.5em;
+	padding:0 0.5em;
 }
 #plusMenuWrapper div div:hover{
 	text-decoration:underline;
 }
 #plusMenuWrapper div div.plusMenuActive{
 	color:black;
+	/*background-color:red;*/
 }
 
 

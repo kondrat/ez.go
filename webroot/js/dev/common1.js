@@ -315,14 +315,15 @@ $(document).ready( function(){
 			$(this).mouseover(function(){									
 				$(".userActions").text(my_tooltip).addClass("userActionTip");																				
 			}).mouseout(function(){										
-				$(".userActions").text(prev_tooltip).removeClass("userActionTip");				
+				$(".userActions").text(prev_tooltip).removeClass("userActionTip");
+								
 			}).click(function(){
 				
 				//tool Tip block					
 				$(".userActions").text(my_tooltip);
 				prev_tooltip = my_tooltip;
-				$(".plusMenuActive").removeClass("plusMenuActive");
-				$(this).addClass("plusMenuActive");
+				$(".plusMenuActive").removeClass("plusMenuActive").css({backgroundColor: ""});
+				$(this).addClass("plusMenuActive").animate({ backgroundColor: "red" }, 1000).animate({ backgroundColor: "#C3D9FF" }, 1000);
 				
 				//main block
 					//cleaning prev strId
