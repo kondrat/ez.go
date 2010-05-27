@@ -55,9 +55,10 @@
 			<div class="container">
 				<div class="span-24">
 						<div class="span-16 ">
-							<div style="float:left; margin:1em 0;">
+							<div style="float:left;margin:0.8em 0 0 2em;">
 								<?php echo $html->link($html->image(
-																										'pic/ez-logo-50-w.png'
+																										'pic/ez-logo-24-dev.png'
+																										//'pic/ez-logo-50-w.png'
 																										//'pic/ez-logo-50-3.png'
 																										), array('controller'=>'cards','action'=>'index'),array('escape'=>false) );?> 
 							</div>
@@ -76,7 +77,7 @@
 											<?php echo $html->link(__('LogOut now',true), array('controller'=>'users','action'=>'logout') );?>
 										<?php endif ?>
 									</div>	
-									<div style="color:gray;margin:.1em;position:absolute;top:50px;left:20px;background-color:lightgrey;padding:0 .5em;">
+									<div style="color:gray;margin:.1em;position:absolute;top:10px;left:-270px;background-color:lightgrey;padding:0 .5em;">
 										<?php echo $html->link(__('tempLogOut',true), array('controller'=>'users','action'=>'logout'),array('class'=>'tempLogOut','style'=>'background-color:#fff') );?>
 										&nbsp;
 										<?php echo $html->link('fill_1',array(),array('id'=>'fill_1','onclick'=>'return false','style'=>'background-color:#fff') );?>

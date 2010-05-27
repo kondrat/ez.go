@@ -178,9 +178,7 @@ $(document).ready( function(){
 			//if ( com1.correctLetter = true) { //correct letter concept canceled	
 			
 			  	if ( com1.quickModeChecked === true) {
-			  		 	
-			  		 	
-			  		 	
+		  		 	
 			  			//getting string from input and putting it in corresopndent card line						
 							com1.insertId.text( com1.cardExt.val() );	  
 							
@@ -193,9 +191,9 @@ $(document).ready( function(){
 							//#C3D9FF - dark
 			  			com1.insertId.parent().animate({ backgroundColor: "#C3D9FF" }, 500);				  			
 			  			keyUpAnim = window.setInterval( function() {
-			  				ii++;
 			  				
-				  			if( ii >= 2 ) {
+			  				ii++;			  				
+				  			if( ii >= 1 ) {
 				  				com1.insertId.parent().animate({ backgroundColor: "#e1ecff" }, 1000);
 				  				ii = 0;
 				  				window.clearInterval(keyUpAnim);
@@ -323,7 +321,14 @@ $(document).ready( function(){
 				$(".userActions").text(my_tooltip);
 				prev_tooltip = my_tooltip;
 				$(".plusMenuActive").removeClass("plusMenuActive").css({backgroundColor: ""});
-				$(this).addClass("plusMenuActive").animate({ backgroundColor: "red" }, 1000).animate({ backgroundColor: "#C3D9FF" }, 1000);
+				$(this).addClass("plusMenuActive").animate({ backgroundColor: "#C3D9FF" }, 1000).animate({ backgroundColor: "#fff" }, 1000);
+				$(".userActions").animate({color: "green"},1000).animate(
+																		{ color: "brown" },
+																		 1000,
+																		function(){																																									
+																			$(this).css({"color": ""});
+																		}
+																);
 				
 				//main block
 					//cleaning prev strId
@@ -337,9 +342,11 @@ $(document).ready( function(){
 				}
 				
 					//setting for new strId
+				com1.cardExt.focus();
+				
 				com1.insertId = $( strId );
 			
-				com1.insertId.parent().addClass("inputSring");
+				com1.insertId.parent().addClass("inputSring").animate({ backgroundColor: "#C3D9FF" }, 1000).animate({ backgroundColor: "#E1ECFF" }, 1000);;
 				
 				com1.cardExt.val(com1.insertId.text());
 				

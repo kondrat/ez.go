@@ -8,7 +8,7 @@
 }
 .topSearch{
 	/*background:transparent url(../img/pic/ez-header.png) no-repeat scroll 0 0;*/
-	height: 55px;	
+	/*height: 55px;	*/
 }
 .contentWrapper{
 	padding-bottom:1em;
@@ -162,7 +162,8 @@
 	font-size:10pt;	
 }
 .leftSideTheme{
-	font-weight:bold;
+	font-size:8pt;
+	font-style:italic;
 }
 /*theme block*/
 #themeEdit{
@@ -239,6 +240,7 @@
 	font-size:smaller;
 	font-style:italic;
 	font-weight:normal;
+	line-height:1.1em;
 }
 /* add it for ie6
 * html div#division { 
@@ -349,7 +351,7 @@ div.activeCardSide #backButton a:hover {
 
 #wordTran{
 	/*border-bottom:1px dashed;*/
-	font-size:smaller;
+	font-size:16pt;
 	line-height:1.1em;
 	margin-bottom:0.1em;
 }
