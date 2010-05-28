@@ -64,7 +64,7 @@
   		);
   	?>  
 
-<div class="span-10 langPad hide" style="">
+<div id="langPad" class="span-10 popUpPad hide" style="">
   <div class="span-10" style="border-bottom:1px solid gray;margin-bottom:0.5em;padding-bottom:0.5em;position:relative;">
   	   	 	
     <div class="span-5" style="">
@@ -75,7 +75,7 @@
     	<div class="langPadLabel"><?php __('Side B');?></div>
     	<?php echo $form->input('sideB', array('selected'=>'ru','label'=>false,'options' => $sideA)); ?>
     </div>
-    <div class="closeLangPad"></div>
+    <div id="closeLangPad"></div>
     		    	  
   </div>
   

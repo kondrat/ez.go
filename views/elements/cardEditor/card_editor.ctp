@@ -25,6 +25,7 @@
 <div class="span-16 cardEditor <?php echo $classHide;?>" style="-moz-border-radius:15px;-moz-box-shadow:0 0 7px gray;">
 	
 			<?php echo $this->element("cardEditor/langSwitcher/lang_switcher");?>
+			<?php echo $this->element("cardEditor/insertAlert/insert_alert");?>
 	<div class="span-16">
 			<div id="plusMenuWrapper" class="span-16">							
 						<div id="plusMenuFront" class="hide">
@@ -57,12 +58,10 @@
 						
 						    <?php echo $form->input('ext',array('label'=>false , "tabindex"=>"1") );?>
 			
-						    <div style="float:right;">
-							    <?php echo $form->button(__('Insert in card',true),array('id'=>'submitWordId','class'=>'submitWord',"tabindex"=>"3","onclick"=>"return false;") );?>
-						    </div>
+
 						    <div style="float:right;margin-right: 1em;">
-							    <?php //echo $html->link(__('Clean up',true),array() );?>
 							    <?php echo $form->button(__('Translate',true),array('id'=>'submitTranslId','style'=>'margin-right:3px;',"tabindex"=>"2","onclick"=>"return false;") );?>
+							    <?php echo $html->link(__('Clean up',true),array() );?>
 						    </div>
 					    <?php echo $form->end();?>
 					    
@@ -127,7 +126,7 @@
 			    <div class="panelBottom" style="">
 			      <div id="playSound" class="sound"></div>
 			      <div class="wordToSound"><?php __('No sound');?></div>
-				    <?php echo $form->button(__('Save Card',true),array('id'=>'saveCardMain') );?>
+				    <?php echo $form->button(__('Save Card',true),array('id'=>'saveCardMain', 'disabled' => 'disabled') );?>
 				    <div id='branding' style="position:absolute;top:13px; right:0;margin-right:1em;"> </div>
 				  </div>
 			</div>

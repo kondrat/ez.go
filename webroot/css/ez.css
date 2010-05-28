@@ -507,7 +507,7 @@ div.changeLangDirect{
 		color:CadetBlue;
 }
 
-.langPad{
+.popUpPad{
 	-moz-border-radius:8px;
 	-webkit-border-radius:8px; 
 	-moz-box-shadow:0 0 3px;
@@ -527,7 +527,7 @@ div.changeLangDirect{
 	font-weight:bold;
 	color:Brown;
 }
-.closeLangPad, .closeCardTable{
+#closeLangPad,#closeAlertPad, .closeCardTable{
 	background:transparent url(../img/icons/error.png) no-repeat scroll right 0;
 	height:16px;
 	width:16px;
@@ -620,9 +620,8 @@ div.changeLangDirect{
 .dicTerms {
 	color:gray;
 }
-.insertWordClick {
-	color:black;
-}
+
+
 
 #transFor{
 	background-color:Beige;
@@ -657,10 +656,13 @@ li.dicSwBase{
 	color:gray;
 	display:none;
 }
-.insertWordClick,.rSugTabs li {
-  cursor:pointer;
- }
 
+.dicTerms li, .topSug li, .rSugTabs li {
+  cursor:pointer;
+}
+.dicTerms li, .topSug li {
+	color:black;
+}
 
 
 .noun{

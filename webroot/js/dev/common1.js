@@ -24,7 +24,14 @@ $(document).ready( function(){
 			//lang pair initial
 			from: 'en',
 			to:'ru',
-			langSwitch: ''
+			langSwitch: '',
+			//input card lines
+			mainWord: $("#mainWord"),
+			mainMore: $("#mainMore"),
+			wordTran: $("#wordTran"),		
+			exTran: $("#exTran"),
+			defTran: $("#defTran"),				
+			synTran: $("#synTran")
 		};
 
 		//alert(cObj.toSource());
@@ -47,7 +54,7 @@ $(document).ready( function(){
 
 
 
-		com1.insertId = $("#mainWord");
+		com1.insertId = com1.mainWord;
 		com1.cardExt = $("#CardExt");
 		com1.cardTable = $("div.cardEditor");
 		com1.hideArrow = $(".hideArrow");
@@ -55,7 +62,7 @@ $(document).ready( function(){
 		//cleaning after reload
 	  com1.cardExt.val('').blur().focus(function(){lookForInput();});
 	  //com1.cardExt.focus();
-		$("#submitTranslId,#submitWordId").attr({"disabled":"disabled"});
+		$("#submitTranslId").attr({"disabled":"disabled"});
 
 
 	
@@ -83,12 +90,14 @@ $(document).ready( function(){
 
 			com1.to = $("#langSideB").text();
 			com1.from = $("#langSideA").text();
-			
+
+/*			
 			if ( com1.tranlslSide === 'a' ){
 				$(".dicTerms, .topSug").removeClass("insertWordClick");
 			} else if (com1.tranlslSide === 'b') {
 				$(".dicTerms, .topSug").addClass("insertWordClick");
 			}
+*/
 			
 			$("#tableBack").removeClass("activeCardSide");
 			$("#tableFront").addClass("activeCardSide");
@@ -112,13 +121,13 @@ $(document).ready( function(){
 			com1.to = $("#langSideA").text();
 			com1.from = $("#langSideB").text();
 
-			
+/*			
 			if ( com1.tranlslSide === 'b' ){
 				$(".dicTerms, .topSug").removeClass("insertWordClick");
 			} else if (com1.tranlslSide === 'a') {
 				$(".dicTerms, .topSug").addClass("insertWordClick");
 			}
-						
+*/						
 			$("#tableFront").removeClass("activeCardSide");
 			$("#tableBack").addClass("activeCardSide");
 			
@@ -216,13 +225,13 @@ $(document).ready( function(){
 			
 			if ( com1.insertId.text().length > 0 ) {
 				
-				$("#submitTranslId,#submitWordId").attr({"disabled":false});
+				$("#submitTranslId").attr({"disabled":false});
 				
 				com1.insertId.parent().show();	
 					
 			}else{
 				
-				$("#submitTranslId,#submitWordId").attr({"disabled":"disabled"});
+				$("#submitTranslId").attr({"disabled":"disabled"});
 				
 				com1.insertId.after('<span id="toRemove">'+cObj.rem.str+'</span>');
 				
@@ -239,6 +248,15 @@ $(document).ready( function(){
 					var whatInt = $.trim(com1.cardExt.val());	
 					var strInt = $.trim(com1.insertId.text());
 					
+					//Card submit button disabling control
+	    								
+					if( com1.mainWord.text() === '' && com1.mainMore.text() === '' && com1.wordTran.text() === '' && com1.exTran.text() === '' && com1.defTran.text() === '' && com1.synTran.text() === ''  ){
+						$("#saveCardMain").attr({"disabled":"disabled"});
+					} else {
+						$("#saveCardMain").attr({"disabled":""});
+					}
+					
+					
 					if( whatInt !== strInt ){
 						com1.cardExt.trigger("keyup");					
 					} 
@@ -247,37 +265,32 @@ $(document).ready( function(){
 			
 		};		
 
-/*
-		com1.insertId.live("inputSringEvent",function(){
-			//alert( com1.insertId.toSource());
-			var textIn = com1.cardExt.val();
-			$(this).text(textIn);
-			
-			if (textIn.length > 0) {
-				
-				$("#submitTranslId,#submitWordId").attr({"disabled":false});
-				
-				$("span.inputSring").prev().show();				
-			}else{
-				//lookForInput();
-				$("#submitTranslId,#submitWordId").attr({"disabled":"disabled"});
-				
-				$("span.inputSring").prev().hide();
-			}			
-		});	
-*/	
+
 	//-------------------------------------
-	//two more ways to insert string in main input
-		//pressing input button
-	$("#submitWordId").click(function(){
-			com1.cardExt.trigger("keyup"); 		  	
-	});
-	
-		//inserting translation result in inputstring
-	$(".insertWordClick li").live('click',function(){
+
+
+	//inserting translation result in inputstring
+	//old concept $(".insertWordClick li").live('click',function(){
+	$(".dicTerms li, .topSug li").live("click",function(){
+		
 			var toIns = $(this).text();
-			com1.cardExt.val(toIns).trigger("keyup");		
+			
+			if( com1.cardExt.val() === '' ) {
+				com1.cardExt.val(toIns).trigger("keyup");
+			} else {
+				$("#alertPad").show();
+			}
+			
+ 		
+			
 	});
+
+	
+  $("#closeAlertPad").click(function(){
+  	$("#alertPad").fadeOut();
+  });
+
+
 		
 //------------------------------------------------
 			
@@ -288,12 +301,12 @@ $(document).ready( function(){
 	$("#plusMenuDefin").data( { "strId":"#defTran" ,"toltip":cObj.pmD.tip});				
 	$("#plusMenuSynonim").data( { "strId":"#synTran" ,"toltip":cObj.pmS.tip});
 
-	$("#mainWord").data( { "menuId":"#plusMenuWord"});
-	$("#mainMore").data( { "menuId":"#plusMenuTest"});
-	$("#wordTran").data( { "menuId":"#plusMenuTransl"});		
-	$("#exTran").data( { "menuId":"#plusMenuExample"});
-	$("#defTran").data( { "menuId":"#plusMenuDefin"});				
-	$("#synTran").data( { "menuId":"#plusMenuSynonim"});
+	com1.mainWord.data( { "menuId":"#plusMenuWord"});
+	com1.mainMore.data( { "menuId":"#plusMenuTest"});
+	com1.wordTran.data( { "menuId":"#plusMenuTransl"});		
+	com1.exTran.data( { "menuId":"#plusMenuExample"});
+	com1.defTran.data( { "menuId":"#plusMenuDefin"});				
+	com1.synTran.data( { "menuId":"#plusMenuSynonim"});
 		
 		
 	var prev_tooltip = '';
@@ -392,13 +405,16 @@ $(document).ready( function(){
 		});
 
 		
+
+
+
 		
 		//cange lang pair control		
     $("#changeLangPair").click(function(){      
-       $(".langPad").show();
+       $("#langPad").show();
     });
-    $(".closeLangPad,#langPadSubmit").click(function(){
-       $(".langPad").fadeOut();
+    $("#closeLangPad,#langPadSubmit").click(function(){
+       $("#langPad").fadeOut();
     });
     
     
@@ -431,7 +447,7 @@ $(document).ready( function(){
 						
 		$("#submitTranslId").click( function() {
 			
-			alert(com1.from+' | '+com1.to);
+			//alert(com1.from+' | '+com1.to);
 			
 			var userWord = $.trim(com1.cardExt.attr('value'));
 			var userWordLower = userWord.toLowerCase();
@@ -731,11 +747,12 @@ $(document).ready( function(){
 	    var cardObj = {
 	    								"data[Theme][id]": themeName.data('id'),
 	    								"data[Theme][theme]": themeName.data('theme'),
-	    								"data[Card][word]": $('#mainWord').text(),
-	    								"data[Card][tr]" : $('#wordTran').text(),
-	    								"data[Card][cont]" : $('#exTran span:last').text(),
-	    								"data[Card][def]" : $('#defTran span:last').text(),
-	    								"data[Card][syn]" : $('#synTran span:last').text() 
+	    								"data[Card][word]": com1.mainWord.text(),
+	    								"data[Card][more]": com1.mainMore.text(),
+	    								"data[Card][tr]": com1.wordTran.text(),
+	    								"data[Card][cont]": com1.exTran.text(),
+	    								"data[Card][def]": com1.defTran.text(),
+	    								"data[Card][syn]": com1.synTran.text() 
 	    							};
     							
       $.ajax({
